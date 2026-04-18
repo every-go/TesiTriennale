@@ -36,7 +36,6 @@
 ).at(myLang)
 
 #let sourceCodeList = (
-  // Eventualmente rinominabile in "Elenco dei listati"/"Listings" ?
   "it" : "Elenco dei Codici Sorgente",
   "en" : "List of Code Snipptes"
 ).at(myLang)

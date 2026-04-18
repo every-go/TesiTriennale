@@ -1,6 +1,6 @@
 /* Questo file serve per:
 - Gestire i capitoli
-- Gestire il lo stile e la numerazione del conteggio delle pagine
+- Gestire lo stile e la numerazione del conteggio delle pagine
 */
 
 // Frontmatter

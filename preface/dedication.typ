@@ -1,6 +1,8 @@
 #v(3cm)
 #align(right, [
-  «Frase ad effetto»
+  #text(style:"italic")[
+    I have no enemies
+  ]
     #v(6pt)
-    #sym.dash#sym.dash#sym.dash Autore della suddetta frase
+    #sym.dash#sym.dash#sym.dash Thorfinn Karlsefni
 ])

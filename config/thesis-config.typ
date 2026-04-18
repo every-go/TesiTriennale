@@ -7,7 +7,7 @@
 // This file sets up the properties of the document and the libraries used
 
 #let config(
-  myAuthor: "Nome cognome",
+  myAuthor: "Matteo Mazzaretto",
   myTitle: "Titolo",
   myLang: "it",
   myNumbering: "1.1",
@@ -74,7 +74,7 @@
 // L'unica alternativa è al seguente link ma funziona solo se usi Glossarium con le ref ad esempio '@TERMINE' 
 // https://forum.typst.app/t/how-do-you-apply-a-style-to-glossarium-references-that-is-different-to-other-reference-types/2089?u=ogre
 #let glossary-style(body) = {
-  text(style: "italic", rgb(155, 0 , 20), body+sub[G])
+  text(style: "italic", rgb(155, 0 , 20), body+super([G]))
 }
 
 #let gl(key,

@@ -1,4 +1,4 @@
-#let logo = "../images/unipd-logo.svg"
+#let logo = "../images/unipd-logo.jpeg"
 #import "../config/variables.typ": myUni, myDepartment, myFaculty, myTitle, myDegree, myProf, myName, myMatricola, myAY
 #import "../config/constants.typ": supervisor, undergraduate, academicYear, ID
 
