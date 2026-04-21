@@ -1,7 +1,7 @@
 #let myLang = "it"
 #let myName = "Matteo Mazzaretto"
 #let myMatricola = "2111005"
-#let myTitle = "Titolo poco lungo di una tesi che leggerai solo tu e forse il relatore."
+#let myTitle = "Smart Accounting, evoluzione sistema lettura DDT"
 #let myProf = "Prof. Marco Zanella"
 #let myCompany = "Spazio Dev SRL"
 #let myLocation = "Padova"
