@@ -116,3 +116,18 @@
 #let linkfn(url, body) = (
   link(url, text(style: "italic", body))+footnote(link(url))
 )
+
+#let path = "../images/"
+
+#let img(name, caption: none, width: auto, alt: none) = {
+  let full = path + name
+
+  if read(full) != none {
+    return figure(
+      image(full, width: width, alt: alt),
+      caption: caption,
+    )
+  }
+
+  panic("Immagine non trovata: " + name)
+}

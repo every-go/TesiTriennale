@@ -125,7 +125,8 @@ Come scritto nel file `/config/thesis-config.typ` ho creato dei wrapper per pote
 La lista dei termini è in `/appendix/terms.typ`.\
 I possibili attributi sono elencati in questo link:\
 #link("https://github.com/typst-community/glossarium?tab=readme-ov-file#registering-the-glossary")\
-Esempio: #gl("ci")
+Esempio: // #gl("ci"),
+#gl("Mistral"), #gl("API")
 
 == Riferimenti<cap:riferimenti>
 Ti consiglio di categorizzare i riferimenti con dei prefissi ad esempio `cap` per i capitoli `fig` per le figure ecc.\

@@ -9,9 +9,11 @@
 #text(24pt, weight: "semibold", abstract)
 
 #v(1em)
-Il presente documento descrive il lavoro svolto durante il periodo di stage curricolare, della durata di circa trecentoventi ore, dal laureando #text(myName) presso l'azienda #text(myCompany). Lo stage è stato condotto sotto la supervisione del tutor aziendale #myTutor, mentre il prof. #text(myProf) ha ricoperto il ruolo di tutor accademico.
+Il presente documento descrive il lavoro svolto durante il periodo di stage curricolare, della durata di circa trecento ore, dal laureando #text(myName) presso l'azienda #text(myCompany). Lo stage è stato condotto sotto la supervisione del tutor aziendale #myTutor, mentre il #text(myProf) ha ricoperto il ruolo di tutor accademico.
 \ \
-Questa tesi tratta la progettazione e lo sviluppo di *Nome progetto*, una piattaforma web il cui scopo è .... L'obiettivo è quello di ....
+Questa tesi tratta la progettazione e lo sviluppo di un nuovo sistema di lettura dei DDT, evolvendo il sistema già presente.
+\ \
+L'obiettivo è quello di recuperare le stesse informazioni da documenti semi-strutturati.
 
 #linebreak()
 #text(24pt, weight: "semibold")[Organizzazione del testo]
@@ -20,7 +22,10 @@ Questa tesi tratta la progettazione e lo sviluppo di *Nome progetto*, una piatta
 
 / #link(<cap:introduzione>)[Il primo capitolo]: introduce l'azienda, il progetto e le motivazioni che mi hanno portato a sceglierlo;
 / #link(<cap:descrizione-stage>)[Il secondo capitolo]: descrive l'azienda, il progetto e l'organizzazione del lavoro, definendo gli obiettivi e analizzando i rischi;
-
+/ #link(<cap:analisi-requisiti>)[Il terzo capitolo]: descrive l'analisi dei requisiti del progetto, indicando un'analisi degli utenti, le user stories e il tracciamento dei requisiti;
+/ #link(<cap:introduzione-teorica>)[Il quarto capitolo]: descrive le tecnologie esistenti per risolvere i problemi indicando gli aspetti teorici alla base, gli strumenti che sono stati scelti e con quali criteri;
+/ #link(<cap:descrizione-lavoro>)[Il quinto capitolo]: descrive le problematiche riscontrate e le soluzioni adottate;
+/ #link(<cap:conclusioni>)[Il sesto capitolo]: raggruppa le conclusioni tratte dallo svolgimento del progetto.
 #linebreak()
 #text(24pt, weight: "semibold", "Convenzioni tipografiche")
 #linebreak()
@@ -30,7 +35,6 @@ Durante la stesura del testo ho scelto di adottare le seguenti convenzioni tipog
 //Preferenze personali modificabili a discrezione tua o del relatore
 - Gli acronimi, le abbreviazioni e i termini di uso non comune menzionati vengono definiti nel #link(<glossary>)[glossario], situato alla fine del documento (#link(<glossary>)[p. #context counter(page).at(<glossary>).at(0)]);
 - Per ogni occorrenza dei termini riportati nel glossario viene utilizzata la seguente nomenclatura: #glossary-style[termine]\;
-- I termini in lingua straniera non di uso comune o facenti parti del gergo tecnico sono evidenziati con il carattere _corsivo_;
 - I nomi di funzioni o variabili appartenenti ad un linguaggio di programmazione vengono scritte con un carattere `monospaziato`;
 - Le citazioni ad un libro o ad una risorsa presente nella #link(<bibliography>)[bibliografia] (#link(<bibliography>)[p. #context counter(page).at(<bibliography>).at(0)]) saranno affiancate dal rispettivo numero identificativo, es. $[1]$;
 - I blocchi di codice sono rappresentati nel seguente modo

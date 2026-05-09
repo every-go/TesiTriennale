@@ -10,10 +10,12 @@
 ])
 #v(1em)
 
+/*
+
 == Analisi degli utenti
 
 == User stories<cap:user-stories>
-Nel contesto dello sviluppo agile...
+//Nel contesto dello sviluppo agile...
 
 == Lista delle user stories<cap:lista-user-stories>
 #[
@@ -122,3 +124,5 @@ Di seguito, nella @tab:riepilogo-requisiti ho inserito il riepilogo dei requisit
   caption: "Riepilogo dei requisiti."
 )<tab:riepilogo-requisiti>
 ]
+
+*/

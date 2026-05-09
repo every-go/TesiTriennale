@@ -7,6 +7,8 @@
     In questo capitolo traggo le conclusioni sul progetto.
 ])
 #v(1em)
+
+/*
 == Consuntivo finale
 Una volta terminato il progetto ho redatto il consuntivo orario finale nella @fig:tabella-calcolo-ore che suddivide in maniera approssimata le ore dedicate alle varie fasi.
 #v(1em)
@@ -60,3 +62,4 @@ I rischi emersi durante lo stage sono riportati in @fig:rischi-occorsi.\
 )<fig:rischi-occorsi>
 #v(1em)
 == Valutazione personale
+*/
