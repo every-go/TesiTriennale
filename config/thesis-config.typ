@@ -119,15 +119,10 @@
 
 #let path = "../images/"
 
-#let img(name, caption: none, width: auto, alt: none) = {
+#let img(name, caption: none, width: auto, height:auto, alt: none) = {
   let full = path + name
-
-  if read(full) != none {
-    return figure(
-      image(full, width: width, alt: alt),
-      caption: caption,
-    )
-  }
-
-  panic("Immagine non trovata: " + name)
+  figure(
+    image(full, width: width, alt: alt),
+    caption: caption,
+  )
 }

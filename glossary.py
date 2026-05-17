@@ -148,32 +148,29 @@ def is_in_heading(content: str, pos: int) -> bool:
 def is_in_figure_caption(content: str, pos: int) -> bool:
     """
     Verifica se la posizione è dentro una caption di figure.
-    Es: #figure(..., caption: [...])
     """
-    # Cerca indietro per trovare #figure(
-    # e verifica se siamo dentro caption: [...]
-    before = content[max(0, pos-500):pos]
-    
-    # Trova l'ultimo #figure( prima della posizione
-    figure_start = before.rfind('#figure(')
+    # Cerca l'ultimo #figure( prima della posizione
+    figure_start = content.rfind('#figure(', 0, pos)
     if figure_start == -1:
         return False
-    
-    # Estrai il testo dal #figure( fino alla posizione corrente
-    text_from_figure = before[figure_start:]
-    
-    # Verifica se c'è "caption:" e se siamo dentro le sue parentesi quadre
+
+    text_from_figure = content[figure_start:pos]
+
     caption_match = re.search(r'caption:\s*\[', text_from_figure)
     if not caption_match:
         return False
-    
-    # Conta parentesi quadre aperte e chiuse dopo caption:
-    after_caption = text_from_figure[caption_match.end()-1:]
-    open_brackets = after_caption.count('[')
-    close_brackets = after_caption.count(']')
-    
-    # Se ci sono più [ che ], siamo ancora dentro la caption
-    return open_brackets > close_brackets
+
+    # Conta bilanciamento parentesi quadre a partire dall'apertura della caption
+    depth = 0
+    for ch in text_from_figure[caption_match.end() - 1:]:
+        if ch == '[':
+            depth += 1
+        elif ch == ']':
+            depth -= 1
+            if depth == 0:
+                return False  # Caption già chiusa prima di pos
+
+    return depth > 0  # Siamo ancora dentro la caption
 
 def add_glossary_references(content: str, variants: List[Tuple[str, str]], file_name: str = "", dry_run: bool = True) -> Tuple[str, int]:
     """
@@ -207,13 +204,29 @@ def add_glossary_references(content: str, variants: List[Tuple[str, str]], file_
             pos = match.start()
             matched_text = match.group(0)
             
-            # NUOVO: Salta se dentro un heading
+            # Salta se dentro un heading
             if is_in_heading(content, pos):
                 continue
             
-            # NUOVO: Salta se dentro una caption di figure
+            # Salta se dentro una caption di figure
             if is_in_figure_caption(content, pos):
                 continue
+            
+            # Salta se dentro una label Typst <nome-label>
+            label_start = content.rfind('<', 0, pos)
+            if label_start != -1:
+                label_end = content.find('>', label_start)
+                if label_end != -1 and label_end >= pos:
+                    label_content = content[label_start + 1:label_end]
+                    if re.fullmatch(r'[\w-]+', label_content):
+                        continue
+
+            # Salta se dentro un riferimento Typst @nome-label
+            ref_start = content.rfind('@', 0, pos)
+            if ref_start != -1:
+                between = content[ref_start + 1:pos]
+                if re.fullmatch(r'[\w:\-]*', between):
+                    continue
             
             # Salta se dentro un commento
             line_start = content.rfind('\n', 0, pos) + 1

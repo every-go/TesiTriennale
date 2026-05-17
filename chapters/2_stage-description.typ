@@ -37,28 +37,178 @@ La pianificazione, direttamente presa dal piano di lavoro, è la seguente:
 + Settima Settimana - Hardening, Docker e documentazione tecnica (40 ore): rifinitura del prototipo, riduzione delle dipendenze non necessarie, predisposizione delle configurazioni Docker e raccolta della documentazione tecnica di deploy e manutenzione;
 + Ottava Settimana - Validazione finale e relazione (20 ore): validazione conclusiva con il tutor, consolidamento dei risultati, stesura della relazione finale e preparazione della presentazione conclusiva dello stage.
 
-== Analisi dei rischi
+== Analisi dei rischi <cap:analisi-rischi>
 
-I rischi sono classificati in tecnologici (RT) e personali (RP), come mostrato nelle @tab:rischi-tecno e @tab:rischi-pers.
+I rischi identificati per questo progetto sono classificati con un codice progressivo della forma *RN*, dove *N* è un numero intero incrementale che parte da 1, e decorati con una probabilità di occorrenza, un impatto e una strategia di mitigazione.
 
-#figure(
-    caption: [Rischi tecnologici],
-)[
-    #table(columns:(1fr, 2fr),
-        [Codice], [Descrizione],
-        [RT1],[Difficoltà nell'apprendimento delle nuove tecnologie],
-        [RT2],[Gestione inadeguata dei casi limite del progetto],
-        [RT3],[Incompatibilità delle tecnologie scelte con l'infrastruttura esistente],
+Ogni rischio è stato analizzato tenendo conto sia delle caratteristiche generali del progetto, sia delle specificità legate all'elaborazione OCR di documenti eterogenei.
+
+=== R01: Incompletezza o ambiguità dei requisiti espressi nel piano di lavoro
+
+#figure(caption: "Rischio R01")[
+    #table(
+        columns: (0.28fr, 0.72fr),
+        inset: 3pt,
+        fill: (_, row) => if row == 0 { luma(230) } else { white },
+        table.header([*Campo*], [*Descrizione*]),
+        [Codice], [R01],
+        [Nome], [Incompletezza o ambiguità dei requisiti espressi nel piano di lavoro],
+        [Descrizione], [I requisiti descritti nel piano di lavoro possono risultare incompleti o ambigui, portando a implementazioni non coerenti con le aspettative del tutor aziendale.],
+        [Mitigazione], [I requisiti vengono analizzati e chiariti nelle prime fasi dello stage, producendo una specifica condivisa con il tutor. In caso di dubbi, si effettuano incontri chiarificatori prima di procedere con l'implementazione.],
+        [Probabilità], [Bassa],
+        [Impatto], [Medio],
     )
-] <tab:rischi-tecno>
+]
 
-#figure(
-    caption: [Rischi personali],
-)[
-    #table(columns:(1fr, 2fr),
-        [Codice], [Descrizione],
-        [RP1],[Incomprensione dei requisiti del Piano di Lavoro],
-        [RP2],[Impossibilità di completare le ore previste nei tempi],
-        [RP3],[Difficoltà di comunicazione con il tutor aziendale],
+=== R02: Sovradimensionamento del progetto rispetto alle capacità personali
+
+#figure(caption: "Rischio R02")[
+    #table(
+        columns: (0.28fr, 0.72fr),
+        inset: 3pt,
+        fill: (_, row) => if row == 0 { luma(230) } else { white },
+        table.header([*Campo*], [*Descrizione*]),
+        [Codice], [R02],
+        [Nome], [Sovradimensionamento del progetto rispetto alle capacità personali],
+        [Descrizione], [Le attività previste potrebbero rivelarsi eccessive rispetto alle ore disponibili e alle competenze del singolo stagista, rischiando di non completare tutti gli obiettivi nei tempi stabiliti.],
+        [Mitigazione], [Le attività vengono suddivise per priorità in base al valore che portano al progetto, in modo che in caso di mancanza di tempo solo le attività meno critiche e non vincolanti subiscano ritardi o cancellazioni.],
+        [Probabilità], [Media],
+        [Impatto], [Alto],
     )
-] <tab:rischi-pers>
+]
+
+=== R03: Difficoltà nel coordinamento interno
+
+#figure(caption: "Rischio R03")[
+  #table(
+    columns: (0.28fr, 0.72fr),
+    inset: 3pt,
+    fill: (_, row) => if row == 0 { luma(230) } else { white },
+    table.header([*Campo*], [*Descrizione*]),
+    [Codice], [R03],
+    [Nome], [Difficoltà nel coordinamento interno],
+    [Descrizione], [La comunicazione con il tutor aziendale o con altri stakeholder potrebbe risultare discontinua o inefficace, rallentando le decisioni tecniche e causando incomprensioni sugli obiettivi.],
+    [Mitigazione], [Vengono pianificati incontri regolari con il tutor aziendale come previsto dal piano di lavoro, con aggiornamenti frequenti sullo stato di avanzamento. Eventuali dubbi vengono segnalati tempestivamente senza attendere l'incontro successivo.],
+    [Probabilità], [Bassa],
+    [Impatto], [Alto],
+  )
+]
+
+=== R04: Difficoltà nell'apprendimento delle tecnologie
+
+#figure(caption: "Rischio R04")[
+  #table(
+    columns: (0.28fr, 0.72fr),
+    inset: 3pt,
+    fill: (_, row) => if row == 0 { luma(230) } else { white },
+    table.header([*Campo*], [*Descrizione*]),
+    [Codice], [R04],
+    [Nome], [Difficoltà nell'apprendimento delle tecnologie],
+    [Descrizione], [Alcune tecnologie previste dal progetto, come Laravel, Filament, i motori OCR on-premise oppure altre tecnologie necessarie, potrebbero richiedere un tempo di apprendimento superiore al previsto, riducendo il tempo effettivamente disponibile per lo sviluppo.],
+    [Mitigazione], [Le prime settimane dello stage sono dedicate esplicitamente all'analisi e al setup dell'ambiente, includendo il tempo di apprendimento nella pianificazione. In caso di difficoltà persistenti, si privilegiano librerie e strumenti con documentazione più matura.],
+    [Probabilità], [Media],
+    [Impatto], [Medio],
+  )
+]
+
+=== R05: Incompatibilità delle tecnologie scelte con l'infrastruttura esistente
+
+#figure(caption: "Rischio R05")[
+  #table(
+    columns: (0.28fr, 0.72fr),
+    inset: 3pt,
+    fill: (_, row) => if row == 0 { luma(230) } else { white },
+    table.header([*Campo*], [*Descrizione*]),
+    [Codice], [R05],
+    [Nome], [Incompatibilità delle tecnologie scelte con l'infrastruttura esistente],
+    [Descrizione], [Le tecnologie selezionate per la pipeline OCR locale potrebbero risultare incompatibili con il sistema Smart Accounting esistente o con i vincoli dell'infrastruttura Docker aziendale.],
+    [Mitigazione], [Viene effettuata un'analisi preventiva delle tecnologie subito dopo l'identificazione dei requisiti, verificando la compatibilità con l'infrastruttura esistente prima di procedere con l'implementazione.],
+    [Probabilità], [Media],
+    [Impatto], [Alto],
+  )
+]
+
+=== R06: Gestione inadeguata dei casi limite nell'estrazione dati
+
+#figure(caption: "Rischio R06")[
+  #table(
+    columns: (0.28fr, 0.72fr),
+    inset: 3pt,
+    fill: (_, row) => if row == 0 { luma(230) } else { white },
+    table.header([*Campo*], [*Descrizione*]),
+    [Codice], [R06],
+    [Nome], [Gestione inadeguata dei casi limite nell'estrazione dati],
+    [Descrizione], [La pipeline OCR potrebbe non gestire correttamente situazioni anomale quali campi assenti, valori ambigui, formati numerici non standard o #gl("DDT") con struttura parzialmente illeggibile.],
+    [Mitigazione], [Vengono identificati i casi limite più frequenti durante la fase di analisi dei template. La schermata di revisione assistita consente all'operatore di correggere manualmente i valori estratti prima dell'export, riducendo l'impatto di estrazioni errate.],
+    [Probabilità], [Alta],
+    [Impatto], [Medio],
+  )
+]
+
+=== R07: Variabilità dei layout dei DDT tra fornitori diversi
+
+#figure(caption: "Rischio R07")[
+  #table(
+    columns: (0.28fr, 0.72fr),
+    inset: 3pt,
+    fill: (_, row) => if row == 0 { luma(230) } else { white },
+    table.header([*Campo*], [*Descrizione*]),
+    [Codice], [R07],
+    [Nome], [Variabilità dei layout dei #gl("DDT") tra fornitori diversi],
+    [Descrizione], [I #gl("DDT") provenienti da fornitori diversi presentano strutture, formati e posizioni dei campi molto eterogenei, rendendo difficile la definizione di un template di estrazione universale.],
+    [Mitigazione], [Viene sviluppato un sistema di classificazione dei template che riconosce il fornitore e applica le regole di estrazione appropriate. I template vengono censiti e configurati progressivamente durante lo stage man mano che si raccolgono esempi reali.],
+    [Probabilità], [Alta],
+    [Impatto], [Alto],
+  )
+]
+
+=== R08: Variabilità dei layout dei DDT dello stesso fornitore
+
+#figure(caption: "Rischio R08")[
+  #table(
+    columns: (0.28fr, 0.72fr),
+    inset: 3pt,
+    fill: (_, row) => if row == 0 { luma(230) } else { white },
+    table.header([*Campo*], [*Descrizione*]),
+    [Codice], [R08],
+    [Nome], [Variabilità dei layout dei #gl("DDT") dello stesso fornitore.],
+    [Descrizione], [I #gl("DDT") provenienti dallo stesso fornitore possono avere strutture, formati e posizioni dei campi molto eterogenei, rendendo difficile la definizione di un template di estrazione universale.],
+    [Mitigazione], [Viene sviluppato un sistema di classificazione dei template che riconosce il template corretto del fornitore e applica le regole di estrazione appropriate. I template vengono censiti e configurati progressivamente durante lo stage man mano che si raccolgono esempi reali.],
+    [Probabilità], [Bassa],
+    [Impatto], [Alto],
+  )
+]
+
+=== R09: Qualità insufficiente delle scansioni
+
+#figure(caption: "Rischio R09")[
+  #table(
+    columns: (0.28fr, 0.72fr),
+    inset: 3pt,
+    fill: (_, row) => if row == 0 { luma(230) } else { white },
+    table.header([*Campo*], [*Descrizione*]),
+    [Codice], [R09],
+    [Nome], [Qualità insufficiente delle scansioni],
+    [Descrizione], [I #gl("DDT") cartacei possono essere acquisiti con qualità scadente — bassa risoluzione, rotazione, macchie o contrasto insufficiente — compromettendo l'accuratezza del riconoscimento ottico del testo.],
+    [Mitigazione], [La pipeline include una fase di preprocessing delle immagini con operazioni di correzione della rotazione, miglioramento del contrasto e riduzione del rumore. Nei casi in cui la qualità rimanga insufficiente, l'operatore viene avvisato e può procedere con l'inserimento manuale.],
+    [Probabilità], [Media],
+    [Impatto], [Alto],
+  )
+]
+
+=== R10: Accuratezza insufficiente del motore OCR
+
+#figure(caption: "Rischio R10")[
+  #table(
+    columns: (0.28fr, 0.72fr),
+    inset: 3pt,
+    fill: (_, row) => if row == 0 { luma(230) } else { white },
+    table.header([*Campo*], [*Descrizione*]),
+    [Codice], [R10],
+    [Nome], [Accuratezza insufficiente del motore OCR],
+    [Descrizione], [Il motore OCR locale potrebbe produrre risultati meno accurati rispetto alla soluzione precedente basata su #gl("Mistral"), in particolare su testi piccoli, scritte a mano o caratteri tipografici non standard presenti in alcuni #gl("DDT").],
+    [Mitigazione], [Vengono eseguiti test comparativi tra il motore OCR locale e la soluzione precedente su un campione rappresentativo di documenti reali. Le metriche di confidenza OCR vengono esposte all'operatore per segnalare i campi con bassa affidabilità e richiedere verifica manuale.],
+    [Probabilità], [Media],
+    [Impatto], [Alto],
+  )
+]

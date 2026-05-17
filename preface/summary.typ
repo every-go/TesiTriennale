@@ -13,7 +13,11 @@ Il presente documento descrive il lavoro svolto durante il periodo di stage curr
 \ \
 Questa tesi tratta la progettazione e lo sviluppo di un nuovo sistema di lettura dei DDT, evolvendo il sistema già presente.
 \ \
-L'obiettivo è quello di recuperare le stesse informazioni da documenti semi-strutturati.
+Il DDT, il cui acronimo significa 'Documento di Trasporto', è un documento fondamentale per l'economia e il trasporto. Il suo scopo è quello di indicare i dettagli del fornitore, i dettagli del destinatario, e i dettagli degli articoli che verranno spediti, oltre alle modalità di trasporto.
+\ \
+Lo scopo del progetto è quello di ricavare le informazioni descritte precedentemente in maniera corretta, senza sfruttare gli LLM (Large Language Models), ma sfruttando metodi diversi.
+\ \
+Il progetto è molto utile perché riduce i costi operativi di un'azienda, evitando di inserire manualmente i dati di ogni DDT per la conservazione, e allo stesso tempo è utile per #text(myCompany) in quanto permette di ridurre o cancellare i costi derivanti dall'utilizzo degli LLM.
 
 #linebreak()
 #text(24pt, weight: "semibold")[Organizzazione del testo]
@@ -40,6 +44,7 @@ Durante la stesura del testo ho scelto di adottare le seguenti convenzioni tipog
 - I blocchi di codice sono rappresentati nel seguente modo
 #linebreak()
 #figure(caption: "Codice d'esempio.")[
+	#show raw: set text(size: 0.85em)
 ```c
 float Q_rsqrt( float number ){
 	long i;
