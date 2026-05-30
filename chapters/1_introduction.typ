@@ -23,9 +23,9 @@ L'obiettivo principale dell'azienda è di innovare le imprese riducendo tempi, c
 == Il progetto
 
 Il lavoro si concentra sull'evoluzione di Smart Accounting, un sistema già
-operativo per la lettura automatica di Documenti di Trasporto (#gl("DDT")), attualmente dipendente da #gl("Mistral") per la comprensione documentale. La soluzione esistente, pur funzionante, comporta costi operativi ricorrenti e dipendenza da LLM.
+operativo per la lettura automatica di Documenti di Trasporto (#gl("DDT", display: "DDT")), attualmente dipendente da #gl("Mistral", display: "Mistral") per la comprensione documentale. La soluzione esistente, pur funzionante, comporta costi operativi ricorrenti e dipendenza da LLM.
 
-Lo scopo è quello di definire e sviluppare una pipeline OCR locale per acquisire i dati, classificare i layout ed estrarre dati strutturati dai #gl("DDT") senza dipendere da #gl("API") esterne a pagamento. La pipeline prevede più fasi sequenziali: acquisizione e preprocessing delle immagini, riconoscimento ottico del testo, classificazione del template di provenienza, normalizzazione dei valori estratti, revisione assistita da parte dell'operatore ed esportazione verso il gestionale aziendale.
+Lo scopo è quello di definire e sviluppare una pipeline OCR locale per acquisire i dati, classificare i layout ed estrarre dati strutturati dai DDT senza dipendere da #gl("API", display: "API") esterne a pagamento. La pipeline prevede più fasi sequenziali: acquisizione e preprocessing delle immagini, riconoscimento ottico del testo, classificazione del template di provenienza, normalizzazione dei valori estratti, revisione assistita da parte dell'operatore ed esportazione verso il gestionale aziendale.
 
 Nello specifico, i dati da estrarre sono:
 - Ragione sociale del fornitore e del destinatario
@@ -36,7 +36,7 @@ Nello specifico, i dati da estrarre sono:
 - Metro di misura di unità degli articoli (se presente)
 - Quantità degli articoli
 - Riferimento al codice ordine degli articoli (se presente)
-- Annotazioni presenti nel #gl("DDT")
+- Annotazioni presenti nel DDT
 - Numero di colli
 - Peso lordo
 - Peso netto (se presente)

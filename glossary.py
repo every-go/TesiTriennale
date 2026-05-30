@@ -2,6 +2,8 @@ import re
 from pathlib import Path
 from typing import Set, Dict, List, Tuple
 
+DRY_RUN = False  # Cambia a False per applicare le modifiche
+
 def parse_glossary_terms(glossary_file: Path) -> Dict[str, Dict[str, str]]:
     """
     Parsa il file del glossario e estrae i termini con le loro varianti.
@@ -15,9 +17,12 @@ def parse_glossary_terms(glossary_file: Path) -> Dict[str, Dict[str, str]]:
     terms = {}
     
     # Pattern per trovare ogni termine nel glossary
-    pattern = r'\(\s*key:\s*"([^"]+)",\s*short:\s*\[([^\]]+)\],\s*long:\s*\[([^\]]+)\],\s*description:\s*\[([^\]]*)\]'
-    
-    matches = re.finditer(pattern, content, re.DOTALL)
+    pattern = r'\(\s*key:\s*"([^"]+)"'
+    matches = re.finditer(pattern, content, re.IGNORECASE)
+
+    for match in matches:
+        key = match.group(1)
+        terms[key] = {'short': key, 'long': key, 'description': ''}
     
     for match in matches:
         key = match.group(1)
@@ -93,26 +98,18 @@ def find_typst_files(root_file: Path, visited: Set[Path], exclude_files: Set[str
     return visited
 
 def remove_existing_glossary_references(file_path: Path) -> Tuple[int, str]:
-    """
-    Rimuove tutti i riferimenti #gl() e #glpl() esistenti, 
-    sostituendoli con il testo che era dentro.
-    Ritorna il numero di rimozioni effettuate.
-    """
     content = file_path.read_text(encoding='utf-8')
     original_content = content
-    
-    # Pattern per matchare #gl("key") o #glpl("key")
+
     pattern = r'#gl(?:pl)?\("([^"]+)"[^)]*\)'
-    
-    def replace_with_key(match):
+
+    def replace_with_original_text(match):
         key = match.group(1)
-        return f"GLOSSARY_KEY_{key}"
-    
-    # Sostituisci con placeholder
-    content = re.sub(pattern, replace_with_key, content)
-    
+        return key
+
+    content = re.sub(pattern, replace_with_original_text, content)
     removals = original_content.count('#gl(') + original_content.count('#glpl(')
-    
+
     return removals, content
 
 def restore_original_text(content: str, terms: Dict[str, Dict[str, str]]) -> str:
@@ -172,7 +169,7 @@ def is_in_figure_caption(content: str, pos: int) -> bool:
 
     return depth > 0  # Siamo ancora dentro la caption
 
-def add_glossary_references(content: str, variants: List[Tuple[str, str]], file_name: str = "", dry_run: bool = True) -> Tuple[str, int]:
+def add_glossary_references(content: str, variants: List[Tuple[str, str]], already_added: Set[str], file_name: str = "", dry_run: bool = True) -> Tuple[str, int]:
     """
     Aggiunge i riferimenti al glossario nel contenuto.
     Ritorna il contenuto modificato e il numero di sostituzioni.
@@ -180,39 +177,35 @@ def add_glossary_references(content: str, variants: List[Tuple[str, str]], file_
     modifications = 0
     additions_log = []
     
-    # Per ogni variante (dal più lungo al più corto)
     for variant_text, key in variants:
-        # Se è tutto maiuscolo (acronimo), usa word boundary più strict
+        if key in already_added:
+            continue
+
         if variant_text.isupper() and len(variant_text) <= 10:
-            # Per acronimi: deve essere isolato da spazi/punteggiatura
             pattern = re.compile(
                 r'(?<![a-zA-ZàèéìòùÀÈÉÌÒÙ])' + re.escape(variant_text) + r'(?![a-zA-ZàèéìòùÀÈÉÌÒÙ])',
                 re.IGNORECASE
             )
         else:
-            # Per parole normali, usa word boundary standard
             pattern = re.compile(
                 r'\b' + re.escape(variant_text) + r'\b',
                 re.IGNORECASE
             )
         
-        # Trova tutte le occorrenze
         matches = list(pattern.finditer(content))
         
         # Processa dall'ultima alla prima per non invalidare gli indici
-        for match in reversed(matches):
+        first_valid_match = None
+        for match in matches:
             pos = match.start()
             matched_text = match.group(0)
             
-            # Salta se dentro un heading
             if is_in_heading(content, pos):
                 continue
             
-            # Salta se dentro una caption di figure
             if is_in_figure_caption(content, pos):
                 continue
             
-            # Salta se dentro una label Typst <nome-label>
             label_start = content.rfind('<', 0, pos)
             if label_start != -1:
                 label_end = content.find('>', label_start)
@@ -221,14 +214,12 @@ def add_glossary_references(content: str, variants: List[Tuple[str, str]], file_
                     if re.fullmatch(r'[\w-]+', label_content):
                         continue
 
-            # Salta se dentro un riferimento Typst @nome-label
             ref_start = content.rfind('@', 0, pos)
             if ref_start != -1:
                 between = content[ref_start + 1:pos]
                 if re.fullmatch(r'[\w:\-]*', between):
                     continue
             
-            # Salta se dentro un commento
             line_start = content.rfind('\n', 0, pos) + 1
             line_to_pos = content[line_start:pos]
             line_full = content[line_start:content.find('\n', pos) if content.find('\n', pos) != -1 else len(content)]
@@ -238,23 +229,24 @@ def add_glossary_references(content: str, variants: List[Tuple[str, str]], file_
                 if comment_pos <= len(line_to_pos):
                     continue
             
-            # Salta se dentro codice raw (backticks)
             if content.count('`', 0, pos) % 2 == 1:
                 continue
             
-            # Salta se dentro stringhe tra virgolette
             if content.count('"', 0, pos) % 2 == 1:
                 continue
             
-            # Sostituisci
-            replacement = f'#gl("{key}")'
+            first_valid_match = match
+            break  # prima occorrenza valida trovata
+
+        if first_valid_match is not None:
+            pos = first_valid_match.start()
+            matched_text = first_valid_match.group(0)
+            replacement = f'#gl("{key}", display: "{matched_text}")'
             content = content[:pos] + replacement + content[pos + len(matched_text):]
             modifications += 1
-            
-            # Log dell'aggiunta
+            already_added.add(key)
             additions_log.append(f"'{matched_text}' -> #gl(\"{key}\")")
     
-    # Stampa il log delle aggiunte
     if additions_log and dry_run:
         print(f"\n   📝 Aggiunte in {file_name}:")
         for log_entry in additions_log:
@@ -266,21 +258,11 @@ def add_glossary_references(content: str, variants: List[Tuple[str, str]], file_
     
     return content, modifications
 
-def process_file(file_path: Path, terms: Dict[str, Dict[str, str]], variants: List[Tuple[str, str]], dry_run: bool = True) -> Tuple[int, int]:
-    """
-    Processa un singolo file: rimuove vecchi riferimenti e ne aggiunge di nuovi.
-    Ritorna (numero_rimozioni, numero_aggiunte).
-    """
-    # Step 1: Rimuovi riferimenti esistenti
+def process_file(file_path: Path, terms: Dict[str, Dict[str, str]], variants: List[Tuple[str, str]], already_added: Set[str], dry_run: bool = True) -> Tuple[int, int]:
     removals, content = remove_existing_glossary_references(file_path)
-    
-    # Step 2: Ripristina il testo originale dai placeholder
     content = restore_original_text(content, terms)
+    content, additions = add_glossary_references(content, variants, already_added, file_name=file_path.name, dry_run=dry_run)
     
-    # Step 3: Aggiungi nuovi riferimenti
-    content, additions = add_glossary_references(content, variants, file_name=file_path.name, dry_run=dry_run)
-    
-    # Scrivi solo se non è dry run e ci sono state modifiche
     if not dry_run and (removals > 0 or additions > 0):
         file_path.write_text(content, encoding='utf-8')
         print(f"✓ {file_path.name}: rimossi {removals}, aggiunti {additions}")
@@ -293,8 +275,6 @@ def main():
     # Configurazione
     GLOSSARY_FILE = Path("appendix/glossary/terms.typ").resolve()
     CHAPTERS_DIR = Path("chapters").resolve()  # Solo questa cartella
-    
-    DRY_RUN = False  # Cambia a False per applicare le modifiche
     
     if not GLOSSARY_FILE.exists():
         print(f"❌ File glossario non trovato: {GLOSSARY_FILE}")
@@ -333,8 +313,10 @@ def main():
     total_removals = 0
     total_additions = 0
     
+    already_added = set()
+
     for file_path in sorted(all_files):
-        removals, additions = process_file(file_path, terms, variants, dry_run=DRY_RUN)
+        removals, additions = process_file(file_path, terms, variants, already_added, dry_run=DRY_RUN)
         total_removals += removals
         total_additions += additions
     

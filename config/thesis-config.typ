@@ -8,7 +8,7 @@
 
 #let config(
   myAuthor: "Matteo Mazzaretto",
-  myTitle: "Titolo",
+  myTitle: "Smart Accounting, evoluzione sistema lettura DDT",
   myLang: "it",
   myNumbering: "1.1",
   body,

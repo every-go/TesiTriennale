@@ -1,6 +1,7 @@
 #import "../config/thesis-config.typ": glpl, gl,
 #import "../config/variables.typ": myTutor
 #pagebreak(to:"odd")
+#show figure.where(kind: table): set block(breakable: true)
 
 = Descrizione stage<cap:descrizione-stage>
 #text(style: "italic", [
@@ -8,17 +9,17 @@
 ])
 #v(1em)
 
-== Competenze da apprendere
+== Competenze da apprendere<cap:competenze>
 
 Lo stage mira a sviluppare competenze che vanno oltre i singoli linguaggi di programmazione: capacità di analisi dei requisiti, astrazione dei problemi e progettazione di soluzioni algoritmiche generalizzabili.
 
-Per quanto l'azienda usi i framework PHP menzionati precedentemente, mi è stata lasciata completa libertà di linguaggio e altri framework per realizzare il prodotto che metta in atto le mie idee in modo più rapido.
+Per quanto l'azienda usi i #gl("framework", display: "framework") PHP menzionati precedentemente, mi è stata lasciata completa libertà di linguaggio e altri framework per realizzare il prodotto che metta in atto le mie idee in modo più rapido.
 
 Lo stage mi permetterà di acquisire conoscenze su OCR on-premise, preprocessing documentale, classificazione di template, parsing strutturato di documenti, integrazione con gestionali legacy, orchestrazione Docker, testing comparativo, documentazione tecnica e collaborazione con tutor e stakeholder.
 
-== Vincoli
+== Vincoli<cap:vincoli>
 
-Il vincolo principale è non utilizzare LLM a pagamento, come OpenAI, Gemini, Claude o #gl("Mistral").
+Il vincolo principale è non utilizzare LLM a pagamento, come OpenAI, Gemini, Claude o Mistral.
 
 L'azienda valuta principalmente la capacità di analisi e problem-solving piuttosto che l'aderenza a uno stack tecnologico specifico.
 
@@ -28,8 +29,8 @@ Lo stage si articola in 300 ore distribuite su otto settimane: sette settimane d
 
 La pianificazione, direttamente presa dal piano di lavoro, è la seguente:
 
-+ Prima Settimana - Analisi iniziale e setup (40 ore): onboarding sul progetto Smart Accounting, studio dell'analisi dei requisiti, setup dell'ambiente di lavoro locale e comprensione del flusso attuale di lettura #gl("DDT") e delle dipendenze da servizi esterni;
-+ Seconda Settimana - Mappatura funzionale e architettura locale (40 ore): analisi dei template #gl("DDT") principali, mappatura dei campi da estrarre, studio delle funzionalità attuali basate su #gl("Mistral") Documents e definizione dell'architettura locale con Docker e componenti preferibilmente native;
++ Prima Settimana - Analisi iniziale e setup (40 ore): onboarding sul progetto Smart Accounting, studio dell'analisi dei requisiti, setup dell'ambiente di lavoro locale e comprensione del flusso attuale di lettura DDT e delle dipendenze da servizi esterni;
++ Seconda Settimana - Mappatura funzionale e architettura locale (40 ore): analisi dei template DDT principali, mappatura dei campi da estrarre, studio delle funzionalità attuali basate su Mistral Documents e definizione dell'architettura locale con Docker e componenti preferibilmente native;
 + Terza Settimana - Pipeline OCR locale e preprocessing (40 ore): implementazione delle prime routine di acquisizione documenti, preprocessing immagini, OCR locale e parsing dei campi principali di testata e righe documento;
 + Quarta Settimana - Classificazione template e normalizzazione dati (40 ore): sviluppo della logica di riconoscimento layout, gestione dei template, metriche di confidenza, normalizzazione dei valori estratti e trattamento dei casi ambigui;
 + Quinta Settimana - Integrazione applicativa e revisione operatore (40 ore): integrazione nel modulo Laravel/Filament delle schermate di upload, dashboard, revisione assistita dei campi OCR, mapping dati e tracciamento delle operazioni;
@@ -138,7 +139,7 @@ Ogni rischio è stato analizzato tenendo conto sia delle caratteristiche general
     table.header([*Campo*], [*Descrizione*]),
     [Codice], [R06],
     [Nome], [Gestione inadeguata dei casi limite nell'estrazione dati],
-    [Descrizione], [La pipeline OCR potrebbe non gestire correttamente situazioni anomale quali campi assenti, valori ambigui, formati numerici non standard o #gl("DDT") con struttura parzialmente illeggibile.],
+    [Descrizione], [La pipeline OCR potrebbe non gestire correttamente situazioni anomale quali campi assenti, valori ambigui, formati numerici non standard o DDT con struttura parzialmente illeggibile.],
     [Mitigazione], [Vengono identificati i casi limite più frequenti durante la fase di analisi dei template. La schermata di revisione assistita consente all'operatore di correggere manualmente i valori estratti prima dell'export, riducendo l'impatto di estrazioni errate.],
     [Probabilità], [Alta],
     [Impatto], [Medio],
@@ -154,8 +155,8 @@ Ogni rischio è stato analizzato tenendo conto sia delle caratteristiche general
     fill: (_, row) => if row == 0 { luma(230) } else { white },
     table.header([*Campo*], [*Descrizione*]),
     [Codice], [R07],
-    [Nome], [Variabilità dei layout dei #gl("DDT") tra fornitori diversi],
-    [Descrizione], [I #gl("DDT") provenienti da fornitori diversi presentano strutture, formati e posizioni dei campi molto eterogenei, rendendo difficile la definizione di un template di estrazione universale.],
+    [Nome], [Variabilità dei layout dei DDT tra fornitori diversi],
+    [Descrizione], [I DDT provenienti da fornitori diversi presentano strutture, formati e posizioni dei campi molto eterogenei, rendendo difficile la definizione di un template di estrazione universale.],
     [Mitigazione], [Viene sviluppato un sistema di classificazione dei template che riconosce il fornitore e applica le regole di estrazione appropriate. I template vengono censiti e configurati progressivamente durante lo stage man mano che si raccolgono esempi reali.],
     [Probabilità], [Alta],
     [Impatto], [Alto],
@@ -171,8 +172,8 @@ Ogni rischio è stato analizzato tenendo conto sia delle caratteristiche general
     fill: (_, row) => if row == 0 { luma(230) } else { white },
     table.header([*Campo*], [*Descrizione*]),
     [Codice], [R08],
-    [Nome], [Variabilità dei layout dei #gl("DDT") dello stesso fornitore.],
-    [Descrizione], [I #gl("DDT") provenienti dallo stesso fornitore possono avere strutture, formati e posizioni dei campi molto eterogenei, rendendo difficile la definizione di un template di estrazione universale.],
+    [Nome], [Variabilità dei layout dei DDT dello stesso fornitore.],
+    [Descrizione], [I DDT provenienti dallo stesso fornitore possono avere strutture, formati e posizioni dei campi molto eterogenei, rendendo difficile la definizione di un template di estrazione universale.],
     [Mitigazione], [Viene sviluppato un sistema di classificazione dei template che riconosce il template corretto del fornitore e applica le regole di estrazione appropriate. I template vengono censiti e configurati progressivamente durante lo stage man mano che si raccolgono esempi reali.],
     [Probabilità], [Bassa],
     [Impatto], [Alto],
@@ -189,7 +190,7 @@ Ogni rischio è stato analizzato tenendo conto sia delle caratteristiche general
     table.header([*Campo*], [*Descrizione*]),
     [Codice], [R09],
     [Nome], [Qualità insufficiente delle scansioni],
-    [Descrizione], [I #gl("DDT") cartacei possono essere acquisiti con qualità scadente — bassa risoluzione, rotazione, macchie o contrasto insufficiente — compromettendo l'accuratezza del riconoscimento ottico del testo.],
+    [Descrizione], [I DDT cartacei possono essere acquisiti con qualità scadente — bassa risoluzione, rotazione, macchie o contrasto insufficiente — compromettendo l'accuratezza del riconoscimento ottico del testo.],
     [Mitigazione], [La pipeline include una fase di preprocessing delle immagini con operazioni di correzione della rotazione, miglioramento del contrasto e riduzione del rumore. Nei casi in cui la qualità rimanga insufficiente, l'operatore viene avvisato e può procedere con l'inserimento manuale.],
     [Probabilità], [Media],
     [Impatto], [Alto],
@@ -206,7 +207,7 @@ Ogni rischio è stato analizzato tenendo conto sia delle caratteristiche general
     table.header([*Campo*], [*Descrizione*]),
     [Codice], [R10],
     [Nome], [Accuratezza insufficiente del motore OCR],
-    [Descrizione], [Il motore OCR locale potrebbe produrre risultati meno accurati rispetto alla soluzione precedente basata su #gl("Mistral"), in particolare su testi piccoli, scritte a mano o caratteri tipografici non standard presenti in alcuni #gl("DDT").],
+    [Descrizione], [Il motore OCR locale potrebbe produrre risultati meno accurati rispetto alla soluzione precedente basata su Mistral, in particolare su testi piccoli, scritte a mano o caratteri tipografici non standard presenti in alcuni DDT.],
     [Mitigazione], [Vengono eseguiti test comparativi tra il motore OCR locale e la soluzione precedente su un campione rappresentativo di documenti reali. Le metriche di confidenza OCR vengono esposte all'operatore per segnalare i campi con bassa affidabilità e richiedere verifica manuale.],
     [Probabilità], [Media],
     [Impatto], [Alto],

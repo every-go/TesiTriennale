@@ -1,4 +1,4 @@
-#import "data/requirements_list.typ": *
+#import "data/3.1_requirements_list.typ": *
 #import "../config/variables.typ": *
 #pagebreak(to:"odd")
 

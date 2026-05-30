@@ -1,14 +1,143 @@
-'models-and-fair-use':
-  type: article
-  title: Foundation Models and Fair Use
+'python':
+  type: web
+  title: Python Documentation
   author:
-  - Henderson, Peter
-  - Li, Xuechen
-  - Jurafsky, Dan
-  - Hashimoto, Tatsunori
-  - Lemley, Mark A.
-  - Liang, Percy
-  date: 2023
-  url: https://arxiv.org/abs/2303.15715
-  serial-number:
-    arxiv: '2303.15715'
+    - Python Software Foundation
+  url: https://docs.python.org/3/
+  accessed: 2026-05
+
+'html':
+  type: web
+  title: HTML Documentation
+  author:
+    - MDN
+  url: https://developer.mozilla.org/en-US/docs/Web/HTML
+  accessed: 2026-05
+
+'css':
+  type: web
+  title: CSS Documentation
+  author:
+    -MDN
+  url: https://developer.mozilla.org/en-US/docs/Web/CSS
+  accessed: 2026-05
+
+'javascript':
+  type: web
+  title: JavaScript Documentation
+  author:
+    - MDN
+  url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+  accessed: 2026-05
+
+'flask':
+  type: web
+  title: Flask Documentation
+  author:
+    - Ronacher, Armin
+  url: https://flask.palletsprojects.com
+  accessed: 2026-05
+
+'docker':
+  type: web
+  title: Docker Documentation
+  author:
+    - name: Docker Inc.
+  url: https://docs.docker.com
+  accessed: 2026-05
+
+'opencv':
+  type: web
+  title: OpenCV Documentation
+  author:
+    - name: OpenCV Team
+  url: https://docs.opencv.org
+  accessed: 2026-05
+
+'tesseract':
+  type: web
+  title: Tesseract OCR
+  author:
+    - name: Google LLC
+  url: https://github.com/tesseract-ocr/tesseract
+  accessed: 2026-05
+
+'paddleocr':
+  type: web
+  title: PaddleOCR
+  author:
+    - name: Baidu Inc.
+  url: https://github.com/PaddlePaddle/PaddleOCR
+  accessed: 2026-05
+
+'easyocr':
+  type: web
+  title: EasyOCR
+  author:
+    - Jaided AI
+  url: https://github.com/JaidedAI/EasyOCR
+  accessed: 2026-05
+
+'surya':
+  type: web
+  title: Surya OCR
+  author:
+    - Paruchuri, Vikas
+  url: https://github.com/VikParuchuri/surya
+  accessed: 2026-05
+
+'ocrmypdf':
+  type: web
+  title: OCRmyPDF Documentation
+  author:
+    - Krauss, James
+  url: https://ocrmypdf.readthedocs.io
+  accessed: 2026-05
+
+'fastapi':
+  type: web
+  title: FastAPI Documentation
+  author:
+    - Ramírez, Sebastián
+  url: https://fastapi.tiangolo.com
+  accessed: 2026-05
+
+'tailwind':
+  type: web
+  title: Tailwind CSS Documentation
+  author:
+    - name: Tailwind Labs Inc.
+  url: https://tailwindcss.com
+  accessed: 2026-05
+
+'streamlit':
+  type: web
+  title: Streamlit Documentation
+  author:
+    - name: Streamlit Inc.
+  url: https://docs.streamlit.io
+  accessed: 2026-05
+
+'qt':
+  type: web
+  title: Qt Documentation
+  author:
+    - name: The Qt Company
+  url: https://doc.qt.io
+  accessed: 2026-05
+
+'blade':
+  type: web
+  title: Blade Templates - Laravel Documentation
+  author:
+    - name: Taylor Otwell
+  url: https://laravel.com/docs/blade
+  accessed: 2026-05
+
+'pdf2image':
+  type: web
+  title: pdf2image
+  author:
+    - Belval, Edouard
+  url: https://github.com/Belval/pdf2image
+  accessed: 2026-05
