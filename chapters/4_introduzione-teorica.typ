@@ -85,7 +85,7 @@ Tuttavia, le API realizzate in questo progetto hanno una struttura semplice e no
 
 === Deployment
 
-Per il deployment dell'applicazione, Docker@docker è stato selezionato come scelta obbligata in virtù del vincolo aziendale descritto nei requisiti alla @cap:requirements-list, che ne richiede esplicitamente l'utilizzo. \
+Per il #gl("deployment", display: "deployment") dell'applicazione, Docker@docker è stato selezionato come scelta obbligata in virtù del vincolo aziendale descritto nei requisiti alla @cap:requirements-list, che ne richiede esplicitamente l'utilizzo. \
 Alternative come Podman o Kubernetes non sono state prese in considerazione proprio per questo motivo. \
 Docker rappresenta comunque la soluzione più adatta al contesto, in quanto è una piattaforma che permette di sviluppare e distribuire applicazioni in modo rapido e facilmente configurabile, gestendo l'infrastruttura nello stesso modo in cui viene gestita l'applicazione, riducendo il divario fra l'ambiente di sviluppo e quello di produzione.
 

@@ -1,4 +1,4 @@
-# Smart Accounting, evoluzione sistema lettura DDT
+# Ideazione di una pipeline OCR locale per estrarre dati da documenti di trasporto
 
 ## Introduzione
 Questa tesi è l'elaborato di Matteo Mazzaretto, uno studente del CdL triennale in informatica, redatto nell'a.a. 2025-2026.

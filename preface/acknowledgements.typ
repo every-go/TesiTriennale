@@ -22,7 +22,7 @@ Ringrazio particolarmente:
 - Diego's Boys, la mia squadra di calcetto, con la quale ho condiviso tantissimi bei momenti anche al di fuori del campo di gioco;
 - Tutti gli amici non presenti nel precedente elenco.
 
-Infine, desidero ringraziare #myProf per il supporto dedicatomi durante lo svolgimento della tesi, #myCompany e #myTutor per avermi dato la possibilità di lavorare tramite loro, per tutto il supporto che mi è stato dato durante lo svolgimento del progetto e per la loro gentilezza e disponibilità.
+Infine, desidero ringraziare il #myProf per il supporto dedicatomi durante lo svolgimento della tesi, l'azienda #myCompany e il tutor #myTutor per avermi dato la possibilità di svolgere il tirocinio e per tutto il supporto che mi è stato dato durante lo svolgimento del progetto.
 
 ]
 #v(2em)

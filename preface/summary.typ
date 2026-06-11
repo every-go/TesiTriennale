@@ -11,13 +11,13 @@
 #v(1em)
 Il presente documento descrive il lavoro svolto durante il periodo di stage curricolare, della durata di circa trecento ore, dal laureando #text(myName) presso l'azienda #text(myCompany). Lo stage è stato condotto sotto la supervisione del tutor aziendale #myTutor, mentre il #text(myProf) ha ricoperto il ruolo di tutor accademico.
 \ \
-Questa tesi tratta la progettazione e lo sviluppo di un nuovo sistema di lettura dei DDT, evolvendo il sistema già presente.
+Questa tesi tratta la progettazione e lo sviluppo di un nuovo sistema di lettura dei DDT, con lo scopo di sostituire progressivamente il sistema già presente.
 \ \
 Il DDT, il cui acronimo significa 'Documento di Trasporto', è un documento fondamentale per l'economia e il trasporto. Il suo scopo è quello di indicare i dettagli del fornitore, i dettagli del destinatario, e i dettagli degli articoli che verranno spediti, oltre alle modalità di trasporto.
 \ \
 Lo scopo del progetto è quello di ricavare le informazioni descritte precedentemente in maniera corretta, senza sfruttare gli LLM (Large Language Models), ma sfruttando metodi diversi.
 \ \
-Il progetto è molto utile perché riduce i costi operativi di un'azienda, evitando di inserire manualmente i dati di ogni DDT per la conservazione, e allo stesso tempo è utile per #text(myCompany) in quanto permette di ridurre o cancellare i costi derivanti dall'utilizzo degli LLM.
+Il progetto è molto utile poiché riduce i costi operativi di un'azienda, evitando di inserire manualmente i dati di ogni DDT per la conservazione, e allo stesso tempo è utile per l'azienda presso la quale ho svolto il tirocinio in quanto permette di ridurre o cancellare i costi derivanti dall'utilizzo degli LLM.
 
 #linebreak()
 #text(24pt, weight: "semibold")[Organizzazione del testo]
@@ -26,7 +26,7 @@ Il progetto è molto utile perché riduce i costi operativi di un'azienda, evita
 
 / #link(<cap:introduzione>)[Il primo capitolo]: introduce l'azienda, il progetto e le motivazioni che mi hanno portato a sceglierlo;
 / #link(<cap:descrizione-stage>)[Il secondo capitolo]: descrive l'azienda, il progetto e l'organizzazione del lavoro, definendo gli obiettivi e analizzando i rischi;
-/ #link(<cap:analisi-requisiti>)[Il terzo capitolo]: descrive l'analisi dei requisiti del progetto, indicando un'analisi degli utenti, le user stories e il tracciamento dei requisiti;
+/ #link(<cap:analisi-requisiti>)[Il terzo capitolo]: descrive l'analisi dei requisiti del progetto, indicando un'analisi degli utenti, i casi d'uso e il tracciamento dei requisiti;
 / #link(<cap:introduzione-teorica>)[Il quarto capitolo]: descrive le tecnologie esistenti per risolvere i problemi indicando gli aspetti teorici alla base, gli strumenti che sono stati scelti e con quali criteri;
 / #link(<cap:descrizione-lavoro>)[Il quinto capitolo]: descrive le problematiche riscontrate e le soluzioni adottate;
 / #link(<cap:conclusioni>)[Il sesto capitolo]: raggruppa le conclusioni tratte dallo svolgimento del progetto.
@@ -36,7 +36,6 @@ Il progetto è molto utile perché riduce i costi operativi di un'azienda, evita
 #v(1em)
 Durante la stesura del testo ho scelto di adottare le seguenti convenzioni tipografiche:
 
-//Preferenze personali modificabili a discrezione tua o del relatore
 - Gli acronimi, le abbreviazioni e i termini di uso non comune menzionati vengono definiti nel #link(<glossary>)[glossario], situato alla fine del documento (#link(<glossary>)[p. #context counter(page).at(<glossary>).at(0)]);
 - Per la prima occorrenza dei termini riportati nel glossario viene utilizzata la seguente nomenclatura: #glossary-style[termine]\;
 - I nomi di funzioni o variabili appartenenti ad un linguaggio di programmazione vengono scritte con un carattere `monospaziato`;

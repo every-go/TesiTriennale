@@ -1,5 +1,6 @@
 #import "../config/thesis-config.typ": glpl, gl, path, img
 #import "data/3.1_requirements_list.typ": *
+#show "->": $->$
 
 #pagebreak(to:"odd")
 
@@ -20,7 +21,7 @@ Attualmente, i dati vengono inseriti manualmente, con un dispendio di tempo e un
 
 == Casi d'uso<cap:casi-uso>
 
-Ogni caso d'uso verrà segnato con il codice UC ed è comprensivo di una descrizione associata.
+Ogni caso d'uso verrà identificato con il codice UC ed è comprensivo di una descrizione associata.
 
 Denominerò l'attore "Personale", per riferirsi al personale dell'azienda che esegue l'operazione.
 
@@ -39,7 +40,7 @@ Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabe
     [Grafico UML],
     [Rappresenta lo scenario dei casi d'uso in oggetto],
     [Attore],
-    [Rappresenta coloro che interagiscono in quel sistema, senza il controllo da parte del sistema],
+    [Rappresenta coloro che interagiscono con il sistema dall'esterno, senza farne parte],
     [Scenario principale],
     [La sequenza ragionevole delle operazioni che l'attore deve effettuare per portare a compimento lo scenario],
     [Precondizioni],
@@ -55,7 +56,7 @@ Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabe
     [Specializzazioni],
     [Le specializzazioni rappresentano varianti del caso d'uso generale e sono tra loro mutualmente esclusive, senza imporre un percorso di esecuzione obbligatorio],
     [Trigger],
-    [Descrizione sintetica di una funzionalità dal punto di vista dell'utente, focalizzata sugli obiettivi],
+    [Evento o condizione che avvia il caso d'uso],
   )
 ]<table:campi_casi>
 
@@ -112,7 +113,7 @@ Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabe
   "UC/UC2.png",
   caption: [UC2: Visualizza dati estrazione],
   width: 90%,
-  alt: "Questo diagramma dei casi d'uso rappresenta il personale che visualizza i dati estratti. Quest'azione include anche la visualizza dei dati del fornitore, la visualizzazione dei dati del destinatario, la visualizzazione della lista degli articoli, la visualizzazione dei dati dell'appendice, la visualizzazione del numero del DDT e della data."
+  alt: "Questo diagramma dei casi d'uso rappresenta il personale che visualizza i dati estratti. Quest'azione include anche la visualizzazione dei dati del fornitore, la visualizzazione dei dati del destinatario, la visualizzazione della lista degli articoli, la visualizzazione dei dati dell'appendice, la visualizzazione del numero del DDT e della data."
 )<fig:uc2>
 
 - Attore principale: Personale
@@ -143,7 +144,7 @@ Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabe
   "UC/UC2.1.png",
   caption: [UC2.1: Visualizza dati fornitore],
   width: 75%,
-  alt: "Questo diagramma dei casi d'uso mostra il personale che visualizza i dati del fornitore, specificatamente visualizza la ragione sociale, l'indirizzo e la partita IVA."
+  alt: "Questo diagramma dei casi d'uso mostra il personale che visualizza i dati del fornitore, nello specifico visualizza la ragione sociale, l'indirizzo e la partita IVA."
 )<fig:uc2.1>
 
 - Attore principale: Personale
@@ -557,13 +558,13 @@ Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabe
  - Il personale ha inserito il nome del fornitore
 - Trigger: Il personale vuole inserire il nome del fornitore per il template
 
-===== Operazione sui rettangoli<uc:operazione-rettangoli>
+===== Operazioni sui rettangoli<uc:operazione-rettangoli>
 
 Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione sui rettangoli. È evidenziato il caso d'uso @uc:creazione-rettangolo-ancora poiché è l'unico che ha un'inclusione. Tutti gli altri diagrammi dei casi d'uso sono omessi, in quanto ogni operazione su ogni rettangolo si generalizza in creazione, modifica ed eliminazione.
 
 #img(
   "UC/UC3.3.png",
-  caption: [UC3.3: Operazione sui rettangoli],
+  caption: [UC3.3: Operazioni sui rettangoli],
   alt: "Questo diagramma rappresenta le operazioni possibili sui rettangoli. Infatti, le operazioni sul rettangolo ancora si generalizzano in creazione, modifica ed eliminazione. Nel caso specifico rappresentato in figura, la creazione del rettangolo ancora include l'inserimento del nome dell'ancora."
 )
 
@@ -576,7 +577,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Trigger: Il personale vuole operare sui rettangoli per creare il template
 
-====== Operazione su rettangolo ancora<uc:operazione-rettangolo-ancora>
+====== Operazione sul rettangolo ancora<uc:operazione-rettangolo-ancora>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -648,7 +649,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il personale ha eliminato il rettangolo dell'ancora
 - Trigger: Il personale vuole eliminare il rettangolo dell'ancora
 
-====== Operazione su rettangolo intestazione<uc:operazione-rettangolo-intestazione>
+====== Operazione sul rettangolo intestazione<uc:operazione-rettangolo-intestazione>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -704,7 +705,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il personale ha eliminato il rettangolo dell'intestazione
 - Trigger: Il personale vuole eliminare il rettangolo dell'intestazione
 
-====== Operazione su rettangolo corpo<uc:operazione-rettangolo-corpo>
+====== Operazione sul rettangolo corpo<uc:operazione-rettangolo-corpo>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -760,7 +761,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il personale ha eliminato il rettangolo del corpo
 - Trigger: Il personale vuole eliminare il rettangolo del corpo
 
-====== Operazione su rettangolo appendice<uc:operazione-rettangolo-appendice>
+====== Operazione sul rettangolo appendice<uc:operazione-rettangolo-appendice>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -816,7 +817,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il personale ha eliminato il rettangolo dell'appendice
 - Trigger: Il personale vuole eliminare il rettangolo dell'appendice
 
-====== Operazione su rettangolo numero DDT<uc:operazione-rettangolo-numero>
+====== Operazione sul rettangolo numero DDT<uc:operazione-rettangolo-numero>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -872,7 +873,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il personale ha eliminato il rettangolo del numero DDT
 - Trigger: Il personale vuole eliminare il rettangolo del numero DDT
 
-====== Operazione su rettangolo data DDT<uc:operazione-rettangolo-data>
+====== Operazione sul rettangolo data DDT<uc:operazione-rettangolo-data>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -928,7 +929,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il personale ha eliminato il rettangolo della data DDT
 - Trigger: Il personale vuole eliminare il rettangolo della data DDT
 
-====== Operazione su rettangolo ragione sociale fornitore<uc:operazione-rettangolo-ragione-fornitore>
+====== Operazione sul rettangolo ragione sociale fornitore<uc:operazione-rettangolo-ragione-fornitore>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -984,7 +985,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il personale ha eliminato il rettangolo della ragione sociale del fornitore
 - Trigger: Il personale vuole eliminare il rettangolo della ragione sociale del fornitore
 
-====== Operazione su rettangolo partita IVA fornitore<uc:operazione-rettangolo-partitaIVA-fornitore>
+====== Operazione sul rettangolo partita IVA fornitore<uc:operazione-rettangolo-partitaIVA-fornitore>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -1040,7 +1041,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il personale ha eliminato il rettangolo della partita IVA del fornitore
 - Trigger: Il personale vuole eliminare il rettangolo della partita IVA del fornitore
 
-====== Operazione su rettangolo indirizzo fornitore<uc:operazione-rettangolo-indirizzo-fornitore>
+====== Operazione sul rettangolo indirizzo fornitore<uc:operazione-rettangolo-indirizzo-fornitore>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -1077,7 +1078,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il sistema è online
  - Il personale si trova nell'interfaccia di creazione template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
-  - Il rettangolo dell'indirizzo del fornitore è stato creato -> Vedi @uc:creazione-rettangolo-indirizzo-fornitore
+ - Il rettangolo dell'indirizzo del fornitore è stato creato -> Vedi @uc:creazione-rettangolo-indirizzo-fornitore
 - Postcondizioni:
  - Il personale ha modificato il rettangolo dell'indirizzo del fornitore
 - Trigger: Il personale vuole modificare il rettangolo dell'indirizzo del fornitore
@@ -1096,7 +1097,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il personale ha eliminato il rettangolo dell'indirizzo del fornitore
 - Trigger: Il personale vuole eliminare il rettangolo dell'indirizzo del fornitore
 
-====== Operazione su rettangolo ragione sociale destinatario<uc:operazione-rettangolo-ragione-destinatario>
+====== Operazione sul rettangolo ragione sociale destinatario<uc:operazione-rettangolo-ragione-destinatario>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -1152,7 +1153,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il personale ha eliminato il rettangolo della ragione sociale del destinatario
 - Trigger: Il personale vuole eliminare il rettangolo della ragione sociale del destinatario
 
-====== Operazione su rettangolo partita IVA destinatario<uc:operazione-rettangolo-partitaIVA-destinatario>
+====== Operazione sul rettangolo partita IVA destinatario<uc:operazione-rettangolo-partitaIVA-destinatario>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -1208,7 +1209,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il personale ha eliminato il rettangolo della partita IVA del destinatario
 - Trigger: Il personale vuole eliminare il rettangolo della partita IVA del destinatario
 
-====== Operazione su rettangolo indirizzo destinatario<uc:operazione-rettangolo-indirizzo-destinatario>
+====== Operazione sul rettangolo indirizzo destinatario<uc:operazione-rettangolo-indirizzo-destinatario>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -1264,7 +1265,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il personale ha eliminato il rettangolo dell'indirizzo del destinatario
 - Trigger: Il personale vuole eliminare il rettangolo dell'indirizzo del destinatario
 
-====== Operazione su rettangolo prima unità<uc:operazione-rettangolo-prima-unita>
+====== Operazione sul rettangolo prima unità<uc:operazione-rettangolo-prima-unita>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -1320,7 +1321,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il personale ha eliminato il rettangolo della prima unità
 - Trigger: Il personale vuole eliminare il rettangolo della prima unità
 
-====== Operazione su rettangolo prima quantità<uc:operazione-rettangolo-prima-quantita>
+====== Operazione sul rettangolo prima quantità<uc:operazione-rettangolo-prima-quantita>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -1376,7 +1377,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il personale ha eliminato il rettangolo della prima quantità
 - Trigger: Il personale vuole eliminare il rettangolo della prima quantità
 
-====== Operazione su rettangolo primo codice<uc:operazione-rettangolo-primo-codice>
+====== Operazione sul rettangolo primo codice<uc:operazione-rettangolo-primo-codice>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -1432,7 +1433,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il personale ha eliminato il rettangolo del primo codice
 - Trigger: Il personale vuole eliminare il rettangolo del primo codice
 
-====== Operazione su rettangolo prima descrizione<uc:operazione-rettangolo-prima-descrizione>
+====== Operazione sul rettangolo prima descrizione<uc:operazione-rettangolo-prima-descrizione>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -1488,7 +1489,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il personale ha eliminato il rettangolo della prima descrizione
 - Trigger: Il personale vuole eliminare il rettangolo della prima descrizione
 
-====== Operazione su rettangolo primo riferimento codice ordine<uc:operazione-rettangolo-primo-riferimento>
+====== Operazione sul rettangolo primo riferimento codice ordine<uc:operazione-rettangolo-primo-riferimento>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -1544,7 +1545,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il personale ha eliminato il rettangolo del primo riferimento al codice ordine
 - Trigger: Il personale vuole eliminare il rettangolo del primo riferimento al codice ordine
 
-====== Operazione su rettangolo riga campione<uc:operazione-rettangolo-riga-campione>
+====== Operazione sul rettangolo riga campione<uc:operazione-rettangolo-riga-campione>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -1600,7 +1601,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il personale ha eliminato il rettangolo della riga campione
 - Trigger: Il personale vuole eliminare il rettangolo della riga campione
 
-====== Operazione su rettangolo intestazione colonne<uc:operazione-rettangolo-intestazione-colonne>
+====== Operazione sul rettangolo intestazione colonne<uc:operazione-rettangolo-intestazione-colonne>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -1656,7 +1657,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il personale ha eliminato il rettangolo dell'intestazione colonne
 - Trigger: Il personale vuole eliminare il rettangolo dell'intestazione colonne
 
-====== Operazione su rettangolo numero colli<uc:operazione-rettangolo-colli>
+====== Operazione sul rettangolo numero colli<uc:operazione-rettangolo-colli>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -1712,7 +1713,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il personale ha eliminato il rettangolo del numero colli
 - Trigger: Il personale vuole eliminare il rettangolo del numero colli
 
-====== Operazione su rettangolo note<uc:operazione-rettangolo-note>
+====== Operazione sul rettangolo note<uc:operazione-rettangolo-note>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -1768,7 +1769,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il personale ha eliminato il rettangolo delle note
 - Trigger: Il personale vuole eliminare il rettangolo delle note
 
-====== Operazione su rettangolo peso lordo<uc:operazione-rettangolo-peso-lordo>
+====== Operazione sul rettangolo peso lordo<uc:operazione-rettangolo-peso-lordo>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -1824,7 +1825,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il personale ha eliminato il rettangolo del peso lordo
 - Trigger: Il personale vuole eliminare il rettangolo del peso lordo
 
-====== Operazione su rettangolo peso netto<uc:operazione-rettangolo-peso-netto>
+====== Operazione sul rettangolo peso netto<uc:operazione-rettangolo-peso-netto>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -2152,7 +2153,7 @@ In @tab:requisiti-funzionali, @tab:requisiti-qualitativi e @tab:requisiti-vincol
         table.header([*Codice*], [*Descrizione*], [*Fonti*]),
         ..getFR().flatten()
     ),
-    caption: "Tracciamento dei requisti funzionali.",
+    caption: "Tracciamento dei requisiti funzionali.",
 )
 <tab:requisiti-funzionali>
 
@@ -2163,7 +2164,7 @@ In @tab:requisiti-funzionali, @tab:requisiti-qualitativi e @tab:requisiti-vincol
       table.header([*Codice*], [*Descrizione*], [*Fonti*]),
       ..getQR().flatten()
     ),
-    caption: "Tracciamento dei requisti di qualità.",
+    caption: "Tracciamento dei requisiti di qualità.",
 )
 <tab:requisiti-qualitativi>
 
@@ -2174,7 +2175,7 @@ In @tab:requisiti-funzionali, @tab:requisiti-qualitativi e @tab:requisiti-vincol
       table.header([*Codice*], [*Descrizione*], [*Fonti*]),
       ..getCR().flatten()
     ),
-    caption: "Tracciamento dei requisti di vincolo.",
+    caption: "Tracciamento dei requisiti di vincolo.",
 )
 <tab:requisiti-vincolo>
 

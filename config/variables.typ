@@ -1,7 +1,7 @@
 #let myLang = "it"
 #let myName = "Matteo Mazzaretto"
 #let myMatricola = "2111005"
-#let myTitle = "Smart Accounting, evoluzione sistema lettura DDT"
+#let myTitle = "Ideazione di una pipeline OCR locale per estrarre dati da documenti di trasporto"
 #let myProf = "Prof. Marco Zanella"
 #let myCompany = "Spazio Dev SRL"
 #let myLocation = "Padova"

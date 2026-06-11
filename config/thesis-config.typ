@@ -8,7 +8,7 @@
 
 #let config(
   myAuthor: "Matteo Mazzaretto",
-  myTitle: "Smart Accounting, evoluzione sistema lettura DDT",
+  myTitle: "Ideazione di una pipeline OCR locale per estrarre dati da documenti di trasporto",
   myLang: "it",
   myNumbering: "1.1",
   body,
@@ -60,9 +60,8 @@
     it
     v(1em)
   }
-  // Il comando sotto lo tengo commentato perché altrimenti può succedere che l'immagine e la sua caption finiscano in due pagine diverse.
-  // Per questo motivo ogni tabella deve essere racchiusa in un blocco di codice #{ } o di contenuto #[ ] per isolarne le regole. (se trovate un modo migliore aprite una pr :D )
-  //show figure: set block(breakable: true)
+  
+  show figure: set block(breakable: true)
 
   // Glossary bootstrap and setup
   show: make-glossary
@@ -70,9 +69,6 @@
   body
 }
 
-// Creare delle funzioni wrapper di Glossarium è l'unica soluzione che ho trovato per personalizzare l'aspetto del testo (Sono anche più corte).
-// L'unica alternativa è al seguente link ma funziona solo se usi Glossarium con le ref ad esempio '@TERMINE' 
-// https://forum.typst.app/t/how-do-you-apply-a-style-to-glossarium-references-that-is-different-to-other-reference-types/2089?u=ogre
 #let glossary-style(body) = {
   text(style: "italic", rgb(155, 0 , 20), body+super([G]))
 }
