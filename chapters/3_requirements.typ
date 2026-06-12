@@ -82,6 +82,14 @@ Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabe
       let child = numbers.pos().at(level - 1)
       return numbering("UC1.1.1.1", grandgrandparent, grandparent, parent, child)
     }
+    else if level == 8 {
+      let grandgrandgrandparent = numbers.pos().at(level - 5)
+      let grandgrandparent = numbers.pos().at(level - 4)
+      let grandparent = numbers.pos().at(level - 3)
+      let parent = numbers.pos().at(level - 2)
+      let child = numbers.pos().at(level - 1)
+      return numbering("UC1.1.1.1.1", grandgrandgrandparent, grandgrandparent, grandparent, parent, child)
+    }
   }
 )
 #set heading(supplement: none)
@@ -380,7 +388,7 @@ Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabe
   - Il personale ha visualizzato il riferimento al codice ordine dell'articolo
 - Trigger: Il personale vuole visualizzare il riferimento al codice ordine dell'articolo estratto dal DDT
 
-======= Visualizza misura di unità dell'articolo<uc:visualizza-articolo-unita>
+======= Visualizza misura di unità articolo<uc:visualizza-articolo-unita>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -634,7 +642,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
   - @uc:inserimento-nome-ancora
 - Trigger: Il personale vuole creare il rettangolo dell'ancora nel template
 
-======= Inserimento nome ancora<uc:inserimento-nome-ancora>
+======== Inserimento nome ancora<uc:inserimento-nome-ancora>
 
 - Attore principale: Personale
 - Scenario principale:
