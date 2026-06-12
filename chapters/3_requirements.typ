@@ -612,7 +612,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il sistema è online
  - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
-- Generalizzazioni:
+- Specializzazioni:
   - @uc:creazione-rettangolo-ancora
   - @uc:modifica-rettangolo-ancora
   - @uc:eliminazione-rettangolo-ancora
@@ -685,7 +685,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il sistema è online
  - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
-- Generalizzazioni:
+- Specializzazioni:
   - @uc:creazione-rettangolo-intestazione
   - @uc:modifica-rettangolo-intestazione
   - @uc:eliminazione-rettangolo-intestazione
@@ -741,7 +741,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il sistema è online
  - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
-- Generalizzazioni:
+- Specializzazioni:
   - @uc:creazione-rettangolo-corpo
   - @uc:modifica-rettangolo-corpo
   - @uc:eliminazione-rettangolo-corpo
@@ -797,7 +797,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il sistema è online
  - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
-- Generalizzazioni:
+- Specializzazioni:
   - @uc:creazione-rettangolo-appendice
   - @uc:modifica-rettangolo-appendice
   - @uc:eliminazione-rettangolo-appendice
@@ -853,7 +853,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il sistema è online
  - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
-- Generalizzazioni:
+- Specializzazioni:
   - @uc:creazione-rettangolo-numero
   - @uc:modifica-rettangolo-numero
   - @uc:eliminazione-rettangolo-numero
@@ -909,7 +909,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il sistema è online
  - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
-- Generalizzazioni:
+- Specializzazioni:
   - @uc:creazione-rettangolo-data
   - @uc:modifica-rettangolo-data
   - @uc:eliminazione-rettangolo-data
@@ -965,7 +965,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il sistema è online
  - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
-- Generalizzazioni:
+- Specializzazioni:
   - @uc:creazione-rettangolo-ragione-fornitore
   - @uc:modifica-rettangolo-ragione-fornitore
   - @uc:eliminazione-rettangolo-ragione-fornitore
@@ -1021,7 +1021,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il sistema è online
  - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
-- Generalizzazioni:
+- Specializzazioni:
   - @uc:creazione-rettangolo-partitaIVA-fornitore
   - @uc:modifica-rettangolo-partitaIVA-fornitore
   - @uc:eliminazione-rettangolo-partitaIVA-fornitore
@@ -1077,7 +1077,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il sistema è online
  - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
-- Generalizzazioni:
+- Specializzazioni:
   - @uc:creazione-rettangolo-indirizzo-fornitore
   - @uc:modifica-rettangolo-indirizzo-fornitore
   - @uc:eliminazione-rettangolo-indirizzo-fornitore
@@ -1133,7 +1133,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il sistema è online
  - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
-- Generalizzazioni:
+- Specializzazioni:
   - @uc:creazione-rettangolo-ragione-destinatario
   - @uc:modifica-rettangolo-ragione-destinatario
   - @uc:eliminazione-rettangolo-ragione-destinatario
@@ -1189,7 +1189,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il sistema è online
  - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
-- Generalizzazioni:
+- Specializzazioni:
   - @uc:creazione-rettangolo-partitaIVA-destinatario
   - @uc:modifica-rettangolo-partitaIVA-destinatario
   - @uc:eliminazione-rettangolo-partitaIVA-destinatario
@@ -1245,7 +1245,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il sistema è online
  - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
-- Generalizzazioni:
+- Specializzazioni:
   - @uc:creazione-rettangolo-indirizzo-destinatario
   - @uc:modifica-rettangolo-indirizzo-destinatario
   - @uc:eliminazione-rettangolo-indirizzo-destinatario
@@ -1301,7 +1301,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il sistema è online
  - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
-- Generalizzazioni:
+- Specializzazioni:
   - @uc:creazione-rettangolo-prima-unita
   - @uc:modifica-rettangolo-prima-unita
   - @uc:eliminazione-rettangolo-prima-unita
@@ -1357,7 +1357,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il sistema è online
  - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
-- Generalizzazioni:
+- Specializzazioni:
   - @uc:creazione-rettangolo-prima-quantita
   - @uc:modifica-rettangolo-prima-quantita
   - @uc:eliminazione-rettangolo-prima-quantita
@@ -1413,7 +1413,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il sistema è online
  - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
-- Generalizzazioni:
+- Specializzazioni:
   - @uc:creazione-rettangolo-primo-codice
   - @uc:modifica-rettangolo-primo-codice
   - @uc:eliminazione-rettangolo-primo-codice
@@ -1469,7 +1469,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il sistema è online
  - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
-- Generalizzazioni:
+- Specializzazioni:
   - @uc:creazione-rettangolo-prima-descrizione
   - @uc:modifica-rettangolo-prima-descrizione
   - @uc:eliminazione-rettangolo-prima-descrizione
@@ -1525,7 +1525,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il sistema è online
  - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
-- Generalizzazioni:
+- Specializzazioni:
   - @uc:creazione-rettangolo-primo-riferimento
   - @uc:modifica-rettangolo-primo-riferimento
   - @uc:eliminazione-rettangolo-primo-riferimento
@@ -1581,7 +1581,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il sistema è online
  - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
-- Generalizzazioni:
+- Specializzazioni:
   - @uc:creazione-rettangolo-riga-campione
   - @uc:modifica-rettangolo-riga-campione
   - @uc:eliminazione-rettangolo-riga-campione
@@ -1637,7 +1637,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il sistema è online
  - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
-- Generalizzazioni:
+- Specializzazioni:
   - @uc:creazione-rettangolo-intestazione-colonne
   - @uc:modifica-rettangolo-intestazione-colonne
   - @uc:eliminazione-rettangolo-intestazione-colonne
@@ -1693,7 +1693,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il sistema è online
  - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
-- Generalizzazioni:
+- Specializzazioni:
   - @uc:creazione-rettangolo-colli
   - @uc:modifica-rettangolo-colli
   - @uc:eliminazione-rettangolo-colli
@@ -1749,7 +1749,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il sistema è online
  - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
-- Generalizzazioni:
+- Specializzazioni:
   - @uc:creazione-rettangolo-note
   - @uc:modifica-rettangolo-note
   - @uc:eliminazione-rettangolo-note
@@ -1805,7 +1805,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il sistema è online
  - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
-- Generalizzazioni:
+- Specializzazioni:
   - @uc:creazione-rettangolo-peso-lordo
   - @uc:modifica-rettangolo-peso-lordo
   - @uc:eliminazione-rettangolo-peso-lordo
@@ -1861,7 +1861,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il sistema è online
  - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
-- Generalizzazioni:
+- Specializzazioni:
   - @uc:creazione-rettangolo-peso-netto
   - @uc:modifica-rettangolo-peso-netto
   - @uc:eliminazione-rettangolo-peso-netto
@@ -1962,7 +1962,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il sistema è online
  - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
-- Generalizzazioni:
+- Specializzazioni:
   - @uc:salvataggio-template-nuovo
   - @uc:salvataggio-template-esistente
 - Trigger: Il personale vuole salvare il template
@@ -1989,7 +1989,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il sistema è online
  - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
-- Generalizzazioni:
+- Specializzazioni:
   - @uc:sovrascrittura-template
   - @uc:creazione-variante-template
 - Trigger: Il personale vuole salvare un template esistente
@@ -2041,7 +2041,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
 - Inclusioni:
   - @uc:inserimento-parole-chiave
   - @uc:inserimento-cosa-prendere
-- Generalizzazioni:
+- Specializzazioni:
   - @uc:configurazione-parole-chiave-codice
   - @uc:configurazione-parole-chiave-descrizione
   - @uc:configurazione-parole-chiave-unita
