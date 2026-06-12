@@ -1,18 +1,4 @@
 #let glossary-terms = (
-  /*
-  (
-    key: "ci",
-    short: [CI],
-    long: [Continuous integration],
-    description: [Pratica di programmazione che prevede la frequente integrazione del codice prodotto verso il ramo principale del repository Git. Generalmente prima di poter fare questa integrazione il sistema esegue dei test automatici (compilazione, unità, ecc...).]
-  ),
-  */
-  (
-    key: "Mistral",
-    short: [Mistral],
-    long: [],
-    description: [fornisce LLM che, tramite API o deployment locale, possono processare documenti testuali ed estrarre dati strutturati secondo schemi definiti. I modelli supportano prompting strutturato e output in formato JSON, rendendoli adatti a pipeline di document intelligence per l'automazione dell'estrazione di campi chiave, entità e relazioni da documenti semi-strutturati.]
-  ),
   (
     key: "API",
     short: [API],
@@ -42,5 +28,11 @@
     short: [Deployment],
     long: [],
     description: [Processo di rilascio e messa in produzione di un'applicazione o di un servizio, che comprende tutte le operazioni necessarie a rendere il software disponibile e funzionante nell'ambiente di destinazione.]
+  ),
+  (
+    key: "llm",
+    short: [LLM],
+    long: [Large Language Model],
+    description: [Modello di intelligenza artificiale addestrato su enormi quantità di testo per comprendere e generare linguaggio naturale, come GPT, Gemini o Mistral. Viene impiegato in compiti di analisi, estrazione di informazioni e generazione testuale.]
   )
 )

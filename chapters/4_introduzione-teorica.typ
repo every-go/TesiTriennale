@@ -9,12 +9,12 @@
 #v(1em)
 
 == Criteri per scegliere le tecnologie
-Come menzionato nella sezione @cap:competenze e nella sezione @cap:vincoli, l'azienda usa principalmente framework PHP, ma non mi ha obbligato all'aderenza ad uno stack tecnologico specifico, ma più al trovare una soluzione al problema da loro posto. \
-Il criterio da rispettare è però quello di non utilizzare alcun OCR a pagamento, in quanto l'intero progetto verte sul trovare una soluzione evitando l'utilizzo di API a pagamento, escludendomi la possibilità di scelta di alcune tecnologie simili a Mistral come AWS Extract. \
-Il mio lavoro svolto è stato principalmente in una #gl("repository", display: "repository") separata, quindi non mi sono 'collegato' direttamente al progetto principale ma ho lavorato in totale autonomia, e questo ha guidato molto le mie scelte concernenti le tecnologie.
+Come menzionato nella @cap:competenze e nella @cap:vincoli, l'azienda usa principalmente framework PHP, ma non mi ha obbligato all'aderenza a uno stack tecnologico specifico, bensì a trovare una soluzione al problema da loro posto. \
+Il criterio da rispettare è però quello di non utilizzare alcun OCR a pagamento, in quanto l'intero progetto verte sul trovare una soluzione evitando l'utilizzo di API a pagamento, escludendo la possibilità di scegliere alcune tecnologie simili a Mistral come AWS Textract. \
+Il mio lavoro è stato svolto principalmente in una #gl("repository", display: "repository") separata, quindi non mi sono collegato direttamente al progetto principale ma ho lavorato in totale autonomia, e questo ha guidato molto le mie scelte concernenti le tecnologie.
 
-== Tecnologie possibili
-Andrò a suddividere le principali tecnologie possibili in varie sottosezioni.\
+== Tecnologie
+Le principali tecnologie sono suddivise nelle sottosezioni che seguono.\
 Fa però eccezione Python@python, che considero una tecnologia trasversale grazie alla sua versatilità e alla possibilità di essere utilizzato sia lato frontend sia lato backend attraverso le librerie disponibili. \
 Per la realizzazione degli algoritmi, l'organizzazione delle idee e, più in generale, per rendere più rapido lo sviluppo e il testing dei DDT messi a disposizione dall'azienda, ho scelto di utilizzarlo, anche grazie alla mia esperienza pregressa con questa tecnologia. \
 Segue la suddivisione delle tecnologie in base al loro utilizzo.
@@ -85,8 +85,8 @@ Tuttavia, le API realizzate in questo progetto hanno una struttura semplice e no
 
 === Deployment
 
-Per il #gl("deployment", display: "deployment") dell'applicazione, Docker@docker è stato selezionato come scelta obbligata in virtù del vincolo aziendale descritto nei requisiti alla @cap:requirements-list, che ne richiede esplicitamente l'utilizzo. \
-Alternative come Podman o Kubernetes non sono state prese in considerazione proprio per questo motivo. \
+Per il #gl("deployment", display: "deployment") dell'applicazione, Docker è stato selezionato come scelta obbligata in virtù del vincolo aziendale descritto nei requisiti alla @cap:requirements-list, che ne richiede esplicitamente l'utilizzo. \
+Alternative come Podman@podman o Kubernetes@kubernetes non sono state prese in considerazione proprio per questo motivo. \
 Docker rappresenta comunque la soluzione più adatta al contesto, in quanto è una piattaforma che permette di sviluppare e distribuire applicazioni in modo rapido e facilmente configurabile, gestendo l'infrastruttura nello stesso modo in cui viene gestita l'applicazione, riducendo il divario fra l'ambiente di sviluppo e quello di produzione.
 
 #img(
@@ -96,26 +96,38 @@ Docker rappresenta comunque la soluzione più adatta al contesto, in quanto è u
     width: 25%
 )
 
-=== Supporto
+=== Librerie di supporto
 
-OpenCV@opencv e pdf2image@pdf2image sono due librerie utilizzate a supporto del progetto, entrambe senza alternative considerate in quanto svolgono funzioni molto specifiche. \
-OpenCV è una libreria di computer vision e image processing, utilizzata per riconoscere pattern relativi ai vari template DDT. \
-pdf2image è una libreria che permette di convertire un PDF in un'immagine, utilizzata per visualizzare il documento nell'interfaccia web al momento della creazione di un template.
+Diverse librerie svolgono funzioni specifiche e di supporto alla pipeline.
 
-#img(
-    "technologies/opencv.webp",
-    caption: [Logo OpenCV],
-    alt: "",
-    width: 15%
-)
+Pillow@pillow è la libreria Python standard per la manipolazione delle immagini. È utilizzata in tutto il progetto per aprire, convertire e modificare le pagine dei DDT durante le fasi di preprocessing e OCR.
+
+NumPy@numpy è la libreria fondamentale per il calcolo numerico in Python. Viene impiegata per la gestione degli array di pixel nelle fasi di elaborazione delle immagini, interfacciandosi con i motori OCR e con OpenCV.
+
+pdf2image@pdf2image è una libreria che converte le pagine di un PDF in immagini raster. È utilizzata per rendere i documenti elaborabili dai motori OCR e per la visualizzazione nell'interfaccia web al momento della creazione di un template.
+
+img2pdf@img2pdf è una libreria che converte immagini PNG o JPEG in un file PDF senza perdita di qualità, riassemblando le pagine elaborate nella fase di deskew e rimozione dei barcode.
+
+pdftotext e pdfinfo sono strumenti a riga di comando parte della suite Poppler@poppler, invocati tramite subprocess. pdftotext estrae il testo nativo di un PDF con le coordinate di ogni parola (modalità -bbox), permettendo di evitare l'OCR sui documenti digitali; pdfinfo restituisce invece i metadati del file, tra cui il numero di pagine.
+
+OpenCV@opencv è una libreria di computer vision e image processing. Nel progetto svolge due ruoli distinti: il rilevamento e la rimozione di QR code e la segmentazione delle parole per riga tramite proiezione verticale dell'istogramma dei pixel nei wrapper del motore PaddleOCR.
+
+pyzbar@pyzbar è una libreria Python per rilevare e decodificare barcode monodimensionali e QR code nelle immagini. Viene utilizzata in combinazione con OpenCV nella fase di rimozione dei codici a barre prima dell'OCR.
+
+deskew e scikit-image@scikit-image sono due librerie utilizzate per il raddrizzamento automatico delle pagine. deskew calcola l'angolo di inclinazione di un'immagine in scala di grigi, mentre scikit-image fornisce la funzione di rotazione che corregge l'immagine conservando le dimensioni originali.
 
 === OCR
 
-// TODO: in questa sezione non suddivido per ora fra OCR scelti e scartati, in quanto questa scelta è ancora in fase di revisione.
+Le tecnologie OCR prese in considerazione sono PaddleOCR@paddleocr, Surya@surya, EasyOCR@easyocr, OCRmyPDF@ocrmypdf, Tesseract-OCR@tesseract e DocTR@doctr.
 
-Le tecnologie OCR prese in considerazione sono PaddleOCR@paddleocr, Surya@surya, EasyOCR@easyocr, OCRmyPDF@ocrmypdf e Tesseract-OCR@tesseract. \
-PaddleOCR è una libreria sviluppata da Baidu, basata su reti neurali, che offre elevata accuratezza su documenti strutturati. Tuttavia, la sua configurazione risulta complessa e l'inferenza su CPU è particolarmente lenta, rendendola poco adatta a contesti senza accelerazione hardware dedicata. \
-Surya è una libreria moderna basata su modelli transformer, progettata per il riconoscimento di testo in documenti multi-lingua e multi-colonna. Come PaddleOCR, soffre di tempi di elaborazione elevati in assenza di GPU, e la sua integrazione richiede una gestione non banale delle dipendenze. \
-EasyOCR è una libreria Python basata su deep learning che supporta oltre 80 lingue, offrendo un'API semplice e diretta pur mantenendo una buona accuratezza su documenti stampati. \
-OCRmyPDF è uno strumento che aggiunge un layer di testo ricercabile a PDF scansionati, basandosi internamente su Tesseract. Dispone inoltre di una funzionalità di deskewing automatico, ovvero la correzione dell'inclinazione di documenti acquisiti con una leggera rotazione. \
-Tesseract-OCR è il motore OCR open source più diffuso, originariamente sviluppato da HP e attualmente mantenuto da Google, con supporto a numerose lingue e buona accuratezza su testo stampato pulito.
+PaddleOCR è una libreria sviluppata da Baidu, basata su reti neurali, che offre elevata accuratezza su documenti strutturati. Tuttavia, la sua configurazione risulta complessa e l'inferenza su CPU è particolarmente lenta, rendendola poco adatta a contesti senza accelerazione hardware dedicata.
+
+Surya è una libreria moderna basata su modelli transformer, progettata per il riconoscimento di testo in documenti multi-lingua e multi-colonna. Come PaddleOCR, soffre di tempi di elaborazione elevati in assenza di GPU, e la sua integrazione richiede una gestione non banale delle dipendenze.
+
+EasyOCR è una libreria Python basata su deep learning che supporta oltre 80 lingue, offrendo un'API semplice e diretta pur mantenendo una buona accuratezza su documenti stampati.
+
+OCRmyPDF è uno strumento che aggiunge un layer di testo ricercabile a PDF scansionati, basandosi internamente su Tesseract. Dispone inoltre di una funzionalità di deskewing automatico, ovvero la correzione dell'inclinazione di documenti acquisiti con una leggera rotazione.
+
+Tesseract-OCR è il motore OCR open source più diffuso, originariamente sviluppato da HP e attualmente mantenuto da Google, con supporto a numerose lingue e buona accuratezza su testo stampato pulito. Nel progetto non viene utilizzato come OCR ma per una funzione accessoria: il rilevamento dell'orientamento della pagina tramite OSD (Orientation and Script Detection), che permette di correggere rotazioni di 90° o 270° prima del preprocessing.
+
+DocTR (Document Text Recognition) è una libreria sviluppata da Mindee, basata su architetture transformer e reti convoluzionali, progettata specificamente per il riconoscimento di testo in documenti. Offre una pipeline integrata che include rilevamento delle righe di testo ed estrazione delle parole con le rispettive coordinate normalizzate. È la tecnologia OCR scelta per il progetto: rispetto alle alternative, offre un buon equilibrio tra accuratezza su documenti stampati e restituisce direttamente le coordinate di ogni parola in un sistema normalizzato, compatibile con la struttura del motore di estrazione sviluppato.

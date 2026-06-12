@@ -4,7 +4,7 @@
   author:
     - Python Software Foundation
   url: https://docs.python.org/3/
-  accessed: 2026-05
+  accessed: 2026-07
 
 'html':
   type: web
@@ -12,7 +12,7 @@
   author:
     - MDN
   url: https://developer.mozilla.org/en-US/docs/Web/HTML
-  accessed: 2026-05
+  accessed: 2026-07
 
 'css':
   type: web
@@ -20,7 +20,7 @@
   author:
     -MDN
   url: https://developer.mozilla.org/en-US/docs/Web/CSS
-  accessed: 2026-05
+  accessed: 2026-07
 
 'javascript':
   type: web
@@ -28,7 +28,7 @@
   author:
     - MDN
   url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
-  accessed: 2026-05
+  accessed: 2026-07
 
 'flask':
   type: web
@@ -36,7 +36,7 @@
   author:
     - Ronacher, Armin
   url: https://flask.palletsprojects.com
-  accessed: 2026-05
+  accessed: 2026-07
 
 'docker':
   type: web
@@ -44,7 +44,7 @@
   author:
     - name: Docker Inc.
   url: https://docs.docker.com
-  accessed: 2026-05
+  accessed: 2026-07
 
 'opencv':
   type: web
@@ -52,7 +52,7 @@
   author:
     - name: OpenCV Team
   url: https://docs.opencv.org
-  accessed: 2026-05
+  accessed: 2026-07
 
 'tesseract':
   type: web
@@ -60,7 +60,7 @@
   author:
     - name: Google LLC
   url: https://github.com/tesseract-ocr/tesseract
-  accessed: 2026-05
+  accessed: 2026-07
 
 'paddleocr':
   type: web
@@ -68,7 +68,7 @@
   author:
     - name: Baidu Inc.
   url: https://github.com/PaddlePaddle/PaddleOCR
-  accessed: 2026-05
+  accessed: 2026-07
 
 'easyocr':
   type: web
@@ -76,7 +76,7 @@
   author:
     - Jaided AI
   url: https://github.com/JaidedAI/EasyOCR
-  accessed: 2026-05
+  accessed: 2026-07
 
 'surya':
   type: web
@@ -84,7 +84,7 @@
   author:
     - Paruchuri, Vikas
   url: https://github.com/VikParuchuri/surya
-  accessed: 2026-05
+  accessed: 2026-07
 
 'ocrmypdf':
   type: web
@@ -92,7 +92,7 @@
   author:
     - Krauss, James
   url: https://ocrmypdf.readthedocs.io
-  accessed: 2026-05
+  accessed: 2026-07
 
 'fastapi':
   type: web
@@ -100,7 +100,7 @@
   author:
     - Ramírez, Sebastián
   url: https://fastapi.tiangolo.com
-  accessed: 2026-05
+  accessed: 2026-07
 
 'tailwind':
   type: web
@@ -108,7 +108,7 @@
   author:
     - name: Tailwind Labs Inc.
   url: https://tailwindcss.com
-  accessed: 2026-05
+  accessed: 2026-07
 
 'streamlit':
   type: web
@@ -116,7 +116,7 @@
   author:
     - name: Streamlit Inc.
   url: https://docs.streamlit.io
-  accessed: 2026-05
+  accessed: 2026-07
 
 'qt':
   type: web
@@ -124,7 +124,7 @@
   author:
     - name: The Qt Company
   url: https://doc.qt.io
-  accessed: 2026-05
+  accessed: 2026-07
 
 'blade':
   type: web
@@ -132,7 +132,7 @@
   author:
     - name: Taylor Otwell
   url: https://laravel.com/docs/blade
-  accessed: 2026-05
+  accessed: 2026-07
 
 'pdf2image':
   type: web
@@ -140,4 +140,100 @@
   author:
     - Belval, Edouard
   url: https://github.com/Belval/pdf2image
-  accessed: 2026-05
+  accessed: 2026-07
+
+'pillow':
+  type: web
+  title: Pillow (PIL Fork) Documentation
+  author:
+    - Clark, Alex
+  url: https://pillow.readthedocs.io
+  accessed: 2026-07
+
+'numpy':
+  type: web
+  title: NumPy Documentation
+  author:
+    - NumPy Developers
+  url: https://numpy.org/doc/stable
+  accessed: 2026-07
+
+'img2pdf':
+  type: web
+  title: img2pdf
+  author:
+    - Schauer, Johannes
+  url: https://github.com/myollie/img2pdf
+  accessed: 2026-07
+
+'poppler':
+  type: web
+  title: Poppler
+  author:
+    - Poppler Developers
+  url: https://poppler.freedesktop.org
+  accessed: 2026-07
+
+'pyzbar':
+  type: web
+  title: pyzbar
+  author:
+    - Natural History Museum, London
+  url: https://github.com/NaturalHistoryMuseum/pyzbar
+  accessed: 2026-07
+
+'scikit-image':
+  type: web
+  title: scikit-image Documentation
+  author:
+    - scikit-image Developers
+  url: https://scikit-image.org
+  accessed: 2026-07
+
+'doctr':
+  type: web
+  title: docTR Documentation
+  author:
+    - Mindee
+  url: https://github.com/mindee/doctr
+  accessed: 2026-07
+
+'openai':
+  type: web
+  title: OpenAI API Documentation
+  author:
+    - OpenAI
+  url: https://platform.openai.com/docs
+  accessed: 2026-07
+
+'mistral':
+  type: web
+  title: Mistral AI Documentation
+  author:
+    - Mistral AI
+  url: https://docs.mistral.ai
+  accessed: 2026-07
+
+'aws-textract':
+  type: web
+  title: Amazon Textract Documentation
+  author:
+    - Amazon Web Services, Inc.
+  url: https://docs.aws.amazon.com/textract
+  accessed: 2026-07
+
+'podman':
+  type: web
+  title: Podman Documentation
+  author:
+    - Podman Developers
+  url: https://docs.podman.io
+  accessed: 2026-07
+
+'kubernetes':
+  type: web
+  title: Kubernetes Documentation
+  author:
+    - The Kubernetes Authors
+  url: https://kubernetes.io/docs
+  accessed: 2026-07

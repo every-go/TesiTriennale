@@ -296,7 +296,7 @@ Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabe
   - @uc:visualizza-singolo-articolo
 - Trigger: Il personale vuole visualizzare gli articoli estratti dal DDT
 
-====== Visualizza singolo articolo<uc:visualizza-singolo-articolo>
+====== Visualizza dati articolo singolo<uc:visualizza-singolo-articolo>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -365,7 +365,7 @@ Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabe
   - Il personale ha visualizzato la quantità dell'articolo
 - Trigger: Il personale vuole visualizzare la quantità dell'articolo estratta dal DDT
 
-======= Visualizza riferimento codice ordine articolo<uc:visualizza-articolo-ordine>
+======= Visualizza riferimento codice ordine<uc:visualizza-articolo-ordine>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -380,7 +380,7 @@ Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabe
   - Il personale ha visualizzato il riferimento al codice ordine dell'articolo
 - Trigger: Il personale vuole visualizzare il riferimento al codice ordine dell'articolo estratto dal DDT
 
-======= Visualizza misura di unità articolo<uc:visualizza-articolo-unita>
+======= Visualizza misura di unità dell'articolo<uc:visualizza-articolo-unita>
 
 - Attore principale: Personale
 - Scenario principale:
@@ -519,9 +519,9 @@ Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabe
  + Il personale inserisce le parole da ignorare -> Vedi @uc:inserimento-parole-ignorare
  + Il personale indica la posizione della quantità -> Vedi @uc:indicazione-quantita
  + Il personale salva il template -> Vedi @uc:salvataggio-template
+ + Il personale configura le parole chiave -> Vedi @uc:configurazione-parole-chiave
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
 - Postcondizioni:
  - Il personale ha creato il template del DDT
 - Inclusioni:
@@ -532,6 +532,7 @@ Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabe
   - @uc:inserimento-parole-ignorare
   - @uc:indicazione-quantita
   - @uc:salvataggio-template
+  - @uc:configurazione-parole-chiave
 - Trigger: Il personale vuole creare un nuovo template per il DDT
 
 ===== Caricamento PDF di riferimento<uc:caricamento-pdf>
@@ -541,9 +542,9 @@ Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabe
  + Il personale carica il PDF di riferimento
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
 - Postcondizioni:
- - Il personale ha caricato il PDF di riferimento
+ - Il PDF di riferimento è stato caricato
 - Trigger: Il personale vuole caricare un PDF come riferimento per il template
 
 ===== Inserimento nome fornitore<uc:inserimento-nome-fornitore>
@@ -553,7 +554,8 @@ Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabe
  + Il personale inserisce il nome del fornitore
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
+ - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha inserito il nome del fornitore
 - Trigger: Il personale vuole inserire il nome del fornitore per il template
@@ -573,8 +575,32 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale effettua le operazioni sui rettangoli
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
+- Inclusioni:
+  - @uc:operazione-rettangolo-ancora
+  - @uc:operazione-rettangolo-intestazione
+  - @uc:operazione-rettangolo-corpo
+  - @uc:operazione-rettangolo-appendice
+  - @uc:operazione-rettangolo-numero
+  - @uc:operazione-rettangolo-data
+  - @uc:operazione-rettangolo-ragione-fornitore
+  - @uc:operazione-rettangolo-partitaIVA-fornitore
+  - @uc:operazione-rettangolo-indirizzo-fornitore
+  - @uc:operazione-rettangolo-ragione-destinatario
+  - @uc:operazione-rettangolo-partitaIVA-destinatario
+  - @uc:operazione-rettangolo-indirizzo-destinatario
+  - @uc:operazione-rettangolo-prima-unita
+  - @uc:operazione-rettangolo-prima-quantita
+  - @uc:operazione-rettangolo-primo-codice
+  - @uc:operazione-rettangolo-prima-descrizione
+  - @uc:operazione-rettangolo-primo-riferimento
+  - @uc:operazione-rettangolo-riga-campione
+  - @uc:operazione-rettangolo-intestazione-colonne
+  - @uc:operazione-rettangolo-colli
+  - @uc:operazione-rettangolo-note
+  - @uc:operazione-rettangolo-peso-lordo
+  - @uc:operazione-rettangolo-peso-netto
 - Trigger: Il personale vuole operare sui rettangoli per creare il template
 
 ====== Operazione sul rettangolo ancora<uc:operazione-rettangolo-ancora>
@@ -584,7 +610,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale effettua un'operazione sul rettangolo dell'ancora
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Generalizzazioni:
   - @uc:creazione-rettangolo-ancora
@@ -600,7 +626,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale inserisce il nome dell'ancora -> Vedi @uc:inserimento-nome-ancora
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha creato il rettangolo dell'ancora
@@ -615,8 +641,9 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale inserisce il nome dell'ancora
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
- - Il personale sta creando il rettangolo dell'ancora -> Vedi @uc:creazione-rettangolo-ancora
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
+ - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
+ - Il personale ha creato il rettangolo dell'ancora -> Vedi @uc:creazione-rettangolo-ancora
 - Postcondizioni:
  - Il personale ha inserito il nome dell'ancora
 - Trigger: Il personale vuole inserire il nome dell'ancora
@@ -628,7 +655,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale modifica il rettangolo dell'ancora
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo dell'ancora è stato creato -> Vedi @uc:creazione-rettangolo-ancora
 - Postcondizioni:
@@ -642,7 +669,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale elimina il rettangolo dell'ancora
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo dell'ancora è stato creato -> Vedi @uc:creazione-rettangolo-ancora
 - Postcondizioni:
@@ -656,7 +683,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale effettua un'operazione sul rettangolo dell'intestazione
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Generalizzazioni:
   - @uc:creazione-rettangolo-intestazione
@@ -671,7 +698,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale crea il rettangolo dell'intestazione
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha creato il rettangolo dell'intestazione
@@ -684,7 +711,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale modifica il rettangolo dell'intestazione
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo dell'intestazione è stato creato -> Vedi @uc:creazione-rettangolo-intestazione
 - Postcondizioni:
@@ -698,7 +725,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale elimina il rettangolo dell'intestazione
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo dell'intestazione è stato creato -> Vedi @uc:creazione-rettangolo-intestazione
 - Postcondizioni:
@@ -712,7 +739,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale effettua un'operazione sul rettangolo del corpo
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Generalizzazioni:
   - @uc:creazione-rettangolo-corpo
@@ -727,7 +754,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale crea il rettangolo del corpo
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha creato il rettangolo del corpo
@@ -740,7 +767,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale modifica il rettangolo del corpo
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo del corpo è stato creato -> Vedi @uc:creazione-rettangolo-corpo
 - Postcondizioni:
@@ -754,7 +781,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale elimina il rettangolo del corpo
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo del corpo è stato creato -> Vedi @uc:creazione-rettangolo-corpo
 - Postcondizioni:
@@ -768,7 +795,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale effettua un'operazione sul rettangolo dell'appendice
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Generalizzazioni:
   - @uc:creazione-rettangolo-appendice
@@ -783,7 +810,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale crea il rettangolo dell'appendice
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha creato il rettangolo dell'appendice
@@ -796,7 +823,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale modifica il rettangolo dell'appendice
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo dell'appendice è stato creato -> Vedi @uc:creazione-rettangolo-appendice
 - Postcondizioni:
@@ -810,7 +837,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale elimina il rettangolo dell'appendice
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo dell'appendice è stato creato -> Vedi @uc:creazione-rettangolo-appendice
 - Postcondizioni:
@@ -824,7 +851,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale effettua un'operazione sul rettangolo del numero DDT
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Generalizzazioni:
   - @uc:creazione-rettangolo-numero
@@ -839,7 +866,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale crea il rettangolo del numero DDT
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha creato il rettangolo del numero DDT
@@ -852,7 +879,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale modifica il rettangolo del numero DDT
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo del numero del DDT è stato creato -> Vedi @uc:creazione-rettangolo-numero
 - Postcondizioni:
@@ -866,7 +893,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale elimina il rettangolo del numero DDT
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo del numero del DDT è stato creato -> Vedi @uc:creazione-rettangolo-numero
 - Postcondizioni:
@@ -880,7 +907,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale effettua un'operazione sul rettangolo della data DDT
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Generalizzazioni:
   - @uc:creazione-rettangolo-data
@@ -895,7 +922,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale crea il rettangolo della data DDT
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha creato il rettangolo della data DDT
@@ -908,7 +935,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale modifica il rettangolo della data DDT
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo della data del DDT è stato creato -> Vedi @uc:creazione-rettangolo-data
 - Postcondizioni:
@@ -922,7 +949,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale elimina il rettangolo della data DDT
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo della data del DDT è stato creato -> Vedi @uc:creazione-rettangolo-data
 - Postcondizioni:
@@ -936,7 +963,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale effettua un'operazione sul rettangolo della ragione sociale del fornitore
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Generalizzazioni:
   - @uc:creazione-rettangolo-ragione-fornitore
@@ -951,7 +978,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale crea il rettangolo della ragione sociale del fornitore
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha creato il rettangolo della ragione sociale del fornitore
@@ -964,7 +991,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale modifica il rettangolo della ragione sociale del fornitore
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo della ragione sociale del fornitore è stato creato -> Vedi @uc:creazione-rettangolo-ragione-fornitore
 - Postcondizioni:
@@ -978,7 +1005,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale elimina il rettangolo della ragione sociale del fornitore
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo della ragione sociale del fornitore è stato creato -> Vedi @uc:creazione-rettangolo-ragione-fornitore
 - Postcondizioni:
@@ -992,7 +1019,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale effettua un'operazione sul rettangolo della partita IVA del fornitore
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Generalizzazioni:
   - @uc:creazione-rettangolo-partitaIVA-fornitore
@@ -1007,7 +1034,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale crea il rettangolo della partita IVA del fornitore
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha creato il rettangolo della partita IVA del fornitore
@@ -1020,7 +1047,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale modifica il rettangolo della partita IVA del fornitore
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo della partita IVA del fornitore è stato creato -> Vedi @uc:creazione-rettangolo-partitaIVA-fornitore
 - Postcondizioni:
@@ -1034,7 +1061,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale elimina il rettangolo della partita IVA del fornitore
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo della partita IVA del fornitore è stato creato -> Vedi @uc:creazione-rettangolo-partitaIVA-fornitore
 - Postcondizioni:
@@ -1048,7 +1075,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale effettua un'operazione sul rettangolo dell'indirizzo del fornitore
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Generalizzazioni:
   - @uc:creazione-rettangolo-indirizzo-fornitore
@@ -1063,7 +1090,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale crea il rettangolo dell'indirizzo del fornitore
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha creato il rettangolo dell'indirizzo del fornitore
@@ -1076,7 +1103,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale modifica il rettangolo dell'indirizzo del fornitore
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo dell'indirizzo del fornitore è stato creato -> Vedi @uc:creazione-rettangolo-indirizzo-fornitore
 - Postcondizioni:
@@ -1090,7 +1117,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale elimina il rettangolo dell'indirizzo del fornitore
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo dell'indirizzo del fornitore è stato creato -> Vedi @uc:creazione-rettangolo-indirizzo-fornitore
 - Postcondizioni:
@@ -1104,7 +1131,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale effettua un'operazione sul rettangolo della ragione sociale del destinatario
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Generalizzazioni:
   - @uc:creazione-rettangolo-ragione-destinatario
@@ -1119,7 +1146,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale crea il rettangolo della ragione sociale del destinatario
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha creato il rettangolo della ragione sociale del destinatario
@@ -1132,7 +1159,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale modifica il rettangolo della ragione sociale del destinatario
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo della ragione sociale del destinatario è stato creato -> Vedi @uc:creazione-rettangolo-ragione-destinatario
 - Postcondizioni:
@@ -1146,7 +1173,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale elimina il rettangolo della ragione sociale del destinatario
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo della ragione sociale del destinatario è stato creato -> Vedi @uc:creazione-rettangolo-ragione-destinatario
 - Postcondizioni:
@@ -1160,7 +1187,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale effettua un'operazione sul rettangolo della partita IVA del destinatario
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Generalizzazioni:
   - @uc:creazione-rettangolo-partitaIVA-destinatario
@@ -1175,7 +1202,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale crea il rettangolo della partita IVA del destinatario
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha creato il rettangolo della partita IVA del destinatario
@@ -1188,7 +1215,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale modifica il rettangolo della partita IVA del destinatario
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo della partita IVA del destinatario è stato creato -> Vedi @uc:creazione-rettangolo-partitaIVA-destinatario
 - Postcondizioni:
@@ -1202,7 +1229,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale elimina il rettangolo della partita IVA del destinatario
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo della partita IVA del destinatario è stato creato -> Vedi @uc:creazione-rettangolo-partitaIVA-destinatario
 - Postcondizioni:
@@ -1216,7 +1243,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale effettua un'operazione sul rettangolo dell'indirizzo del destinatario
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Generalizzazioni:
   - @uc:creazione-rettangolo-indirizzo-destinatario
@@ -1231,7 +1258,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale crea il rettangolo dell'indirizzo del destinatario
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha creato il rettangolo dell'indirizzo del destinatario
@@ -1244,7 +1271,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale modifica il rettangolo dell'indirizzo del destinatario
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo dell'indirizzo del destinatario è stato creato -> Vedi @uc:creazione-rettangolo-indirizzo-destinatario
 - Postcondizioni:
@@ -1258,7 +1285,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale elimina il rettangolo dell'indirizzo del destinatario
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo dell'indirizzo del destinatario è stato creato -> Vedi @uc:creazione-rettangolo-indirizzo-destinatario
 - Postcondizioni:
@@ -1272,7 +1299,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale effettua un'operazione sul rettangolo della prima unità
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Generalizzazioni:
   - @uc:creazione-rettangolo-prima-unita
@@ -1287,7 +1314,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale crea il rettangolo della prima unità
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha creato il rettangolo della prima unità
@@ -1300,7 +1327,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale modifica il rettangolo della prima unità
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo della prima unità del DDT è stato creato -> Vedi @uc:creazione-rettangolo-prima-unita
 - Postcondizioni:
@@ -1314,7 +1341,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale elimina il rettangolo della prima unità
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo della prima unità del DDT è stato creato -> Vedi @uc:creazione-rettangolo-prima-unita
 - Postcondizioni:
@@ -1328,7 +1355,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale effettua un'operazione sul rettangolo della prima quantità
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Generalizzazioni:
   - @uc:creazione-rettangolo-prima-quantita
@@ -1343,7 +1370,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale crea il rettangolo della prima quantità
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha creato il rettangolo della prima quantità
@@ -1356,7 +1383,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale modifica il rettangolo della prima quantità
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo della prima quantità del DDT è stato creato -> Vedi @uc:creazione-rettangolo-prima-quantita
 - Postcondizioni:
@@ -1370,7 +1397,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale elimina il rettangolo della prima quantità
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo della prima quantità del DDT è stato creato -> Vedi @uc:creazione-rettangolo-prima-quantita
 - Postcondizioni:
@@ -1384,7 +1411,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale effettua un'operazione sul rettangolo del primo codice
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Generalizzazioni:
   - @uc:creazione-rettangolo-primo-codice
@@ -1399,7 +1426,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale crea il rettangolo del primo codice
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha creato il rettangolo del primo codice
@@ -1412,7 +1439,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale modifica il rettangolo del primo codice
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo del primo codice del DDT è stato creato -> Vedi @uc:creazione-rettangolo-primo-codice
 - Postcondizioni:
@@ -1426,7 +1453,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale elimina il rettangolo del primo codice
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo del primo codice del DDT è stato creato -> Vedi @uc:creazione-rettangolo-primo-codice
 - Postcondizioni:
@@ -1440,7 +1467,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale effettua un'operazione sul rettangolo della prima descrizione
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Generalizzazioni:
   - @uc:creazione-rettangolo-prima-descrizione
@@ -1455,7 +1482,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale crea il rettangolo della prima descrizione
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha creato il rettangolo della prima descrizione
@@ -1468,7 +1495,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale modifica il rettangolo della prima descrizione
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo della prima descrizione del DDT è stato creato -> Vedi @uc:creazione-rettangolo-prima-descrizione
 - Postcondizioni:
@@ -1482,7 +1509,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale elimina il rettangolo della prima descrizione
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo della prima descrizione del DDT è stato creato -> Vedi @uc:creazione-rettangolo-prima-descrizione
 - Postcondizioni:
@@ -1496,7 +1523,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale effettua un'operazione sul rettangolo del primo riferimento al codice ordine
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Generalizzazioni:
   - @uc:creazione-rettangolo-primo-riferimento
@@ -1511,7 +1538,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale crea il rettangolo del primo riferimento al codice ordine
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha creato il rettangolo del primo riferimento al codice ordine
@@ -1524,7 +1551,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale modifica il rettangolo del primo riferimento al codice ordine
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo del primo riferimento codice ordine del DDT è stato creato -> Vedi @uc:creazione-rettangolo-primo-riferimento
 - Postcondizioni:
@@ -1538,7 +1565,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale elimina il rettangolo del primo riferimento al codice ordine
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo del primo riferimento codice ordine del DDT è stato creato -> Vedi @uc:creazione-rettangolo-primo-riferimento
 - Postcondizioni:
@@ -1552,7 +1579,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale effettua un'operazione sul rettangolo della riga campione
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Generalizzazioni:
   - @uc:creazione-rettangolo-riga-campione
@@ -1567,7 +1594,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale crea il rettangolo della riga campione
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha creato il rettangolo della riga campione
@@ -1580,7 +1607,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale modifica il rettangolo della riga campione
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo della riga campione del DDT è stato creato -> Vedi @uc:creazione-rettangolo-riga-campione
 - Postcondizioni:
@@ -1594,7 +1621,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale elimina il rettangolo della riga campione
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo della riga campione del DDT è stato creato -> Vedi @uc:creazione-rettangolo-riga-campione
 - Postcondizioni:
@@ -1608,7 +1635,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale effettua un'operazione sul rettangolo dell'intestazione colonne
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Generalizzazioni:
   - @uc:creazione-rettangolo-intestazione-colonne
@@ -1623,7 +1650,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale crea il rettangolo dell'intestazione colonne
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha creato il rettangolo dell'intestazione colonne
@@ -1636,7 +1663,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale modifica il rettangolo dell'intestazione colonne
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo dell'intestazione colonne del DDT è stato creato -> Vedi @uc:creazione-rettangolo-intestazione-colonne
 - Postcondizioni:
@@ -1650,7 +1677,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale elimina il rettangolo dell'intestazione colonne
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo dell'intestazione colonne del DDT è stato creato -> Vedi @uc:creazione-rettangolo-intestazione-colonne
 - Postcondizioni:
@@ -1664,7 +1691,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale effettua un'operazione sul rettangolo del numero colli
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Generalizzazioni:
   - @uc:creazione-rettangolo-colli
@@ -1679,7 +1706,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale crea il rettangolo del numero colli
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha creato il rettangolo del numero colli
@@ -1692,7 +1719,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale modifica il rettangolo del numero colli
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo del numero colli del DDT è stato creato -> Vedi @uc:creazione-rettangolo-colli
 - Postcondizioni:
@@ -1706,7 +1733,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale elimina il rettangolo del numero colli
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo del numero colli del DDT è stato creato -> Vedi @uc:creazione-rettangolo-colli
 - Postcondizioni:
@@ -1720,7 +1747,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale effettua un'operazione sul rettangolo delle note
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Generalizzazioni:
   - @uc:creazione-rettangolo-note
@@ -1735,7 +1762,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale crea il rettangolo delle note
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha creato il rettangolo delle note
@@ -1748,7 +1775,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale modifica il rettangolo delle note
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo delle note del DDT è stato creato -> Vedi @uc:creazione-rettangolo-note
 - Postcondizioni:
@@ -1762,7 +1789,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale elimina il rettangolo delle note
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo delle note del DDT è stato creato -> Vedi @uc:creazione-rettangolo-note
 - Postcondizioni:
@@ -1776,7 +1803,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale effettua un'operazione sul rettangolo del peso lordo
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Generalizzazioni:
   - @uc:creazione-rettangolo-peso-lordo
@@ -1791,7 +1818,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale crea il rettangolo del peso lordo
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha creato il rettangolo del peso lordo
@@ -1804,7 +1831,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale modifica il rettangolo del peso lordo
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo del peso lordo del DDT è stato creato -> Vedi @uc:creazione-rettangolo-peso-lordo
 - Postcondizioni:
@@ -1818,7 +1845,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale elimina il rettangolo del peso lordo
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo del peso lordo del DDT è stato creato -> Vedi @uc:creazione-rettangolo-peso-lordo
 - Postcondizioni:
@@ -1832,7 +1859,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale effettua un'operazione sul rettangolo del peso netto
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Generalizzazioni:
   - @uc:creazione-rettangolo-peso-netto
@@ -1847,7 +1874,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale crea il rettangolo del peso netto
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha creato il rettangolo del peso netto
@@ -1860,7 +1887,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale modifica il rettangolo del peso netto
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo del peso netto del DDT è stato creato -> Vedi @uc:creazione-rettangolo-peso-netto
 - Postcondizioni:
@@ -1874,21 +1901,22 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale elimina il rettangolo del peso netto
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il rettangolo del peso netto del DDT è stato creato -> Vedi @uc:creazione-rettangolo-peso-netto
 - Postcondizioni:
  - Il personale ha eliminato il rettangolo del peso netto
 - Trigger: Il personale vuole eliminare il rettangolo del peso netto
 
-===== Inserimento parole per il riepilogo<uc:inserimento-parole-riepilogo>
+===== Inserimento parole riepilogo<uc:inserimento-parole-riepilogo>
 
 - Attore principale: Personale
 - Scenario principale:
  + Il personale inserisce le parole per il riepilogo
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
+ - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha inserito le parole per il riepilogo
 - Trigger: Il personale vuole inserire le parole per il riepilogo del template
@@ -1900,7 +1928,8 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale inserisce le parole da ignorare
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
+ - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha inserito le parole da ignorare
 - Trigger: Il personale vuole inserire le parole da ignorare per il template
@@ -1912,7 +1941,8 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale indica la posizione della quantità
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
+ - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha indicato la posizione della quantità
 - Trigger: Il personale vuole indicare la posizione della quantità nel template
@@ -1930,7 +1960,8 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale effettua il salvataggio del template
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
+ - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Generalizzazioni:
   - @uc:salvataggio-template-nuovo
   - @uc:salvataggio-template-esistente
@@ -1943,7 +1974,8 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale salva un template che non esiste
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
+ - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha salvato il nuovo template
 - Trigger: Il personale vuole salvare un template che non esiste
@@ -1955,7 +1987,8 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale effettua il salvataggio di un template esistente
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
+ - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Generalizzazioni:
   - @uc:sovrascrittura-template
   - @uc:creazione-variante-template
@@ -1968,7 +2001,8 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale sovrascrive un template esistente
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
+ - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha sovrascritto il template esistente
 - Trigger: Il personale vuole sovrascrivere un template esistente
@@ -1980,7 +2014,8 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale crea una variante del template
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
+ - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha creato una variante del template
 - Trigger: Il personale vuole creare una variante del template per un altro fornitore
@@ -1999,7 +2034,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale specifica cosa prendere dopo la parola chiave -> Vedi @uc:inserimento-cosa-prendere
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha configurato le parole chiave per il template
@@ -2021,7 +2056,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale inserisce le parole chiave
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha inserito le parole chiave
@@ -2034,7 +2069,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale specifica cosa prendere dopo la parola chiave
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha specificato cosa prendere dopo la parola chiave
@@ -2047,7 +2082,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale configura le parole chiave per il codice
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha configurato le parole chiave per il codice
@@ -2060,7 +2095,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale configura le parole chiave per la descrizione
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha configurato le parole chiave per la descrizione
@@ -2073,7 +2108,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale configura le parole chiave per l'unità
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha configurato le parole chiave per l'unità
@@ -2086,7 +2121,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale configura le parole chiave per la quantità
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha configurato le parole chiave per la quantità
@@ -2100,7 +2135,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale specifica se il riferimento è unico o diverso per ogni articolo -> Vedi @uc:specificare-riferimento
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
 - Postcondizioni:
  - Il personale ha configurato le parole chiave per il riferimento al codice ordine
@@ -2115,7 +2150,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  + Il personale specifica se il riferimento al codice ordine è unico oppure diverso per ogni articolo
 - Precondizioni:
  - Il sistema è online
- - Il personale si trova nell'interfaccia di creazione template
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
  - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
  - Il personale sta configurando le parole chiave per il riferimento al codice ordine -> Vedi @uc:configurazione-parole-chiave-riferimento
 - Postcondizioni:

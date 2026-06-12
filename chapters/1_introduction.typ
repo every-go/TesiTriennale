@@ -22,9 +22,9 @@ L'obiettivo principale dell'azienda è di innovare le imprese riducendo tempi, c
 
 == Il progetto
 
-Il lavoro si concentra sulla sostituzione del sistema attualmente operativo utilizzato per l'estrazione di dati dai Documenti di Trasporto (#gl("DDT", display: "DDT")), dipendente da #gl("Mistral", display: "Mistral") per la comprensione documentale. La soluzione esistente, pur funzionante, comporta costi operativi ricorrenti e dipendenza da LLM.
+Il lavoro si concentra sulla sostituzione del sistema attualmente operativo utilizzato per l'estrazione di dati dai Documenti di Trasporto (#gl("DDT", display: "DDT")), dipendente da Mistral per la comprensione documentale. La soluzione esistente, pur funzionante, comporta costi operativi ricorrenti e dipendenza da #gl("llm", display: "LLM").
 
-Lo scopo è quello di definire e sviluppare una pipeline OCR locale per acquisire i dati, classificare i layout ed estrarre dati strutturati dai DDT senza dipendere da #gl("API", display: "API") esterne a pagamento. La pipeline prevede più fasi sequenziali: acquisizione e preprocessing delle immagini, riconoscimento ottico del testo normalizzazione dei valori estratti e visualizzazione degli stessi.
+Lo scopo è quello di definire e sviluppare una pipeline OCR locale per acquisire i dati, classificare i layout ed estrarre dati strutturati dai DDT senza dipendere da #gl("API", display: "API") esterne a pagamento. La pipeline prevede più fasi sequenziali: acquisizione e preprocessing delle immagini, riconoscimento ottico del testo, normalizzazione dei valori estratti e visualizzazione degli stessi.
 
 Nello specifico, i dati da estrarre, ove presenti, sono:
 - Ragione sociale del fornitore e del destinatario
@@ -32,7 +32,7 @@ Nello specifico, i dati da estrarre, ove presenti, sono:
 - Indirizzo del fornitore e del destinatario
 - Codice degli articoli
 - Descrizione degli articoli
-- Metro di misura di unità degli articoli
+- Unità di misura degli articoli
 - Quantità degli articoli
 - Riferimento al codice ordine degli articoli
 - Annotazioni presenti nel DDT
