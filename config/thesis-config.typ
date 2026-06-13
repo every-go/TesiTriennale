@@ -23,8 +23,8 @@
   // LaTeX look https://typst.app/docs/guides/guide-for-latex-users#latex-look
   set page(margin: 1.75in, numbering: myNumbering, number-align: center)
   set par(
-    leading: 0.55em,
-    spacing: 0.55em,
+    leading: 0.5em,
+    spacing: 0.5em,
     justify: true,
   )
   set text(font: "New Computer Modern", lang: myLang)
