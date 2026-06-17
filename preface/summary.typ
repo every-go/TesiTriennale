@@ -28,8 +28,9 @@ Il progetto è molto utile poiché riduce i costi operativi di un'azienda, evita
 / #link(<cap:descrizione-stage>)[Il secondo capitolo]: descrive l'azienda, il progetto e l'organizzazione del lavoro, definendo gli obiettivi e analizzando i rischi;
 / #link(<cap:analisi-requisiti>)[Il terzo capitolo]: descrive l'analisi dei requisiti del progetto, indicando un'analisi degli utenti, i casi d'uso e il tracciamento dei requisiti;
 / #link(<cap:introduzione-teorica>)[Il quarto capitolo]: descrive le tecnologie esistenti per risolvere i problemi indicando gli aspetti teorici alla base, gli strumenti che sono stati scelti e con quali criteri;
-/ #link(<cap:descrizione-lavoro>)[Il quinto capitolo]: descrive le problematiche riscontrate e le soluzioni adottate;
-/ #link(<cap:conclusioni>)[Il sesto capitolo]: raggruppa le conclusioni tratte dallo svolgimento del progetto.
+/ #link(<cap:approcci>)[Il quinto capitolo]: descrive i primi approcci allo svolgimento del progetto;
+/ #link(<cap:interfaccia>)[Il sesto capitolo]: descrive la costruzione di un'interfaccia grafica e delle modalità attuali per lo svolgimento del progetto, descrivendo brevemente la modalità dei test effettuati per velocizzare il processo;
+/ #link(<cap:conclusioni>)[Il settimo capitolo]: raggruppa le conclusioni tratte dallo svolgimento del progetto.
 #linebreak()
 #text(24pt, weight: "semibold", "Convenzioni tipografiche")
 #linebreak()

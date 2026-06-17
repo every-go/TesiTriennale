@@ -20,8 +20,9 @@
 #include "chapters/2_stage-description.typ"
 #include "chapters/3_requirements.typ"
 #include "chapters/4_introduzione-teorica.typ"
-#include "chapters/5_descrizione-lavoro.typ"
-#include "chapters/6_conclusion.typ"
+#include "chapters/5_approcci.typ"
+#include "chapters/6_interfaccia_logic.typ"
+#include "chapters/7_conclusion.typ"
 
 //#include "docs/esempi.typ"
 

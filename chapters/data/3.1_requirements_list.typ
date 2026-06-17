@@ -993,6 +993,27 @@
   mandatory+=1
   FR.push((
     (m + str(mandatory)),
+    [Il personale deve poter ruotare il PDF.],
+    [@uc:rotazione]
+  ))
+
+  mandatory+=1
+  FR.push((
+    (m + str(mandatory)),
+    [Il personale deve poter ruotare il PDF a sinistra.],
+    [@uc:rotazione-sx]
+  ))
+
+  mandatory+=1
+  FR.push((
+    (m + str(mandatory)),
+    [Il personale deve poter ruotare il PDF a destra.],
+    [@uc:rotazione-dx]
+  ))
+
+  mandatory+=1
+  FR.push((
+    (m + str(mandatory)),
     [Il sistema deve consentire la classificazione del template.],
     [Piano di lavoro]
   ))

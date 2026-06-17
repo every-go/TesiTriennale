@@ -46,7 +46,7 @@ Ogni rischio è stato analizzato tenendo conto sia delle caratteristiche general
 
 === R01: Incompletezza o ambiguità dei requisiti espressi nel piano di lavoro
 
-#figure(caption: "Rischio R01")[
+#figure(caption: "Rischio R01.")[
     #table(
         columns: (0.28fr, 0.72fr),
         inset: 3pt,
@@ -63,7 +63,7 @@ Ogni rischio è stato analizzato tenendo conto sia delle caratteristiche general
 
 === R02: Sovradimensionamento del progetto rispetto alle capacità personali
 
-#figure(caption: "Rischio R02")[
+#figure(caption: "Rischio R02.")[
     #table(
         columns: (0.28fr, 0.72fr),
         inset: 3pt,
@@ -80,7 +80,7 @@ Ogni rischio è stato analizzato tenendo conto sia delle caratteristiche general
 
 === R03: Difficoltà nel coordinamento interno
 
-#figure(caption: "Rischio R03")[
+#figure(caption: "Rischio R03.")[
   #table(
     columns: (0.28fr, 0.72fr),
     inset: 3pt,
@@ -97,7 +97,7 @@ Ogni rischio è stato analizzato tenendo conto sia delle caratteristiche general
 
 === R04: Difficoltà nell'apprendimento delle tecnologie
 
-#figure(caption: "Rischio R04")[
+#figure(caption: "Rischio R04.")[
   #table(
     columns: (0.28fr, 0.72fr),
     inset: 3pt,
@@ -114,7 +114,7 @@ Ogni rischio è stato analizzato tenendo conto sia delle caratteristiche general
 
 === R05: Incompatibilità delle tecnologie scelte con l'infrastruttura esistente
 
-#figure(caption: "Rischio R05")[
+#figure(caption: "Rischio R05.")[
   #table(
     columns: (0.28fr, 0.72fr),
     inset: 3pt,
@@ -131,7 +131,7 @@ Ogni rischio è stato analizzato tenendo conto sia delle caratteristiche general
 
 === R06: Gestione inadeguata dei casi limite nell'estrazione dati
 
-#figure(caption: "Rischio R06")[
+#figure(caption: "Rischio R06.")[
   #table(
     columns: (0.28fr, 0.72fr),
     inset: 3pt,
@@ -148,7 +148,7 @@ Ogni rischio è stato analizzato tenendo conto sia delle caratteristiche general
 
 === R07: Variabilità dei layout dei DDT tra fornitori diversi
 
-#figure(caption: "Rischio R07")[
+#figure(caption: "Rischio R07.")[
   #table(
     columns: (0.28fr, 0.72fr),
     inset: 3pt,
@@ -165,7 +165,7 @@ Ogni rischio è stato analizzato tenendo conto sia delle caratteristiche general
 
 === R08: Variabilità dei layout dei DDT dello stesso fornitore
 
-#figure(caption: "Rischio R08")[
+#figure(caption: "Rischio R08.")[
   #table(
     columns: (0.28fr, 0.72fr),
     inset: 3pt,
@@ -182,7 +182,7 @@ Ogni rischio è stato analizzato tenendo conto sia delle caratteristiche general
 
 === R09: Qualità insufficiente delle scansioni
 
-#figure(caption: "Rischio R09")[
+#figure(caption: "Rischio R09.")[
   #table(
     columns: (0.28fr, 0.72fr),
     inset: 3pt,
@@ -199,7 +199,7 @@ Ogni rischio è stato analizzato tenendo conto sia delle caratteristiche general
 
 === R10: Accuratezza insufficiente del motore OCR
 
-#figure(caption: "Rischio R10")[
+#figure(caption: "Rischio R10.")[
   #table(
     columns: (0.28fr, 0.72fr),
     inset: 3pt,

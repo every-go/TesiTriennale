@@ -29,7 +29,7 @@ Denominerò l'attore "Personale", per riferirsi al personale dell'azienda che es
 
 Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabella, salvo i casi in cui uno specifico campo non risulti rilevante.
 
-#figure(caption: "Campi dei Casi d'Uso")[
+#figure(caption: "Campi dei Casi d'Uso.")[
   #table(
     columns: (0.28fr, 0.72fr),
     inset: 8pt,
@@ -100,7 +100,7 @@ Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabe
 
 #img(
   "UC/UC1.png",
-  caption: [UC1: Caricamento DDT],
+  caption: [UC1: Caricamento DDT.],
   width: 70%,
   alt: "Questo diagramma dei casi d'uso rappresenta il personale che carica un DDT."
 )<fig:uc1>
@@ -119,7 +119,7 @@ Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabe
 
 #img(
   "UC/UC2.png",
-  caption: [UC2: Visualizza dati estrazione],
+  caption: [UC2: Visualizza dati estrazione.],
   width: 90%,
   alt: "Questo diagramma dei casi d'uso rappresenta il personale che visualizza i dati estratti. Quest'azione include anche la visualizzazione dei dati del fornitore, la visualizzazione dei dati del destinatario, la visualizzazione della lista degli articoli, la visualizzazione dei dati dell'appendice, la visualizzazione del numero del DDT e della data."
 )<fig:uc2>
@@ -150,7 +150,7 @@ Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabe
 
 #img(
   "UC/UC2.1.png",
-  caption: [UC2.1: Visualizza dati fornitore],
+  caption: [UC2.1: Visualizza dati fornitore.],
   width: 75%,
   alt: "Questo diagramma dei casi d'uso mostra il personale che visualizza i dati del fornitore, nello specifico visualizza la ragione sociale, l'indirizzo e la partita IVA."
 )<fig:uc2.1>
@@ -218,7 +218,7 @@ Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabe
 
 #img(
   "UC/UC2.2.png",
-  caption: [UC2.2: Visualizza dati destinatario],
+  caption: [UC2.2: Visualizza dati destinatario.],
   width: 75%,
   alt: "Questo diagramma dei casi d'uso mostra il personale che visualizza i dati del destinatario, specificatamente visualizza la ragione sociale, l'indirizzo e la partita IVA."
 )<fig:uc2.2>
@@ -286,7 +286,7 @@ Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabe
 
 #img(
   "UC/UC2.3.png",
-  caption: [UC2.3: Visualizza lista articoli],
+  caption: [UC2.3: Visualizza lista articoli.],
   alt: "Questo diagramma dei casi d'uso mostra il personale che visualizza la lista degli articoli, la cui azione include il visualizzare il singolo articolo, Quest'ultima include la visualizzazione del codice dell'articolo, la sua descrizione, la quantità, il riferimento al codice dell'ordine e la misura di unità dell'articolo."
 )<fig:uc2.3>
 
@@ -407,7 +407,7 @@ Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabe
 
 #img(
   "UC/UC2.4.png",
-  caption: [UC2.4: Visualizza dati appendice documento],
+  caption: [UC2.4: Visualizza dati appendice documento.],
   alt: "Questo diagramma dei casi d'uso mostra il personale che visualizza i dati dell'appendice del documento. Questo include la visualizzazione delle note (annotazioni), la visualizzazione del numero colli, la visualizzazione del peso netto e la visualizzazione del peso lordo."
 )<fig:uc2.4>
 
@@ -514,8 +514,8 @@ Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabe
 
 #img(
   "UC/UC3.png",
-  caption: [UC3: Creazione template],
-  alt: "Questo diagramma dei casi d'uso mostra il caso d'uso della creazione del template. Mostra le inclusione dei casi d'uso di caricamento PDF di riferimento, l'inserimento del nome del fornitore, le operazioni sui rettangoli, l'inserimento delle parole di riepilogo, l'inserimento delle parole da ignorare, l'indicazione della posizione della quantità e il salvataggio del template."
+  caption: [UC3: Creazione template.],
+  alt: "Questo diagramma dei casi d'uso mostra il caso d'uso della creazione del template. Mostra le inclusione dei casi d'uso di caricamento PDF di riferimento, l'inserimento del nome del fornitore, le operazioni sui rettangoli, l'inserimento delle parole di riepilogo, l'inserimento delle parole da ignorare, l'indicazione della posizione della quantità, il salvataggio del template, la configurazione delle parole chiave e la rotazione del PDF."
 )
 
 - Attore principale: Personale
@@ -528,6 +528,7 @@ Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabe
  + Il personale indica la posizione della quantità -> Vedi @uc:indicazione-quantita
  + Il personale salva il template -> Vedi @uc:salvataggio-template
  + Il personale configura le parole chiave -> Vedi @uc:configurazione-parole-chiave
+ + Il personale ruota, se necessario, il PDF per creare il template -> Vedi @uc:rotazione
 - Precondizioni:
  - Il sistema è online
 - Postcondizioni:
@@ -541,6 +542,7 @@ Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabe
   - @uc:indicazione-quantita
   - @uc:salvataggio-template
   - @uc:configurazione-parole-chiave
+  - @uc:rotazione
 - Trigger: Il personale vuole creare un nuovo template per il DDT
 
 ===== Caricamento PDF di riferimento<uc:caricamento-pdf>
@@ -574,7 +576,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
 
 #img(
   "UC/UC3.3.png",
-  caption: [UC3.3: Operazioni sui rettangoli],
+  caption: [UC3.3: Operazioni sui rettangoli.],
   alt: "Questo diagramma rappresenta le operazioni possibili sui rettangoli. Infatti, le operazioni sul rettangolo ancora si generalizzano in creazione, modifica ed eliminazione. Nel caso specifico rappresentato in figura, la creazione del rettangolo ancora include l'inserimento del nome dell'ancora."
 )
 
@@ -1959,7 +1961,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
 
 #img(
   "UC/UC3.7.png",
-  caption: [UC3.7: Salvataggio template],
+  caption: [UC3.7: Salvataggio template.],
   alt: "Questo diagramma dei casi d'uso rappresenta il caso d'uso di salvataggio di un template. Si generalizza nei casi d'uso di salvataggio di template nuovo ed esistente. Quest'ultimo si generalizza ulteriormente nella sovrascrittura del template esistente e nella creazione della variante del template."
 )
 
@@ -2032,7 +2034,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
 
 #img(
   "UC/UC3.8.png",
-  caption: [UC3.8: Configurazione parole chiave],
+  caption: [UC3.8: Configurazione parole chiave.],
   alt: "Questo diagramma dei casi d'uso mostra la configurazione delle parole chiave. Ogni configurazione include l'inserimento delle parole chiave e l'indicazione su cosa prendere dopo le parole. La configurazione si generalizza nella configurazione per i campi codice, descrizione, unità, quantità e riferimento codice ordine. Quest'ultimo include il caso d'uso per specificare se il riferimento è unico oppure diverso per ogni articolo."
 )
 
@@ -2165,6 +2167,55 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
  - Il personale ha specificato se il riferimento è unico o diverso per ogni articolo
 - Trigger: Il personale vuole specificare se il riferimento al codice ordine è unico oppure diverso per ogni articolo
 
+===== Rotazione PDF<uc:rotazione>
+
+#img(
+  "UC/UC3.9.png",
+  caption: [UC3.9: Rotazione PDF.],
+  alt: "Questo diagramma dei casi d'uso rappresenta il personale che vuole ruotare il PDF al momento della creazione del template. Questo caso d'uso si specializza nella rotazione del PDF a sinistra oppure nella rotazione del PDF a destra."
+)
+
+- Attore principale: Personale
+- Scenario principale:
+ + Il personale ruota il PDF per creare il template
+- Precondizioni:
+ - Il sistema è online
+ - Il personale sta creando il template -> Vedi @uc:creazione-template
+ - Il PDF di riferimento è stato caricato -> Vedi @uc:caricamento-pdf
+- Postcondizioni:
+ - Il personale ha ruotato il PDF
+- Specializzazioni:
+ - @uc:rotazione-sx
+ - @uc:rotazione-dx
+- Trigger: Il personale vuole ruotare il PDF per creare il template
+
+====== Rotazione PDF a sinistra<uc:rotazione-sx>
+
+- Attore principale: Personale
+- Scenario principale:
+ + Il personale seleziona l'opzione di rotazione a sinistra (antioraria)
+ + Il personale visualizza l'anteprima del PDF ruotato
+- Precondizioni:
+ - Il sistema è online
+ - Il personale sta creando il template → vedi @uc:creazione-template
+ - Il PDF di riferimento è stato caricato → vedi @uc:caricamento-pdf
+- Postcondizioni:
+ - Il PDF è ruotato di 90° in senso antiorario
+- Trigger: Il personale vuole ruotare il PDF a sinistra per migliorare l'allineamento del template
+
+====== Rotazione PDF a destra<uc:rotazione-dx>
+
+- Attore principale: Personale
+- Scenario principale:
+ + Il personale seleziona l'opzione di rotazione a destra (oraria)
+ + Il personale visualizza l'anteprima del PDF ruotato
+- Precondizioni:
+ - Il sistema è online
+ - Il personale sta creando il template → vedi @uc:creazione-template
+ - Il PDF di riferimento è stato caricato → vedi @uc:caricamento-pdf
+- Postcondizioni:
+ - Il PDF è ruotato di 90° in senso orario
+- Trigger: Il personale vuole ruotare il PDF a destra per migliorare l'allineamento del template
 ]
 
 == Tracciamento dei requisiti<cap:requirements-list>

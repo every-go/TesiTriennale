@@ -235,5 +235,21 @@
   title: Kubernetes Documentation
   author:
     - The Kubernetes Authors
-  url: https://kubernetes.io/docs
+  url: https://kubernetes.io/https://docs.astral.sh/uv/docs
+  accessed: 2026-07
+
+'uv':
+  type: web
+  title: UV documentation
+  author:
+    - astral-sh
+  url: https://docs.astral.sh/uv/
+  accessed: 2026-07
+
+'mypy':
+  type: web
+  title: Mypy Documentation
+  author:
+    - Jukka Lehtosalo and mypy contributors
+  url: https://mypy.readthedocs.io/en/stable/
   accessed: 2026-07

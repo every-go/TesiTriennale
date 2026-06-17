@@ -24,7 +24,7 @@ Le citazioni si fanno con \@ es. @models-and-fair-use.
 Il logo e i colori del testo sono gestiti dalla libreria Codly-languages.
 I blocchi di codice vanno sempre dentro una figure così da inserirli nell'indice e poterli riferire nel testo, ad esempio: @fig:codice-esempio.
 #figure(
-  caption: [Breve descrizione],
+  caption: [Breve descrizione.],
   ```c
   #include <stdio.h>
   
@@ -44,7 +44,7 @@ Se vuoi mostrare un semplice comando da inserire nella shell puoi disattivare te
 È possibile aggiungere uno script che compila il codice ad ogni push (`build`) e pubblica il PDF su GitHub pages (`deploy`). Questo script va inserito in `.github/workflows/main.yaml`\
 Nota bene: se scegli di usare dei font diversi da quelli inclusi in Typst o installati nel runner verrà usato un font di default.
 #figure(
-  caption: [GitHub CI],
+  caption: [GitHub CI.],
   ```yaml
   name: Build and deploy
   on:

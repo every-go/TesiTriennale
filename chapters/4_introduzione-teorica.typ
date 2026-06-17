@@ -21,7 +21,7 @@ Segue la suddivisione delle tecnologie in base al loro utilizzo.
 
 #img(
     "technologies/python.png",
-    caption: [Logo Python],
+    caption: [Logo Python.],
     alt: "",
     width: 15%,
     height: 15%
@@ -39,7 +39,7 @@ Per quanto riguarda la logica lato client, JavaScript è la prima scelta per qua
 È stato utilizzato nella sua forma vanilla, senza alcun framework aggiuntivo, in quanto la parte JavaScript dell'applicazione è limitata alla modellazione di figure per indicare la posizione dei campi nei DDT e ad alcune chiamate API, non richiedendo strutture più complesse.
 
 #figure(
-    caption: [Loghi tecnologie frontend],
+    caption: [Loghi tecnologie frontend.],
     stack(
         dir: ttb,
         spacing: 1em,
@@ -69,7 +69,7 @@ FastAPI offre funzionalità aggiuntive come la validazione automatica dei dati e
 Tuttavia, le API realizzate in questo progetto hanno una struttura semplice e non richiedono validazione complessa dei dati in ingresso, rendendo queste funzionalità superflue rispetto alla semplicità e alla velocità di configurazione offerta da Flask, motivazione per cui è stato scelto quest'ultimo.
 
 #figure(
-    caption: [Loghi tecnologie backend],
+    caption: [Loghi tecnologie backend.],
     stack(
         dir: ttb,
         spacing: 1em,
@@ -91,12 +91,12 @@ Docker rappresenta comunque la soluzione più adatta al contesto, in quanto è u
 
 #img(
     "technologies/docker.png",
-    caption: [Logo Docker],
+    caption: [Logo Docker.],
     alt: "",
     width: 25%
 )
 
-=== Librerie di supporto
+=== Librerie di supporto<cap:librerie-supporto>
 
 Diverse librerie svolgono funzioni specifiche e di supporto alla pipeline.
 
@@ -108,7 +108,7 @@ pdf2image@pdf2image è una libreria che converte le pagine di un PDF in immagini
 
 img2pdf@img2pdf è una libreria che converte immagini PNG o JPEG in un file PDF senza perdita di qualità, riassemblando le pagine elaborate nella fase di deskew e rimozione dei barcode.
 
-pdftotext e pdfinfo sono strumenti a riga di comando parte della suite Poppler@poppler, invocati tramite subprocess. pdftotext estrae il testo nativo di un PDF con le coordinate di ogni parola (modalità -bbox), permettendo di evitare l'OCR sui documenti digitali; pdfinfo restituisce invece i metadati del file, tra cui il numero di pagine.
+pdftotext e pdfinfo sono strumenti a riga di comando parte della suite Poppler@poppler, invocati tramite subprocess. pdftotext estrae il testo nativo di un PDF con le coordinate di ogni parola (modalità `-bbox`), permettendo di evitare l'estrazione solo tramite OCR sui documenti digitali; pdfinfo restituisce invece i metadati del file, tra cui il numero di pagine.
 
 OpenCV@opencv è una libreria di computer vision e image processing. Nel progetto svolge due ruoli distinti: il rilevamento e la rimozione di QR code e la segmentazione delle parole per riga tramite proiezione verticale dell'istogramma dei pixel nei wrapper del motore PaddleOCR.
 
@@ -116,7 +116,7 @@ pyzbar@pyzbar è una libreria Python per rilevare e decodificare barcode monodim
 
 deskew e scikit-image@scikit-image sono due librerie utilizzate per il raddrizzamento automatico delle pagine. deskew calcola l'angolo di inclinazione di un'immagine in scala di grigi, mentre scikit-image fornisce la funzione di rotazione che corregge l'immagine conservando le dimensioni originali.
 
-=== OCR
+=== OCR<cap:ocr>
 
 Le tecnologie OCR prese in considerazione sono PaddleOCR@paddleocr, Surya@surya, EasyOCR@easyocr, OCRmyPDF@ocrmypdf, Tesseract-OCR@tesseract e DocTR@doctr.
 
@@ -131,3 +131,19 @@ OCRmyPDF è uno strumento che aggiunge un layer di testo ricercabile a PDF scans
 Tesseract-OCR è il motore OCR open source più diffuso, originariamente sviluppato da HP e attualmente mantenuto da Google, con supporto a numerose lingue e buona accuratezza su testo stampato pulito. Nel progetto non viene utilizzato come OCR ma per una funzione accessoria: il rilevamento dell'orientamento della pagina tramite OSD (Orientation and Script Detection), che permette di correggere rotazioni di 90° o 270° prima del preprocessing.
 
 DocTR (Document Text Recognition) è una libreria sviluppata da Mindee, basata su architetture transformer e reti convoluzionali, progettata specificamente per il riconoscimento di testo in documenti. Offre una pipeline integrata che include rilevamento delle righe di testo ed estrazione delle parole con le rispettive coordinate normalizzate. È la tecnologia OCR scelta per il progetto: rispetto alle alternative, offre un buon equilibrio tra accuratezza su documenti stampati e restituisce direttamente le coordinate di ogni parola in un sistema normalizzato, compatibile con la struttura del motore di estrazione sviluppato.
+
+Tutte le tecnologie considerate restituiscono le coordinate di ogni elemento di testo rilevato sotto forma di bounding box, caratteristica fondamentale per il motore di estrazione sviluppato, che si basa sulla posizione spaziale delle parole nel documento.\
+Tuttavia OCRmyPDF, per sua natura di strumento orientato alla produzione del PDF finale, utilizza internamente le coordinate prodotte da Tesseract per costruire il layer di testo, senza esporle direttamente.\
+Per i PDF nativi, questa informazione è ricavata direttamente tramite pdftotext in modalità `-bbox`, come descritto nella @cap:librerie-supporto, integrando i risultati ottenuti dall'estrazione tramite testo dell'OCR.
+
+=== Gestore dell'ambiente virtuale
+
+Per la gestione dell'ambiente virtuale Python è stato scelto uv@uv, in sostituzione del classico approccio tramite `python -m venv .venv` seguito da `pip install`.\
+uv è un package manager e resolver per Python scritto in Rust, progettato per essere un sostituto diretto di pip e venv con prestazioni nettamente superiori: la risoluzione e l'installazione delle dipendenze avviene in tempi significativamente ridotti rispetto agli strumenti standard, grazie a un meccanismo di caching e alla parallelizzazione delle operazioni.\
+L'interfaccia rimane volutamente simile a quella di pip, rendendo la migrazione immediata: i pacchetti vengono installati tramite `uv pip install`, mantenendo la stessa sintassi già nota.
+
+=== Analisi statica
+
+Per l'analisi statica del codice è stato scelto mypy@mypy in modalità strict, grazie alla conoscenza pregressa dello strumento.\
+La modalità strict abilita il controllo più rigoroso dei type hint, rendendo obbligatoria l'annotazione di tutti i parametri e i valori di ritorno delle funzioni.\
+Questo approccio garantisce una maggiore robustezza del codice e facilita il rilevamento precoce di errori di tipo durante lo sviluppo, prima ancora dell'esecuzione.
