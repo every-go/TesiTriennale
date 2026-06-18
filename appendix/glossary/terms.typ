@@ -1,12 +1,12 @@
 #let glossary-terms = (
   (
-    key: "API",
+    key: "api",
     short: [API],
     long: [Application Program Interface],
     description: [È un'interfaccia utile a permettere o facilitare la comunicazione tra diversi software o parti di un singolo software.]
   ),
   (
-    key: "DDT",
+    key: "ddt",
     short: [DDT],
     long: [Documento di Trasporto],
     description: [Documento fondamentale nei processi commerciali che attesta la spedizione e la consegna di merci. Specifica i dati del fornitore, i dati del destinatario e gli articoli in oggetto.]
@@ -34,5 +34,29 @@
     short: [LLM],
     long: [Large Language Model],
     description: [Modello di intelligenza artificiale addestrato su enormi quantità di testo per comprendere e generare linguaggio naturale, come GPT, Gemini o Mistral. Viene impiegato in compiti di analisi, estrazione di informazioni e generazione testuale.]
+  ),
+  (
+    key: "ocr",
+    short: [OCR],
+    long: [Optical Character Recognition],
+    description: [Tecnologia che consente di riconoscere e convertire il testo contenuto in immagini o documenti scansionati in formato digitale editabile.]
+  ),
+  (
+    key: "pipeline",
+    short: [Pipeline],
+    long: [],
+    description: [Sequenza di elaborazioni concatenate in cui l'output di una fase costituisce l'input della successiva.]
+  ),
+  (
+    key: "parsing",
+    short: [Parsing],
+    long: [],
+    description: [Processo di analisi e interpretazione di un testo strutturato per estrarne informazioni significative secondo regole definite.]
+  ),
+  (
+    key: "preprocessing",
+    short: [Preprocessing],
+    long: [],
+    description: [Insieme di operazioni preliminari applicate ai dati di input per migliorarne la qualità e prepararli alle fasi successive del processo.]
   )
 )

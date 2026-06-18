@@ -13,7 +13,7 @@
 
 == Analisi degli utenti
 
-Gli utenti che sfruttano il servizio sono personale amministrativo e operativo di aziende che gestiscono quotidianamente DDT cartacei sia in entrata (materiali ricevuti da fornitori per il trattamento) sia in uscita (spedizioni di materiali trattati). Si tratta tipicamente di utenti non tecnici, abituati a operare su gestionali aziendali, per i quali è fondamentale che il sistema sia semplice da usare e che non richieda competenze informatiche particolari.
+Gli utenti che sfruttano il servizio sono personale amministrativo e operativo di aziende che gestiscono quotidianamente DDT cartacei sia in entrata (materiali ricevuti da fornitori per il trattamento) sia in uscita (spedizioni di materiali trattati). Si tratta tipicamente di utenti non tecnici, abituati a operare su gestionali aziendali, per i quali è fondamentale che il sistema sia semplice da utilizzare e che non richieda competenze informatiche particolari.
 
 Il volume di documenti trattati può essere considerevole: in contesti aziendali di medie dimensioni, la ricezione e la spedizione di merci genera un flusso costante di DDT che devono essere registrati tempestivamente nel gestionale per mantenere aggiornata la contabilità di magazzino.
 

@@ -10,8 +10,8 @@
 
 == Criteri per scegliere le tecnologie
 Come menzionato nella @cap:competenze e nella @cap:vincoli, l'azienda usa principalmente framework PHP, ma non mi ha obbligato all'aderenza a uno stack tecnologico specifico, bensì a trovare una soluzione al problema da loro posto. \
-Il criterio da rispettare è però quello di non utilizzare alcun OCR a pagamento, in quanto l'intero progetto verte sul trovare una soluzione evitando l'utilizzo di API a pagamento, escludendo la possibilità di scegliere alcune tecnologie simili a Mistral come AWS Textract. \
-Il mio lavoro è stato svolto principalmente in una #gl("repository", display: "repository") separata, quindi non mi sono collegato direttamente al progetto principale ma ho lavorato in totale autonomia, e questo ha guidato molto le mie scelte concernenti le tecnologie.
+Il criterio da rispettare è quello di non utilizzare alcun OCR a pagamento, in quanto l'intero progetto verte sul trovare una soluzione evitando l'utilizzo di API a pagamento, escludendo la possibilità di scegliere alcune tecnologie simili a Mistral come AWS Textract. \
+Il lavoro è stato svolto principalmente in una #gl("repository", display: "repository") separata, quindi non mi sono collegato direttamente al progetto principale ma ho lavorato in totale autonomia, e questo ha guidato molto le mie scelte concernenti le tecnologie.
 
 == Tecnologie
 Le principali tecnologie sono suddivise nelle sottosezioni che seguono.\
@@ -31,7 +31,7 @@ Segue la suddivisione delle tecnologie in base al loro utilizzo.
 
 Per la struttura e la presentazione dell'interfaccia web, le alternative che ho considerato sono HTML@html con CSS@css e JavaScript@javascript, Tailwind CSS@tailwind, Streamlit@streamlit, Blade@blade e Qt@qt. \
 HTML e CSS rappresentano la scelta naturale per la costruzione dell'interfaccia: HTML descrive la struttura della pagina, mentre CSS ne gestisce la presentazione. \
-Tailwind CSS è stato invece scartato in quanto, pur semplificando la scrittura degli stili tramite classi predefinite, avrebbe reso più difficile mantenere un foglio di stile esterno, più adatto al contesto dato che permette di mantenere gli stili separati dalla struttura e più facilmente manutenibili. Inoltre, evitarlo mi permette di non aggiungere dipendenze inutili, non avendo come priorità la costruzione di una UI complessa. \
+Tailwind CSS è stato invece escluso in quanto, pur semplificando la scrittura degli stili tramite classi predefinite, avrebbe reso più difficile mantenere un foglio di stile esterno, il quale è più adatto al contesto dato che permette di mantenere gli stili separati dalla struttura e più facilmente manutenibili. Inoltre, evitarlo permette di non aggiungere dipendenze inutili, non avendo come priorità la costruzione di una UI complessa. \
 Streamlit è una libreria Python che permette di creare interfacce web con pochissime righe di codice, ma ho deciso di scartarla in quanto viola i principi di accessibilità impedendo l'uso diretto dei tag HTML e la creazione di gerarchie di intestazioni corrette. \
 Blade, il template engine nativo di Laravel, avrebbe introdotto una dipendenza da Laravel non giustificata, dato che il frontend è già coperto da HTML e CSS. \
 Qt è una libreria che permette di creare applicazioni desktop, ma richiede un display server (X11 o Wayland) per il rendering dell'interfaccia grafica, assente nei container Docker standard. Sebbene esistano workaround tramite esposizione del socket X11 dell'host, la soluzione risulta dipendente dall'ambiente e non portabile, violando il vincolo relativo all'uso di Docker. \

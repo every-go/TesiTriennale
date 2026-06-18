@@ -35,7 +35,8 @@ Ad esempio,
 - per il numero del DDT, una sequenza dopo "num", "numero", "num. doc." o "numero doc.";
 - per il numero dei colli un intero dopo le scritte "numero colli", "colli".
 
-Questo approccio però presentava parecchie problematiche per parecchi template dei fornitori, poiché la maggior parte non ha una struttura adeguata per l'uso con quest'idea.
+Questo approccio si è però rivelato inadeguato per la maggior parte dei template dei
+fornitori, i cui DDT non presentano una struttura compatibile con questa logica.
 
 Alla @fig:adeguato c'è un esempio adeguato per l'estrazione di dati tramite regex,
 alla @fig:non-adeguato c'è un esempio non adeguato per l'estrazione di dati tramite

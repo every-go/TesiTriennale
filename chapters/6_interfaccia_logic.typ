@@ -9,10 +9,10 @@
 ]
 
 == Creazione interfaccia grafica
-La scelta di OCR e pdftotext come motori di estrazione è stata guidata da un requisito preciso: entrambi supportano la modalità bounding box, come descritto nel paragrafo @cap:introduzione-teorica. Sfruttare questa caratteristica ha però reso necessario definire un metodo per associare a ogni template una posizione probabile dei campi da estrarre.
+La scelta di OCR e pdftotext come motori di estrazione è stata guidata da un requisito preciso: entrambi supportano la modalità bounding box, come descritto nel paragrafo @cap:introduzione-teorica. Sfruttare questa caratteristica ha reso necessario definire un metodo per associare a ogni template una posizione probabile dei campi da estrarre.
 L'interfaccia grafica è stata sviluppata per rispondere a due esigenze principali:
-+ Estrarre i dati di un DDT preciso per evitare l'uso solo tramite terminale e vedere più facilmente i risultati dell'estrazione, per soddisfare i casi d'uso di visualizzazione descritti nella @cap:analisi-requisiti
-+ Creare il template di un determinato layout associato ad un determinato fornitore
++ Estrarre i dati di un DDT specifico e visualizzarne i risultati attraverso un'interfaccia dedicata, anziché tramite terminale, soddisfacendo i casi d'uso di visualizzazione descritti nella @cap:analisi-requisiti;
++ Creare il template di un determinato layout associato ad un determinato fornitore.
 Alla @fig:estrazione-ddt e alla @fig:costruzione-template sono disponibili le immagini d'esempio dell'interfaccia, rispettivamente per l'estrazione dei risultati di un DDT e per la creazione di un template.
 
 #img(
@@ -29,7 +29,7 @@ Alla @fig:estrazione-ddt e alla @fig:costruzione-template sono disponibili le im
 
 Per l'utilizzo e la condivisione del progetto, è stato costruito un Dockerfile, la cui versione finale è disponibile nel @cod:Dockerfile.
 
-#figure(caption: "Versione finale Dockerfile.")[
+#figure(caption: "Dockerfile per la containerizzazione del progetto.")[
   #show raw: set text(size: 0.85em)
   ```Dockerfile
   FROM python:3.12-slim
@@ -63,9 +63,9 @@ Per l'utilizzo e la condivisione del progetto, è stato costruito un Dockerfile,
 Una volta definita la containerizzazione del progetto, l'attenzione si è spostata sulla componente più complessa dell'interfaccia: la creazione dei template.
 
 === Interfaccia grafica per la creazione del template
-Mentre l'interfaccia per l'estrazione consiste solo nella scelta del PDF, del fornitore associato e nel premere il pulsante "Estrai" per ottenere i risultati dell'estrazione, l'interfaccia per la costruzione del template è molto più complessa.\
+Mentre l'interfaccia per l'estrazione richiede solamente di scegliere il PDF, il fornitore associato e di premere il pulsante di estrazione per ottenere i risultati, l'interfaccia per la costruzione del template è molto più complessa.\
 Alla @fig:esempio-template è disponibile un esempio di un template per il corpo del documento, non rendo disponibile la completa visualizzazione per ragioni di riservatezza aziendale.\
-Questa richiede che venga disegnato per ogni campo un rettangolo, infatti nell'esempio sono disegnati i rettangoli "Intestazione colonne", "Primo codice", "Prima descrizione", "Prima unità" e "Prima quantità".
+L'interfaccia richiede che venga disegnato per ogni campo un rettangolo, infatti nell'esempio sono disegnati i rettangoli "Intestazione colonne", "Primo codice", "Prima descrizione", "Prima unità" e "Prima quantità".
 
 #img(
   "example/esempio-template.png",
@@ -74,14 +74,14 @@ Questa richiede che venga disegnato per ogni campo un rettangolo, infatti nell'e
 )<fig:esempio-template>
 
 Per quanto la creazione di un template sia, soprattutto per le prime volte, molto laboriosa e lunga (nel peggiore dei casi sono da inserire 23 rettangoli oltre ad altre indicazioni utili) questo permette di avere un template solido disponibile per ogni PDF successivo.\
-Tuttavia, la sola costruzione del template non è necessaria, per una serie di problemi:
-- Non tutti i PDF caricati dall'utilizzatore del progetto sono sempre dritti ma possono avere inclinazioni di qualche grado oppure ruotate a 90 o 270 gradi;
-- Serve gestire i dati non letti correttamente dagli OCR;
-- Serve gestire i rettangoli disegnati male;
-- Serve gestire l'inclinazione dei DDT (@cap:inclinazione);
-- Serve gestire i fornitori con diversi template (@cap:fornitori-template);
-- Serve controllare che l'estrazione di più DDT avvenga correttamente (@cap:test);
-- Serve controllare i risultati degli OCR (@cap:risultati-ocr).
+Tuttavia, la sola costruzione del template non è sufficiente, per una serie di problemi:
+- Non tutti i PDF caricati dall'utilizzatore del progetto sono sempre dritti ma possono avere inclinazioni di qualche grado oppure possono essere a 90 o 270 gradi;
+- È necessario gestire i dati non letti correttamente dagli OCR;
+- È necessario gestire i rettangoli disegnati male;
+- È necessario gestire l'inclinazione dei DDT (@cap:inclinazione);
+- È necessario gestire i fornitori con diversi template (@cap:fornitori-template);
+- È necessario controllare che l'estrazione di più DDT avvenga correttamente (@cap:test);
+- È necessario controllare i risultati degli OCR (@cap:risultati-ocr).
 Per gli errori degli OCR e quelli umani nel disegno dei rettangoli non esiste soluzione automatica.
 
 ==== Inclinazione dei DDT<cap:inclinazione>
@@ -92,11 +92,11 @@ Questa parte si compone di 3 fasi principali:
 + Applicazione dell'offset dell'ancora.
 
 Quest'ultima è una tecnica ideata per correggere ulteriormente inclinazioni o piccoli spostamenti di template, serve per riposizionare i rettangoli disegnati nel template nella posizione di cui ci si aspetta comparirà nel nuovo caso.\
-Infatti, nel caso in cui il template sia perfettamente lo stesso, ma il PDF caricato rispetto all'esempio ha tutto spostato di parecchi pixel verso destra, la precedente posizione dei rettangoli impedisce la corretta estrazione dei campi.\
+Infatti, nel caso in cui il template sia rimasto identico, ma il PDF caricato presenti uno spostamento di alcuni pixel verso destra rispetto all'esempio originale, la posizione precedente dei rettangoli impedisce la corretta estrazione dei campi.\
 Questo metodo invece trova la parola scelta come ancora, e corregge, rispetto alla precedente posizione indicata dal rettangolo dell'ancora, tutti i rettangoli in modo da allineare al nuovo DDT caricato.\
 Nel @cod:anchor-offset e @cod:anchor-rects sono mostrate le funzioni che calcolano l'offset rispetto all'ancora e lo applicano in ogni rettangolo.
 
-#figure(caption: "Codice per l'offset dell'ancora.")[
+#figure(caption: "Calcolo dell'offset rispetto all'ancora.")[
   #show raw: set text(size: 0.85em)
   ```py
   def apply_anchor_offset(
@@ -122,7 +122,7 @@ Nel @cod:anchor-offset e @cod:anchor-rects sono mostrate le funzioni che calcola
   ```
 ]<cod:anchor-offset>
 
-#figure(caption: "Codice per applicare l'offset ad ogni rettangolo.")[
+#figure(caption: "Applicazione dell'offset ai rettangoli.")[
   #show raw: set text(size: 0.85em)
   ```py
   def translate_obj(obj: Any, dx: float, dy: float) -> None:
@@ -153,14 +153,15 @@ Nel @cod:anchor-offset e @cod:anchor-rects sono mostrate le funzioni che calcola
 ]<cod:anchor-rects>
 
 ==== Fornitori con diversi template<cap:fornitori-template>
-Non tutti i fornitori usano lo stesso template, ma alcuni ne usano più di uno, e il problema era scegliere, per ogni DDT, quale template usare.\
+Non tutti i fornitori usano lo stesso template, ma alcuni ne utilizzano più di uno, e il problema era scegliere, per ogni DDT, quale template utilizzare.\
 Questa scelta segue questa fase:
-+ Se è disponibile un solo template, scegli quello, altrimenti scegli il migliore fra quelli disponibili;
++ Se è disponibile un solo template, viene scelto quello, altrimenti viene selezionato il migliore fra quelli disponibili;
 + Per scegliere il migliore fra quello disponibile, viene scelto il template la cui ancora è più vicina al rettangolo definito in sede di creazione del template.
-Per questo la scelta dell'ancora è importantissima, per l'inclinazione e per la scelta del miglior template è importante usare, se disponibili, parole mai utilizzate, in modo che l'algoritmo riconosca che il template con un'ancora non trovata è impossibile che sia un'ancora corretta.\
+Per questo la scelta dell'ancora è fondamentale.\
+È importante usare, se disponibili, parole mai utilizzate, in modo che l'algoritmo riconosca che il template con un'ancora non trovata è impossibile che sia un'ancora corretta.\
 Il codice è disponibile nel @cod:best-template
 
-#figure(caption: "Codice per scegliere il miglior template.")[
+#figure(caption: "Selezione del miglior template tra le varianti.")[
   #show raw: set text(size: 0.85em)
   ```py
   def select_best_template(
@@ -249,13 +250,13 @@ Il codice è disponibile nel @cod:best-template
 ]<cod:best-template>
 
 ==== Test di regressione<cap:test>
-Per gestire l'ultimo problema, ovvero quello di verificare che i template (o il template) del fornitore sia disegnato bene, ho ideato dei test di regressione, i quali avviano in sequenza, sfruttando il multi-threading, l'estrazione di più DDT contemporaneamente, permettendomi di visualizzare i risultati sinteticamente.\
+Per gestire l'ultimo problema, ovvero quello di verificare che i template (o il template) del fornitore sia disegnato bene, ho ideato dei test di regressione, i quali avviano in sequenza, sfruttando il multi-threading, l'estrazione di più DDT contemporaneamente, permettendomi di visualizzare i risultati di estrazione degli articoli sinteticamente.\
 Siccome era impossibile, per disponibilità di tempo, hardcodare i risultati corretti per tutti gli esempi disponibili, ho optato per un metodo più rapido.
 Per ogni PDF viene indicato in un file JSON il numero di articoli attesi: lo script verifica questo valore e considera l'estrazione corretta se il numero di articoli estratti corrisponde alle aspettative.\
 Questo ha permesso di velocizzare notevolmente il ciclo di controllo, tuttavia rimane necessaria una verifica manuale a campione per ogni fornitore per controllare la correttezza dei dati estratti.\
 Nel @cod:run-test è disponibile il codice che usavo per i test.
 
-#figure(caption: "Codice per i test di regressione.")[
+#figure(caption: "Esecuzione dei test di regressione in parallelo.")[
   #show raw: set text(size: 0.85em)
   ```py
   def _run_all_tests(
@@ -279,13 +280,13 @@ Nel @cod:run-test è disponibile il codice che usavo per i test.
 ]<cod:run-test>
 
 ==== Risultati dell'OCR<cap:risultati-ocr>
-Per quanto i risultati dell'OCR non siano dipendenti dal mio lavoro, avevo necessità di trovare un modo per fare sì di limitare il più possibile errori, soprattutto nei PDF digitali.\
+Per quanto i risultati dell'OCR non dipendessero direttamente dal mio lavoro, era necessario individuare un metodo per limitare il più possibile gli errori, soprattutto nei PDF digitali.
 Per ovviare a questo problema, ho sfruttato la tecnologia pdftotext, la quale estrae direttamente il testo nativo disponibile sul PDF.\
-Siccome la maggior parte dei PDF purtroppo non aveva solo testo nativo, ma una parte oppure nulla, non potevo permettermi di utilizzare solo il testo nativo.\
+Siccome molti PDF presentavano testo nativo solo parzialmente, o ne erano del tutto privi, non era possibile affidarsi esclusivamente all'estrazione tramite testo nativo.
 Ma nelle situazioni in cui questo veniva estratto, il testo nativo è molto più affidabile dei risultati di un OCR e avevo bisogno di un metodo per preferirlo rispetto all'OCR.\
 Per questo ho ideato il codice, disponibile nel @cod:merge-rects, che permette di unificare i risultati trovati dall'OCR e dal testo nativo, prediligendo quest'ultimo ove presente.
 
-#figure(caption: "Codice per unificare i risultati del testo nativo e dell'OCR.")[
+#figure(caption: "Unificazione dei risultati del testo nativo e dell'OCR.")[
   #show raw: set text(size: 0.85em)
   ```py
   def merge_rects(
@@ -346,15 +347,14 @@ Per questo ho ideato il codice, disponibile nel @cod:merge-rects, che permette d
   ```
 ]<cod:merge-rects>
 
-
-Un altro problema molto importante che necessitavo di risolvere era il comprendere quando l'estrazione errata di articoli dipendesse da me oppure dall'OCR.\
-Per fare questo ho ideato due passi:
+Un altro problema importante da risolvere era comprendere se l'estrazione errata degli articoli dipendesse dalla struttura della soluzione che avevo implementato oppure dall'OCR.\
+Per fare questo ho ideato due passaggi:
 + Scrittura di un file .txt il quale associa ad ogni parola le 4 coordinate `xmin, xmax, ymin, ymax` (codice disponibile nel @cod:write-txt);
 + Visualizzazione grafica rispetto al PDF dei rettangoli (codice disponibile nel @cod:html-rects).
 
 Questo approccio permette di verificare nell'immediato l'attribuzione della colpa per un'estrazione errata verificata dall'esecuzione dei test.
 
-#figure(caption: "Codice per scrivere in un file txt le parole con le coordinate associate.")[
+#figure(caption: "Scrittura delle coordinate delle parole in formato testuale.")[
   #show raw: set text(size: 0.85em)
   ```py
   def _write_txt(txt_dir: Path, base_name: str, all_words: list[Word]) -> None:
@@ -393,7 +393,7 @@ Questo approccio permette di verificare nell'immediato l'attribuzione della colp
   ```
 ]<cod:write-txt>
 
-#figure(caption: "Codice per disegnare i rettangoli trovati.")[
+#figure(caption: "Generazione della visualizzazione HTML dei rettangoli.")[
   #show raw: set text(size: 0.85em)
   ```py
   def make_html(
@@ -488,7 +488,7 @@ Ogni template è composto da tre parti principali, le quali sono suddivise in ul
 Il primo approccio che il mio algoritmo realizza, descritto nel @cod:words-in-rect, è trovare le parole che si trovano nel rettangolo disegnato e corretto dall'ancora.\
 Per alcuni campi, come il numero del DDT, non esiste una regex precisa poiché il formato varia da fornitore a fornitore: in questi casi il valore viene estratto direttamente dalle parole trovate all'interno del rettangolo corrispondente.
 
-#figure(caption: "Codice per identificare se una parola è nel rettangolo oppure no.")[
+#figure(caption: "Riconoscimento delle parole all'interno del rettangolo.")[
   #show raw: set text(size: 0.85em)
   ```py
   def words_in_rect(
@@ -520,9 +520,9 @@ Per alcuni campi, come il numero del DDT, non esiste una regex precisa poiché i
 
 Tuttavia, alcuni campi hanno una regex che permette un controllo più sicuro per gestire meglio la correttezza dei dati estratti.
 Questi campi sono:
-- Data DDT (formato \d{2}\d{2}\d{4} e le varie alternative);
-- Numero colli (formato \d{1,});
-- Peso lordo (formato numero decimale{1,}).
+- Data DDT: formati come dd/mm/yyyy, dd-mm-yyyy o ddmmyyyy (pattern \d{2}[/-]?\d{2}[/-]?\d{4});
+- Numero colli: valore numerico intero (pattern \d+);
+- Peso lordo: valore numerico con eventuale parte decimale (pattern \d+([.,]\d+)?).
 
 Inoltre, è stata ideata la configurazione delle parole chiave, un metodo per far conoscere all'algoritmo che un campo si trova sicuramente dopo una determinata parola.\
 Le parole chiave vengono utilizzate per i seguenti campi:
@@ -532,11 +532,11 @@ Le parole chiave vengono utilizzate per i seguenti campi:
 - Quantità;
 - Riferimento codice ordine.
 
-Ad esempio, se si conosce che ad ogni articolo è associato un riferimento ad un codice ordine, e questo riferimento è definito dopo la scritta "Rif. Cod. Ord" si può configurare come parole chiave queste ultime in modo da far conoscere all'algoritmo che la parola si troverà dopo quelle.\
+Ad esempio, se si è a conoscenza del fatto che ad ogni articolo è associato un riferimento ad un codice ordine, e questo riferimento è definito dopo la scritta "Rif. Cod. Ord" si possono configurare come parole chiave queste ultime per configurare l'algoritmo in modo che consideri la parola solo se segue quelle indicate.\
 Inoltre, è possibile specificare il tipo di quel preciso campo (tutta la riga, primo numero, prima sequenza alfanumerica).\
 Il codice di estrazione tramite parola chiave è disponibile nel @cod:catch-after-keyword.
 
-#figure(caption: "Codice per ricavare una parola dopo determinate parole chiave.")[
+#figure(caption: "Estrazione del valore dopo una parola chiave.")[
   #show raw: set text(size: 0.85em)
 ```py
 def catch_after_keyword(
@@ -593,9 +593,9 @@ In quelli facili, ogni articolo è disposto come nella @table:example-corretto, 
 )
 ]<table:example-multiriga>
 
-Per ovviare a questo problema, innanzitutto l'utente deve segnalare se la quantità si trova in alto oppure in basso rispetto all'articolo, poi, in base a quello, come descritto nel @cod:quantity, si estrae in maniera differente.
+Per risolvere il problema, l'utente indica se la quantità si trova nella riga superiore o inferiore dell'articolo; in base a questa informazione, l'estrazione segue due logiche diverse, implementate nel @cod:quantity.
 
-#figure(caption: "Codice per estrarre articoli in base alla quantità.")[
+#figure(caption: "Selezione della strategia di raggruppamento in base alla posizione della quantità.")[
 #show raw: set text(size: 0.85em)
 ```py
 def _group_lines_by_quantity(
@@ -618,13 +618,13 @@ def _group_lines_by_quantity(
 ```
 ]<cod:quantity>
 
-Il codice per estrarre gli articoli se la quantità è situata in alto si trova nel @cod:quantity-top.\
+Il codice per estrarre gli articoli se la quantità è situata in alto è presente nel @cod:quantity-top.\
 La funzione scorre le righe fisiche del corpo del documento e identifica l'inizio di un nuovo articolo ogni volta che incontra una riga contenente un valore nella colonna della quantità.\
 La verifica avviene tramite la funzione `has_quantity`, la quale controlla che nella colonna della quantità sia presente almeno un valore numerico non nullo, escludendo esplicitamente le parole contenenti lettere per evitare falsi positivi causati da codici o descrizioni che debordano nella colonna.\
 Le righe successive senza quantità vengono aggregate al gruppo corrente, fino alla riga successiva con quantità che segna l'inizio del nuovo articolo.\
 Il processo si interrompe anticipatamente se viene incontrata una parola di riepilogo configurata dall'utente, la quale segnala la fine della sezione degli articoli.
 
-#figure(caption: "Codice per estrarre articoli con la quantità in alto.")[
+#figure(caption: "Raggruppamento articoli con quantità nella riga superiore.")[
 #show raw: set text(size: 0.85em)
 ```py
 def _group_qty_on_top(
@@ -675,7 +675,7 @@ Le righe vengono accumulate in un buffer e il gruppo viene chiuso e salvato solo
 Un nuovo buffer viene aperto quando viene rilevata una riga contenente un valore nella colonna del codice, segnalando l'inizio di un nuovo articolo.\
 Anche in questo caso, l'incontro con una parola di riepilogo interrompe anticipatamente il processo.
 
-#figure(caption: "Codice per estrarre articoli con la quantità in basso.")[
+#figure(caption: "Raggruppamento articoli con quantità nella riga inferiore.")[
 #show raw: set text(size: 0.85em)
 ```py
 def _group_qty_on_bottom(

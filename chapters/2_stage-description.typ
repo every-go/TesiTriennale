@@ -1,7 +1,6 @@
 #import "../config/thesis-config.typ": glpl, gl
 #import "../config/variables.typ": myTutor
 #pagebreak(to:"odd")
-#show figure.where(kind: table): set block(breakable: true)
 
 = Descrizione stage<cap:descrizione-stage>
 #text(style: "italic", [
@@ -13,9 +12,9 @@
 
 Lo stage mira a sviluppare competenze che vanno oltre i singoli linguaggi di programmazione: capacità di analisi dei requisiti, astrazione dei problemi e progettazione di soluzioni algoritmiche generalizzabili.
 
-Per quanto l'azienda usi principalmente #gl("framework", display: "framework") PHP come Laravel e Filament, mi è stata lasciata completa libertà di linguaggio e altri framework per realizzare il prodotto che metta in atto le mie idee in modo più rapido.
+Per quanto l'azienda usi principalmente #gl("framework", display: "framework") PHP come Laravel e Filament, mi è stata lasciata completa libertà di linguaggio e altri framework per realizzare il progetto più rapidamente possibile.
 
-Lo stage mi permetterà di acquisire conoscenze su OCR on-premise, preprocessing documentale, parsing strutturato di documenti, orchestrazione Docker@docker, testing comparativo e collaborazione con tutor e stakeholder.
+Lo stage mi permetterà di acquisire conoscenze su OCR on-premise, preprocessing documentale, #gl("parsing", display: "parsing") strutturato di documenti, orchestrazione Docker@docker, testing comparativo e collaborazione con tutor e stakeholder.
 
 == Vincoli<cap:vincoli>
 
