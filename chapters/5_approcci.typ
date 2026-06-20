@@ -18,14 +18,15 @@ Ho studiato la soluzione basata su Mistral OCR e LLM, la quale ha un approccio a
 
 == Approccio iniziale
 
-Siccome la mia soluzione non poteva utilizzare LLM o API a pagamento, come descritto nella @cap:vincoli, dovevo ideare un approccio totalmente diverso ma generalizzabile alla grande quantità di fornitori disponibili per l'azienda che usa il prodotto.
+Siccome la mia soluzione non poteva utilizzare LLM o API a pagamento, come descritto nella @cap:vincoli, dovevo ideare un approccio totalmente diverso ma generalizzabile a tutti i fornitori disponibili per le aziende che useranno il prodotto.
 
 Inizialmente ho scelto di ideare un approccio basato unicamente su doppia fase:
 + Estrarre con OCR il testo;
 + Ricavare i dati con l'utilizzo di regular expression (regex).
 
 == OCR scelto per i primi test
-Per le prime settimane, fino a quando le logiche di estrazione non si sono dimostrate sufficientemente solide, ho scelto di utilizzare un OCR con un impatto ridotto sulla CPU, privilegiando la velocità di esecuzione rispetto alla precisione, in modo da poter iterare rapidamente sui test. L'OCR inizialmente scelto è stato EasyOCR, successivamente sostituito da Pytesseract, risultato leggermente più performante pur mantenendo tempi di estrazione contenuti. Maggiori dettagli sullo studio e il confronto degli OCR utilizzati sono disponibili nella @cap:ocr.
+Per le prime settimane, fino a quando le logiche di estrazione non si sono dimostrate sufficientemente solide, ho scelto di utilizzare un OCR con un impatto ridotto sulla CPU, privilegiando la velocità di esecuzione rispetto alla precisione, in modo da poter iterare rapidamente sui test. L'OCR inizialmente scelto è stato EasyOCR, successivamente sostituito da Pytesseract, risultato leggermente più performante pur mantenendo tempi di estrazione contenuti.\
+Maggiori dettagli sullo studio e il confronto degli OCR utilizzati sono disponibili nella @cap:ocr.
 
 == Approccio iniziale con regex
 

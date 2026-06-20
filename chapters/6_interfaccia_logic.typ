@@ -76,10 +76,9 @@ L'interfaccia richiede che venga disegnato per ogni campo un rettangolo, infatti
 
 Per quanto la creazione di un template sia, soprattutto per le prime volte, molto laboriosa e lunga (nel peggiore dei casi sono da inserire 23 rettangoli oltre ad altre indicazioni utili) questo permette di avere un template solido disponibile per ogni PDF successivo.\
 Tuttavia, la sola costruzione del template non è sufficiente, per una serie di problemi:
-- Non tutti i PDF caricati dall'utilizzatore del progetto sono sempre dritti ma possono avere inclinazioni di qualche grado oppure possono essere a 90 o 270 gradi;
 - È necessario gestire i dati non letti correttamente dagli OCR;
 - È necessario gestire i rettangoli disegnati male;
-- È necessario gestire l'inclinazione dei DDT (@cap:inclinazione);
+- È necessario gestire l'inclinazione dei DDT o la loro rotazione di 90 oppure 270 gradi (@cap:inclinazione);
 - È necessario gestire i fornitori con diversi template (@cap:fornitori-template);
 - È necessario controllare che l'estrazione di più DDT avvenga correttamente (@cap:test);
 - È necessario controllare i risultati degli OCR (@cap:risultati-ocr).
@@ -159,7 +158,7 @@ Questa scelta segue questa fase:
 + Se è disponibile un solo template, viene scelto quello, altrimenti viene selezionato il migliore fra quelli disponibili;
 + Per scegliere il migliore fra quello disponibile, viene scelto il template la cui ancora è più vicina al rettangolo definito in sede di creazione del template.
 Per questo la scelta dell'ancora è fondamentale.\
-È importante usare, se disponibili, parole mai utilizzate, in modo che l'algoritmo riconosca che il template con un'ancora non trovata è impossibile che sia un'ancora corretta.\
+È importante usare, se disponibili, parole mai utilizzate, in modo che l'algoritmo riconosca che il template con un'ancora non trovata è impossibile che sia il template corretto.\
 Il codice è disponibile nel @cod:best-template.
 
 #figure(caption: "Selezione del miglior template tra le varianti.")[
@@ -207,11 +206,9 @@ Il codice è disponibile nel @cod:best-template.
               best_parser.assign_template(os.path.join(templates_dir, f"{variant_name}.json"))
 
       if best_name is None:
-          logger.error("Nessun template valido trovato.")
           return None
 
       apply_anchor_offset(best_parser, ocr_page1)
-      logger.debug(f"Selezionato template: {best_name} (distanza ancora: {best_distance:.1f})")
       return best_name, best_parser
 
 
@@ -226,7 +223,6 @@ Il codice è disponibile nel @cod:best-template.
           ancora: AnchorConfig = parser.require_template()["ancora"]
 
           if not ancora.get("parola"):
-              logger.debug(f"{variant_name}: nessuna ancora configurata, saltato")
               return None
 
           x_expected: float = (ancora["xmin"] + ancora["xmax"]) / 2
@@ -234,25 +230,19 @@ Il codice è disponibile nel @cod:best-template.
 
           x_found, y_found = parser.find_anchor(ocr_page1)
           if x_found is None or y_found is None:
-              logger.debug(f"{variant_name}: ancora non trovata nella pagina")
               return None
 
           distance: float = ((x_found - x_expected) ** 2 + (y_found - y_expected) ** 2) ** 0.5
-          logger.debug(
-              f"{variant_name}: ancora a ({x_found:.1f}, {y_found:.1f}), "
-              f"attesa ({x_expected:.1f}, {y_expected:.1f}), distanza={distance:.1f}"
-          )
           return TemplateCandidate(name=variant_name, distance=distance)
 
-      except Exception as exc:
-          logger.warning(f"Errore con {variant_name}: {exc}")
+      except Exception:
           return None
   ```
 ]<cod:best-template>
 
 ==== Test di regressione<cap:test>
-Per gestire l'ultimo problema, ovvero quello di verificare che i template (o il template) del fornitore sia disegnato bene, ho ideato dei test di regressione, i quali avviano, sfruttando il multi-threading, l'estrazione di più DDT, permettendomi di visualizzare i risultati di estrazione degli articoli sinteticamente.\
-Siccome era impossibile, per disponibilità di tempo, hardcodare i risultati corretti per tutti gli esempi disponibili, ho optato per un metodo più rapido.
+Per gestire il problema di verificare che i template (o il template) del fornitore siano disegnati bene, ho ideato dei test di regressione, i quali avviano, sfruttando il multi-threading, l'estrazione di più DDT, permettendomi di visualizzare i risultati di estrazione degli articoli sinteticamente.\
+Siccome era impossibile, per disponibilità di tempo, hardcodare i risultati corretti per tutti gli esempi disponibili, ho optato per un metodo più rapido.\
 Per ogni PDF viene indicato in un file JSON il numero di articoli attesi: lo script verifica questo valore e considera l'estrazione corretta se il numero di articoli estratti corrisponde alle aspettative.\
 Questo ha permesso di velocizzare notevolmente il ciclo di controllo, tuttavia rimane necessaria una verifica manuale a campione per ogni fornitore per controllare la correttezza dei dati estratti.\
 Nel @cod:run-test è disponibile il codice che usavo per i test.
@@ -281,9 +271,9 @@ Nel @cod:run-test è disponibile il codice che usavo per i test.
 ]<cod:run-test>
 
 ==== Risultati dell'OCR<cap:risultati-ocr>
-Per quanto i risultati dell'OCR non dipendessero direttamente dal mio lavoro, era necessario individuare un metodo per limitare il più possibile gli errori, soprattutto nei PDF digitali.
+Per quanto i risultati dell'OCR non dipendessero direttamente dal mio lavoro, era necessario individuare un metodo per limitare il più possibile gli errori, soprattutto nei PDF digitali.\
 Per ovviare a questo problema, ho sfruttato la tecnologia pdftotext, la quale estrae direttamente il testo nativo disponibile sul PDF.\
-Siccome molti PDF presentavano testo nativo solo parzialmente, o ne erano del tutto privi, non era possibile affidarsi esclusivamente all'estrazione tramite testo nativo.
+Siccome molti PDF presentavano testo nativo solo parzialmente, o ne erano del tutto privi, non era possibile affidarsi esclusivamente all'estrazione tramite testo nativo.\
 Tuttavia, nelle situazioni in cui questo veniva estratto, il testo nativo è molto più affidabile dei risultati di un OCR e avevo bisogno di un metodo per preferirlo rispetto all'OCR.\
 Per questo ho ideato il codice, disponibile nel @cod:merge-rects, che permette di unificare i risultati trovati dall'OCR e dal testo nativo, prediligendo quest'ultimo ove presente.
 
@@ -297,7 +287,7 @@ Per questo ho ideato il codice, disponibile nel @cod:merge-rects, che permette d
   ) -> list[Word]:
       """
       Unisce parole native e OCR all'interno dei rettangoli indicati.
-      Le parole native hanno precedenza; le parole OCR vengono aggiunte solo se non già presenti. Le parole native fuori dai rettangoli vengono comunque incluse.
+      Le parole native hanno precedenza; le parole OCR vengono aggiunte solo se non già presenti.
       Restituisce la lista ordinata per (ymin, xmin).
       """
       selected: list[Word] = []
@@ -571,9 +561,9 @@ def catch_after_keyword(
 
 Nel complesso, per facilitare la lettura dei file txt, è stato adottato un sistema di normalizzazione che fissa larghezza e altezza rispettivamente a 250 e 1000 unità.\
 La funzionalità di debug visivo descritta nella @cap:risultati-ocr, introdotta nella seconda metà del progetto, si appoggia a questo sistema per posizionare correttamente i rettangoli sovrapposti al PDF.\
-Ad esempio, se una parola si trova alla coordinata 125 di altezza della seconda pagina, nel txt viene segnata con coordinata 1125, tutto questo serve per evitare sovrapposizioni di parole diverse di pagine diverse.\
+Ad esempio, se una parola si trova alla coordinata 125 di altezza della seconda pagina, nel txt viene segnata con coordinata 1125, evitando così sovrapposizioni di parole diverse di pagine diverse.\
 Mentre l'estrazione dei campi dell'intestazione e dell'appendice è stata descritta nelle sezioni precedenti, la parte più complessa riguarda l'estrazione corretta degli articoli, poiché in alcuni casi la struttura è semplice e lineare, in altri la logica di estrazione risulta considerevolmente più articolata.\
-In quelli a linea singola, ogni articolo è disposto come nella @table:example-corretto, dove ad ogni riga corrisponde un pezzo per ogni campo, in quelli multilinea ogni articolo è disposto come nella @table:example-multiriga.
+In quelli a linea singola, ogni articolo è disposto come nella @table:example-corretto, dove ad ogni riga corrisponde un pezzo per ogni campo, in quelli multilinea ogni articolo è disposto come ad esempio nella @table:example-multiriga.
 
 #figure(caption: "Esempio di disposizione a linea singola.")[
 #table(
@@ -623,11 +613,11 @@ def _group_lines_by_quantity(
 
 Il codice per estrarre gli articoli se la quantità è situata in alto è presente nel @cod:quantity-top.\
 La funzione scorre le righe fisiche del corpo del documento e identifica l'inizio di un nuovo articolo ogni volta che incontra una riga contenente un valore nella colonna della quantità.\
-La verifica avviene tramite la funzione `has_quantity`, la quale controlla che nella colonna della quantità sia presente almeno un valore numerico non nullo, escludendo esplicitamente le parole contenenti lettere per evitare falsi positivi causati da codici o descrizioni che debordano nella colonna.\
+La verifica avviene tramite la funzione `has_quantity`, la quale controlla che nella colonna della quantità sia presente almeno un valore numerico adeguato (escludendo dunque numeri come 0.5), escludendo esplicitamente le parole contenenti lettere per evitare falsi positivi causati da codici o descrizioni che debordano nella colonna.\
 Le righe successive senza quantità vengono aggregate al gruppo corrente, fino alla riga successiva con quantità che segna l'inizio del nuovo articolo.\
 Il processo si interrompe anticipatamente se viene incontrata una parola di riepilogo configurata dall'utente, la quale segnala la fine della sezione degli articoli.
 
-#figure(caption: "Raggruppamento articoli con quantità nella riga superiore.")[
+#figure(caption: "Raggruppamento articoli con quantità in alto.")[
 #show raw: set text(size: 0.85em)
 ```py
 def _group_qty_on_top(
@@ -648,7 +638,6 @@ def _group_qty_on_top(
                 return gruppi
 
             ha_qty: bool = has_quantity(prima_quantita_rect, riga)
-            logger.debug(f"Riga y={riga['ymin']:.1f} ha_quantita={ha_qty}")
 
             if ha_qty:
                 if gruppo_corrente is not None and not gruppo_ha_qty:
@@ -678,7 +667,7 @@ Le righe vengono accumulate in un buffer e il gruppo viene chiuso e salvato solo
 Un nuovo buffer viene aperto quando viene rilevata una riga contenente un valore nella colonna del codice, segnalando l'inizio di un nuovo articolo.\
 Anche in questo caso, l'incontro con una parola di riepilogo interrompe anticipatamente il processo.
 
-#figure(caption: "Raggruppamento articoli con quantità nella riga inferiore.")[
+#figure(caption: "Raggruppamento articoli con quantità in basso.")[
 #show raw: set text(size: 0.85em)
 ```py
 def _group_qty_on_bottom(
@@ -694,7 +683,6 @@ def _group_qty_on_bottom(
 
         for riga in righe:
             ha_qty: bool = has_quantity(prima_quantita_rect, riga)
-            logger.debug(f"Riga y={riga['ymin']:.1f} ha_quantita={ha_qty}")
 
             if parole_riepilogo and contains_summary(riga["words"], parole_riepilogo):
                 if buffer_has_qty:
