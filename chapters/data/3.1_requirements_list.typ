@@ -923,7 +923,7 @@
   mandatory+=1
   FR.push((
     (m + str(mandatory)),
-    [Il personale deve poter creare una variante del template per un altro fornitore.],
+    [Il personale deve poter creare una variante del template per lo stesso fornitore.],
     [@uc:creazione-variante-template]
   ))
 
@@ -1009,13 +1009,6 @@
     (m + str(mandatory)),
     [Il personale deve poter ruotare il PDF a destra.],
     [@uc:rotazione-dx]
-  ))
-
-  mandatory+=1
-  FR.push((
-    (m + str(mandatory)),
-    [Il sistema deve consentire la classificazione del template.],
-    [Piano di lavoro]
   ))
 
   mandatory+=1

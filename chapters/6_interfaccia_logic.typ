@@ -9,7 +9,8 @@
 ]
 
 == Creazione interfaccia grafica
-La scelta di OCR e pdftotext come motori di estrazione è stata guidata da un requisito preciso: entrambi supportano la modalità bounding box, come descritto nel paragrafo @cap:introduzione-teorica. Sfruttare questa caratteristica ha reso necessario definire un metodo per associare a ogni template una posizione probabile dei campi da estrarre.
+La scelta di OCR e pdftotext come motori di estrazione è stata guidata da un requisito preciso: entrambi supportano la modalità bounding box, come descritto nella @cap:introduzione-teorica.\   
+Sfruttare questa caratteristica ha reso necessario definire un metodo per associare a ogni template una posizione probabile dei campi da estrarre.\
 L'interfaccia grafica è stata sviluppata per rispondere a due esigenze principali:
 + Estrarre i dati di un DDT specifico e visualizzarne i risultati attraverso un'interfaccia dedicata, anziché tramite terminale, soddisfacendo i casi d'uso di visualizzazione descritti nella @cap:analisi-requisiti;
 + Creare il template di un determinato layout associato ad un determinato fornitore.
@@ -18,13 +19,13 @@ Alla @fig:estrazione-ddt e alla @fig:costruzione-template sono disponibili le im
 #img(
   "example/estrazione-ddt.png",
   caption: [Interfaccia per l'estrazione di un DDT.],
-  alt: "",
+  alt: "L'immagine rappresenta l'interfaccia per l'estrazione di un DDT. Dà la possibilità di caricare un PDF, selezionare il template e premere il pulsante per l'estrazione. È visibile la parte in cui verrà mostrato il risultato.",
 )<fig:estrazione-ddt>
 
 #img(
   "example/costruzione-template.png",
   caption: [Interfaccia iniziale per la costruzione di un template.],
-  alt: "",
+  alt: "L'immagine rappresenta l'inizio dell'interfaccia per costruire un template. In essa sono compresi tutti i casi d'uso principali descritti nell'Analisi dei Requisiti relativi alla costruzione del template.",
 )<fig:costruzione-template>
 
 Per l'utilizzo e la condivisione del progetto, è stato costruito un Dockerfile, la cui versione finale è disponibile nel @cod:Dockerfile.
@@ -86,7 +87,7 @@ Per gli errori degli OCR e quelli umani nel disegno dei rettangoli non esiste so
 
 ==== Inclinazione dei DDT<cap:inclinazione>
 Il problema dell'inclinazione dei DDT è stato risolto tramite un'applicazione accurata del preprocessing su ogni DDT, prima di passare il PDF processato all'OCR.\
-Questa parte si compone di 3 fasi principali:
+Questa parte si compone di tre fasi principali:
 + Riconoscimento della rotazione di 90 oppure 270 gradi del PDF e corrispettiva rotazione;
 + Riconoscimento dell'inclinazione tramite deskewing, descritto nella @cap:librerie-supporto, e conseguente rotazione dei gradi necessari;
 + Applicazione dell'offset dell'ancora.
@@ -159,7 +160,7 @@ Questa scelta segue questa fase:
 + Per scegliere il migliore fra quello disponibile, viene scelto il template la cui ancora è più vicina al rettangolo definito in sede di creazione del template.
 Per questo la scelta dell'ancora è fondamentale.\
 È importante usare, se disponibili, parole mai utilizzate, in modo che l'algoritmo riconosca che il template con un'ancora non trovata è impossibile che sia un'ancora corretta.\
-Il codice è disponibile nel @cod:best-template
+Il codice è disponibile nel @cod:best-template.
 
 #figure(caption: "Selezione del miglior template tra le varianti.")[
   #show raw: set text(size: 0.85em)
@@ -250,7 +251,7 @@ Il codice è disponibile nel @cod:best-template
 ]<cod:best-template>
 
 ==== Test di regressione<cap:test>
-Per gestire l'ultimo problema, ovvero quello di verificare che i template (o il template) del fornitore sia disegnato bene, ho ideato dei test di regressione, i quali avviano in sequenza, sfruttando il multi-threading, l'estrazione di più DDT contemporaneamente, permettendomi di visualizzare i risultati di estrazione degli articoli sinteticamente.\
+Per gestire l'ultimo problema, ovvero quello di verificare che i template (o il template) del fornitore sia disegnato bene, ho ideato dei test di regressione, i quali avviano, sfruttando il multi-threading, l'estrazione di più DDT, permettendomi di visualizzare i risultati di estrazione degli articoli sinteticamente.\
 Siccome era impossibile, per disponibilità di tempo, hardcodare i risultati corretti per tutti gli esempi disponibili, ho optato per un metodo più rapido.
 Per ogni PDF viene indicato in un file JSON il numero di articoli attesi: lo script verifica questo valore e considera l'estrazione corretta se il numero di articoli estratti corrisponde alle aspettative.\
 Questo ha permesso di velocizzare notevolmente il ciclo di controllo, tuttavia rimane necessaria una verifica manuale a campione per ogni fornitore per controllare la correttezza dei dati estratti.\
@@ -283,7 +284,7 @@ Nel @cod:run-test è disponibile il codice che usavo per i test.
 Per quanto i risultati dell'OCR non dipendessero direttamente dal mio lavoro, era necessario individuare un metodo per limitare il più possibile gli errori, soprattutto nei PDF digitali.
 Per ovviare a questo problema, ho sfruttato la tecnologia pdftotext, la quale estrae direttamente il testo nativo disponibile sul PDF.\
 Siccome molti PDF presentavano testo nativo solo parzialmente, o ne erano del tutto privi, non era possibile affidarsi esclusivamente all'estrazione tramite testo nativo.
-Ma nelle situazioni in cui questo veniva estratto, il testo nativo è molto più affidabile dei risultati di un OCR e avevo bisogno di un metodo per preferirlo rispetto all'OCR.\
+Tuttavia, nelle situazioni in cui questo veniva estratto, il testo nativo è molto più affidabile dei risultati di un OCR e avevo bisogno di un metodo per preferirlo rispetto all'OCR.\
 Per questo ho ideato il codice, disponibile nel @cod:merge-rects, che permette di unificare i risultati trovati dall'OCR e dal testo nativo, prediligendo quest'ultimo ove presente.
 
 #figure(caption: "Unificazione dei risultati del testo nativo e dell'OCR.")[
@@ -349,7 +350,7 @@ Per questo ho ideato il codice, disponibile nel @cod:merge-rects, che permette d
 
 Un altro problema importante da risolvere era comprendere se l'estrazione errata degli articoli dipendesse dalla struttura della soluzione che avevo implementato oppure dall'OCR.\
 Per fare questo ho ideato due passaggi:
-+ Scrittura di un file .txt il quale associa ad ogni parola le 4 coordinate `xmin, xmax, ymin, ymax` (codice disponibile nel @cod:write-txt);
++ Scrittura di un file .txt il quale associa ad ogni parola le coordinate `xmin, xmax, ymin, ymax` e la fonte di estrazione `source` (codice disponibile nel @cod:write-txt);
 + Visualizzazione grafica rispetto al PDF dei rettangoli (codice disponibile nel @cod:html-rects).
 
 Questo approccio permette di verificare nell'immediato l'attribuzione della colpa per un'estrazione errata verificata dall'esecuzione dei test.
@@ -522,7 +523,7 @@ Tuttavia, alcuni campi hanno una regex che permette un controllo più sicuro per
 Questi campi sono:
 - Data DDT: formati come dd/mm/yyyy, dd-mm-yyyy o ddmmyyyy (pattern \d{2}[/-]?\d{2}[/-]?\d{4});
 - Numero colli: valore numerico intero (pattern \d+);
-- Peso lordo: valore numerico con eventuale parte decimale (pattern \d+([.,]\d+)?).
+- Peso lordo e peso netto: valore numerico con eventuale parte decimale (pattern \d+([.,]\d+)?).
 
 Inoltre, è stata ideata la configurazione delle parole chiave, un metodo per far conoscere all'algoritmo che un campo si trova sicuramente dopo una determinata parola.\
 Le parole chiave vengono utilizzate per i seguenti campi:
@@ -532,7 +533,7 @@ Le parole chiave vengono utilizzate per i seguenti campi:
 - Quantità;
 - Riferimento codice ordine.
 
-Ad esempio, se si è a conoscenza del fatto che ad ogni articolo è associato un riferimento ad un codice ordine, e questo riferimento è definito dopo la scritta "Rif. Cod. Ord" si possono configurare come parole chiave queste ultime per configurare l'algoritmo in modo che consideri la parola solo se segue quelle indicate.\
+Ad esempio, se si è a conoscenza del fatto che ad ogni articolo è associato un riferimento ad un codice ordine, e questo riferimento è definito dopo la scritta "Rif. Cod. Ord", si possono configurare queste ultime come parole chiave, istruendo l'algoritmo a considerare la parola solo se segue quelle indicate.\
 Inoltre, è possibile specificare il tipo di quel preciso campo (tutta la riga, primo numero, prima sequenza alfanumerica).\
 Il codice di estrazione tramite parola chiave è disponibile nel @cod:catch-after-keyword.
 
@@ -569,12 +570,12 @@ def catch_after_keyword(
 ]<cod:catch-after-keyword>
 
 Nel complesso, per facilitare la lettura dei file txt, è stato adottato un sistema di normalizzazione che fissa larghezza e altezza rispettivamente a 250 e 1000 unità.\
-La funzionalità di debug visivo descritta nella @cap:risultati-ocr, introdotta nella seconda metà del progetto, si appoggia a questo sistema per posizionare correttamente i rettangoli sovrapposti al PDF.
+La funzionalità di debug visivo descritta nella @cap:risultati-ocr, introdotta nella seconda metà del progetto, si appoggia a questo sistema per posizionare correttamente i rettangoli sovrapposti al PDF.\
 Ad esempio, se una parola si trova alla coordinata 125 di altezza della seconda pagina, nel txt viene segnata con coordinata 1125, tutto questo serve per evitare sovrapposizioni di parole diverse di pagine diverse.\
 Mentre l'estrazione dei campi dell'intestazione e dell'appendice è stata descritta nelle sezioni precedenti, la parte più complessa riguarda l'estrazione corretta degli articoli, poiché in alcuni casi la struttura è semplice e lineare, in altri la logica di estrazione risulta considerevolmente più articolata.\
-In quelli facili, ogni articolo è disposto come nella @table:example-corretto, dove ad ogni riga corrisponde un pezzo per ogni campo, in quelli difficili ogni articolo è disposto come nella @table:example-multiriga, ovvero diversi campi possono essere posizionati in più righe.
+In quelli a linea singola, ogni articolo è disposto come nella @table:example-corretto, dove ad ogni riga corrisponde un pezzo per ogni campo, in quelli multilinea ogni articolo è disposto come nella @table:example-multiriga.
 
-#figure(caption: "Esempio di disposizione facile.")[
+#figure(caption: "Esempio di disposizione a linea singola.")[
 #table(
     columns: (auto, auto, auto, auto),
     table.header([Codice], [Descrizione], [Unità], [Quantità]),
@@ -593,7 +594,9 @@ In quelli facili, ogni articolo è disposto come nella @table:example-corretto, 
 )
 ]<table:example-multiriga>
 
-Per risolvere il problema, l'utente indica se la quantità si trova nella riga superiore o inferiore dell'articolo; in base a questa informazione, l'estrazione segue due logiche diverse, implementate nel @cod:quantity.
+Inizialmente, l'approccio adottato per l'estrazione degli articoli si limitava a marcare la colonna di competenza di ciascun pezzo, senza considerare eventuali sovrapposizioni tra campi adiacenti.\
+Questo approccio si è però rivelato inadeguato nei casi in cui un campo legato ad una colonna occupi spazio in un'altra colonna non pertinente, ed è stato pertanto sostituito, nel corso del progetto, da una logica di raggruppamento basata sulla distanza tra i pezzi di uno stesso articolo, calcolata a partire dalla posizione della quantità.\
+Per ovviare a questo problema, innanzitutto l'utente deve segnalare se la quantità si trova in alto oppure in basso rispetto all'articolo, poi, in base a quello, come descritto nel @cod:quantity, si estrae in maniera differente.
 
 #figure(caption: "Selezione della strategia di raggruppamento in base alla posizione della quantità.")[
 #show raw: set text(size: 0.85em)

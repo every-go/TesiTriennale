@@ -23,8 +23,7 @@ Segue la suddivisione delle tecnologie in base al loro utilizzo.
     "technologies/python.png",
     caption: [Logo Python.],
     alt: "",
-    width: 15%,
-    height: 15%
+    width: 15%
 )
 
 === Frontend

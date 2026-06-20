@@ -108,17 +108,17 @@
   )
 )
 
-// Utile per quando si introducono le tecnologie (link+corsivo+footnote)
-#let linkfn(url, body) = (
-  link(url, text(style: "italic", body))+footnote(link(url))
-)
-
 #let path = "../images/"
 
 #let img(name, caption: none, width: auto, height:auto, alt: none) = {
   let full = path + name
   figure(
-    image(full, width: width, alt: alt),
+    image(full, width: width, height: height, alt: alt),
     caption: caption,
   )
+}
+
+#let heading-name(lbl) = context {
+  let elems = query(lbl)
+  elems.first().body
 }

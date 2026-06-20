@@ -151,7 +151,6 @@ Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabe
 #img(
   "UC/UC2.1.png",
   caption: [UC2.1: Visualizza dati fornitore.],
-  width: 75%,
   alt: "Questo diagramma dei casi d'uso mostra il personale che visualizza i dati del fornitore, nello specifico visualizza la ragione sociale, l'indirizzo e la partita IVA."
 )<fig:uc2.1>
 
@@ -219,8 +218,7 @@ Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabe
 #img(
   "UC/UC2.2.png",
   caption: [UC2.2: Visualizza dati destinatario.],
-  width: 75%,
-  alt: "Questo diagramma dei casi d'uso mostra il personale che visualizza i dati del destinatario, specificatamente visualizza la ragione sociale, l'indirizzo e la partita IVA."
+  alt: "Questo diagramma dei casi d'uso mostra il personale che visualizza i dati del destinatario, nello specifico visualizza la ragione sociale, l'indirizzo e la partita IVA."
 )<fig:uc2.2>
 
 - Attore principale: Personale
@@ -515,7 +513,7 @@ Ogni caso d'uso si compone di tutte le informazioni presenti nella seguente tabe
 #img(
   "UC/UC3.png",
   caption: [UC3: Creazione template.],
-  alt: "Questo diagramma dei casi d'uso mostra il caso d'uso della creazione del template. Mostra le inclusione dei casi d'uso di caricamento PDF di riferimento, l'inserimento del nome del fornitore, le operazioni sui rettangoli, l'inserimento delle parole di riepilogo, l'inserimento delle parole da ignorare, l'indicazione della posizione della quantità, il salvataggio del template, la configurazione delle parole chiave e la rotazione del PDF."
+  alt: "Questo diagramma dei casi d'uso mostra il caso d'uso della creazione del template. Mostra le inclusioni dei casi d'uso di caricamento PDF di riferimento, l'inserimento del nome del fornitore, le operazioni sui rettangoli, l'inserimento delle parole di riepilogo, l'inserimento delle parole da ignorare, l'indicazione della posizione della quantità, il salvataggio del template, la configurazione delle parole chiave e la rotazione del PDF."
 )
 
 - Attore principale: Personale
@@ -577,7 +575,7 @@ Nella seguente figura, è mostrato il diagramma dei casi d'uso per l'operazione 
 #img(
   "UC/UC3.3.png",
   caption: [UC3.3: Operazioni sui rettangoli.],
-  alt: "Questo diagramma rappresenta le operazioni possibili sui rettangoli. Infatti, le operazioni sul rettangolo ancora si generalizzano in creazione, modifica ed eliminazione. Nel caso specifico rappresentato in figura, la creazione del rettangolo ancora include l'inserimento del nome dell'ancora."
+  alt: "Questo diagramma rappresenta le operazioni possibili sui rettangoli. Infatti, le operazioni sui rettangoli si generalizzano in creazione, modifica ed eliminazione. Nel caso specifico dell'ancora rappresentato in figura, la creazione del rettangolo include l'inserimento del nome dell'ancora."
 )
 
 - Attore principale: Personale
@@ -2236,7 +2234,6 @@ Ad ogni requisito è associato un codice costruito in base alle sue caratteristi
 #v(1em)
 In @tab:requisiti-funzionali, @tab:requisiti-qualitativi e @tab:requisiti-vincolo sono riassunti i requisiti e il loro tracciamento con gli use case delineati in fase di analisi.
 #[
-#show figure: set block(breakable: true)
 #set table(
   align: (center+horizon, left+horizon, center+horizon),
   columns: (auto, 5fr, 1.5fr),
@@ -2276,7 +2273,6 @@ In @tab:requisiti-funzionali, @tab:requisiti-qualitativi e @tab:requisiti-vincol
 #v(2em)
 Di seguito, nella @tab:riepilogo-requisiti ho inserito il riepilogo dei requisiti, suddivisi per tipologia e necessità.
 #v(1em)
-#show figure: set block(breakable: false)
 #figure(
   table(
     columns: (auto, 1fr, 1fr, auto, auto),
