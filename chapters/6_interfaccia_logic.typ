@@ -126,9 +126,7 @@ Nel @cod:anchor-offset e @cod:anchor-rects sono mostrate le funzioni che calcola
   #show raw: set text(size: 0.85em)
   ```py
   def translate_obj(obj: Any, dx: float, dy: float) -> None:
-      """
-      Applica ricorsivamente un offset (dx, dy) a tutte le coordinate rettangolari (xmin/xmax, ymin/ymax, y_start/y_end, x_start, riga_1_top) presenti in una struttura dati annidata.
-      """
+      """Applica ricorsivamente un offset (dx, dy) a tutte le coordinate rettangolari (xmin/xmax, ymin/ymax, y_start/y_end, x_start, riga_1_top) presenti in una struttura dati annidata"""
       if isinstance(obj, dict):
           if "xmin" in obj:
               obj["xmin"] += dx
@@ -255,7 +253,7 @@ Nel @cod:run-test è disponibile il codice che usavo per i test.
       fornitore_stats: dict[str, SupplierStats],
       failed_keys_list: list[str],
   ) -> None:
-      """Esegue tutti i test in parallelo e aggiorna le statistiche."""
+      """Esegue tutti i test in parallelo e aggiorna le statistiche"""
       max_workers: int = min(4, len(tasks))
       with ThreadPoolExecutor(max_workers=max_workers) as executor:
           futures = {executor.submit(run_test_case, *task): task for task in tasks}
@@ -285,11 +283,7 @@ Per questo ho ideato il codice, disponibile nel @cod:merge-rects, che permette d
       native_words: list[Word],
       ocr_words: list[Word],
   ) -> list[Word]:
-      """
-      Unisce parole native e OCR all'interno dei rettangoli indicati.
-      Le parole native hanno precedenza; le parole OCR vengono aggiunte solo se non già presenti.
-      Restituisce la lista ordinata per (ymin, xmin).
-      """
+      """Unisce parole native e OCR all'interno dei rettangoli indicati. Le parole native hanno precedenza; le parole OCR vengono aggiunte solo se non già presenti. Restituisce la lista ordinata per (ymin, xmin)"""
       selected: list[Word] = []
       used_keys: set[str]  = set()
 
@@ -307,10 +301,7 @@ Per questo ho ideato il codice, disponibile nel @cod:merge-rects, che permette d
       output: list[Word],
       used_keys: set[str],
   ) -> None:
-      """
-      Aggiunge a output le parole che ricadono in almeno uno dei rettangoli,
-      saltando i duplicati già presenti in used_keys.
-      """
+      """Aggiunge a output le parole che ricadono in almeno uno dei rettangoli, saltando i duplicati già presenti in used_keys"""
       for rect in rects:
           xmin = rect["xmin"]
           xmax = rect["xmax"]
@@ -329,7 +320,7 @@ Per questo ho ideato il codice, disponibile nel @cod:merge-rects, che permette d
       output: list[Word],
       used_keys: set[str],
   ) -> None:
-      """Aggiunge le parole native che non erano all'interno di nessun rettangolo."""
+      """Aggiunge le parole native che non erano all'interno di nessun rettangolo"""
       for w in native_words:
           key: str = _word_key(w)
           if key not in used_keys:
@@ -349,24 +340,20 @@ Questo approccio permette di verificare nell'immediato l'attribuzione della colp
   #show raw: set text(size: 0.85em)
   ```py
   def _write_txt(txt_dir: Path, base_name: str, all_words: list[Word]) -> None:
-      """Salva il file TXT con le coordinate di tutte le parole estratte."""
+      """Salva il file TXT con le coordinate di tutte le parole estratte"""
       coord_text: str = words_to_coord_text(remove_duplicates(all_words))
       txt_path: Path = txt_dir / f"{base_name}.txt"
       with open(txt_path, "w", encoding="utf-8") as f:
           f.write(coord_text)
 
   def words_to_coord_text(words: list[Word]) -> str:
-      """
-      Converte una lista di parole in testo formattato con coordinate,
-      raggruppando le parole per riga (tolleranza ymin) e ordinandole per xmin.
-      Formato di ogni token: testo(xmin,xmax,ymin,ymax,source)
-      """
+      """Converte una lista di parole in testo formattato con coordinate, raggruppando le parole per riga (tolleranza ymin) e ordinandole per xmin. Formato di ogni token: testo(xmin,xmax,ymin,ymax,source)"""
       lines: list[list[Word]] = _group_words_into_lines(words)
       return _render_lines_to_text(lines)
 
 
   def _group_words_into_lines(words: list[Word]) -> list[list[Word]]:
-      """Raggruppa le parole in righe in base alla prossimità verticale (ymin)."""
+      """Raggruppa le parole in righe in base alla prossimità verticale (ymin)"""
       lines: list[list[Word]] = []
       for w in words:
           placed: bool = False
@@ -489,9 +476,7 @@ Per alcuni campi, come il numero del DDT, non esiste una regex precisa poiché i
       ymax: float,
       words: list[Word],
   ) -> list[Word]:
-      """
-      Restituisce le parole che si sovrappongono al rettangolo dato. Utilizza una tolleranza e un overlap predefinito.
-      """
+      """Restituisce le parole che si sovrappongono al rettangolo dato. Utilizza una tolleranza e un overlap predefinito"""
       found: list[Word] = []
       for w in words:
           overlap_x: float = (
@@ -535,10 +520,7 @@ def catch_after_keyword(
     parola_chiave: str,
     regex_cattura: str | None = None,
 ) -> str:
-    """
-    Estrae il testo che segue la parola chiave.
-    Se regex_cattura è fornita, applica la regex al testo restante.
-    """
+    """Estrae il testo che segue la parola chiave. Se regex_cattura è fornita, applica la regex al testo restante"""
     if not testo:
         return ""
     if not parola_chiave:
@@ -596,7 +578,7 @@ def _group_lines_by_quantity(
         righe: list[PhysicalLineDict],
         prima_quantita_rect: Rect,
     ) -> list[PhysicalLineDict]:
-        """Raggruppa le righe fisiche in gruppi articolo in base alla quantità."""
+        """Raggruppa le righe fisiche in gruppi articolo in base alla quantità"""
         if not righe:
             return []
 
@@ -626,7 +608,7 @@ def _group_qty_on_top(
         prima_quantita_rect: Rect,
         parole_riepilogo: list[str],
     ) -> list[PhysicalLineDict]:
-        """Raggruppa righe quando la quantità si trova nella riga superiore dell'articolo."""
+        """Raggruppa righe quando la quantità si trova nella riga superiore dell'articolo"""
         gruppi: list[PhysicalLineDict] = []
         gruppo_corrente: PhysicalLineDict | None = None
         gruppo_ha_qty: bool = False
@@ -676,7 +658,7 @@ def _group_qty_on_bottom(
         primo_codice_rect: Rect,
         parole_riepilogo: list[str],
     ) -> list[PhysicalLineDict]:
-        """Raggruppa righe quando la quantità si trova nell'ultima riga dell'articolo."""
+        """Raggruppa righe quando la quantità si trova nell'ultima riga dell'articolo"""
         gruppi: list[PhysicalLineDict] = []
         buffer: list[PhysicalLineDict] = []
         buffer_has_qty: bool = False
