@@ -43,7 +43,7 @@ Alla @fig:adeguato c'è un esempio adeguato per l'estrazione di dati tramite reg
 alla @fig:non-adeguato c'è un esempio non adeguato per l'estrazione di dati tramite
 regex.
 
-#figure(caption: "Esempio adeguato all'estrazione tramite regex.")[
+#figure(caption: "Esempio adeguato all'estrazione tramite regex")[
     #table(
         columns: (auto, auto),
         [*Numero colli*], [1],
@@ -51,7 +51,7 @@ regex.
     )
 ]<fig:adeguato>
 
-#figure(caption: "Esempio non adeguato all'estrazione tramite regex.")[
+#figure(caption: "Esempio non adeguato all'estrazione tramite regex")[
     #table(
         columns: (auto, auto),
         [*Numero colli*], [*Peso lordo*],

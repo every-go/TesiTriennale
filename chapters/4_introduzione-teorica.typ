@@ -21,7 +21,7 @@ Segue la suddivisione delle tecnologie in base al loro utilizzo.
 
 #img(
     "technologies/python.png",
-    caption: [Logo Python.],
+    caption: [Logo Python],
     alt: "",
     width: 15%
 )
@@ -33,12 +33,13 @@ HTML e CSS rappresentano la scelta naturale per la costruzione dell'interfaccia:
 Tailwind CSS è stato invece escluso in quanto, pur semplificando la scrittura degli stili tramite classi predefinite, avrebbe reso più difficile mantenere un foglio di stile esterno, il quale è più adatto al contesto dato che permette di mantenere gli stili separati dalla struttura e più facilmente manutenibili. Inoltre, evitarlo permette di non aggiungere dipendenze inutili, non avendo come priorità la costruzione di una UI complessa. \
 Streamlit è una libreria Python che permette di creare interfacce web con pochissime righe di codice, ma ho deciso di scartarla in quanto viola i principi di accessibilità impedendo l'uso diretto dei tag HTML e la creazione di gerarchie di intestazioni corrette. \
 Blade, il template engine nativo di Laravel, avrebbe introdotto una dipendenza da Laravel non giustificata, dato che il frontend è già coperto da HTML e CSS. \
-Qt è una libreria che permette di creare applicazioni desktop, ma richiede un display server (X11 o Wayland) per il rendering dell'interfaccia grafica, assente nei container Docker standard. Sebbene esistano workaround tramite esposizione del socket X11 dell'host, la soluzione risulta dipendente dall'ambiente e non portabile, violando il vincolo relativo all'uso di Docker. \
+Qt è una libreria che permette di creare applicazioni desktop, ma richiede un display server (X11 o Wayland) per il rendering dell'interfaccia grafica, assente nei container Docker standard.\
+Sebbene esistano workaround tramite esposizione del socket X11 dell'host, la soluzione risulta dipendente dall'ambiente e non portabile, violando il vincolo relativo all'uso di Docker. \
 Per quanto riguarda la logica lato client, JavaScript è la prima scelta per qualsiasi applicazione web che necessiti di interattività. \
 È stato utilizzato nella sua forma vanilla, senza alcun framework aggiuntivo, in quanto la parte JavaScript dell'applicazione è limitata alla modellazione di figure per indicare la posizione dei campi nei DDT e ad alcune chiamate API, non richiedendo strutture più complesse.
 
 #figure(
-    caption: [Loghi tecnologie frontend.],
+    caption: [Loghi tecnologie frontend],
     stack(
         dir: ttb,
         spacing: 1em,
@@ -68,7 +69,7 @@ FastAPI offre funzionalità aggiuntive come la validazione automatica dei dati e
 Tuttavia, le API realizzate in questo progetto hanno una struttura semplice e non richiedono validazione complessa dei dati in ingresso, rendendo queste funzionalità superflue rispetto alla semplicità e alla velocità di configurazione offerta da Flask, motivazione per cui è stato scelto quest'ultimo.
 
 #figure(
-    caption: [Loghi tecnologie backend.],
+    caption: [Loghi tecnologie backend],
     stack(
         dir: ttb,
         spacing: 1em,
@@ -90,7 +91,7 @@ Docker rappresenta comunque la soluzione più adatta al contesto, in quanto è u
 
 #img(
     "technologies/docker.png",
-    caption: [Logo Docker.],
+    caption: [Logo Docker],
     alt: "",
     width: 25%
 )
@@ -131,9 +132,9 @@ Tesseract-OCR è il motore OCR open source più diffuso, originariamente svilupp
 
 DocTR (Document Text Recognition) è una libreria sviluppata da Mindee, basata su architetture transformer e reti convoluzionali, progettata specificamente per il riconoscimento di testo in documenti. Offre una pipeline integrata che include rilevamento delle righe di testo ed estrazione delle parole con le rispettive coordinate normalizzate. È la tecnologia OCR scelta per il progetto: rispetto alle alternative, offre un buon equilibrio tra accuratezza su documenti stampati e restituisce direttamente le coordinate di ogni parola in un sistema normalizzato, compatibile con la struttura del motore di estrazione sviluppato.
 
-Tutte le tecnologie considerate restituiscono le coordinate di ogni elemento di testo rilevato sotto forma di bounding box, caratteristica fondamentale per il motore di estrazione sviluppato, che si basa sulla posizione spaziale delle parole nel documento.\
-Tuttavia OCRmyPDF, per sua natura di strumento orientato alla produzione del PDF finale, utilizza internamente le coordinate prodotte da Tesseract per costruire il layer di testo, senza esporle direttamente.\
-Per i PDF nativi, questa informazione è ricavata direttamente tramite pdftotext in modalità `-bbox`, come descritto nella @cap:librerie-supporto, integrando i risultati ottenuti dall'estrazione tramite testo dell'OCR.
+Surya, EasyOCR, Tesseract-OCR e DocTR restituiscono le coordinate di ogni elemento di testo rilevato sotto forma di bounding box, un requisito chiave per l'approccio di estrazione adottato, basato sulla posizione spaziale delle parole nel documento.\
+OCRmyPDF costituisce un caso particolare: per sua natura di strumento orientato alla produzione del PDF finale, utilizza internamente le coordinate prodotte da Tesseract per costruire il layer di testo, senza tuttavia esporle direttamente.\
+Per i PDF nativi, le coordinate sono invece ricavate tramite pdftotext in modalità `-bbox`, come descritto nella @cap:librerie-supporto, evitando il ricorso all'OCR.
 
 === Gestore dell'ambiente virtuale
 

@@ -3,7 +3,7 @@
 #let myMatricola = "2111005"
 #let myTitle = "Ideazione di una pipeline OCR locale per estrarre dati da documenti di trasporto"
 #let myProf = "Prof. Marco Zanella"
-#let myCompany = "Spazio Dev SRL"
+#let myCompany = "Spazio Dev"
 #let myLocation = "Padova"
 #let myAY = "2025-2026"
 #let myTime = "Luglio 2026"

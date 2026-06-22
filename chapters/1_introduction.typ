@@ -1,6 +1,7 @@
 #import "@preview/codly:1.3.0": *
 #import "@preview/codly-languages:0.1.8": *
 #import "../config/thesis-config.typ": gl, glpl, img
+#import "../config/variables.typ": myCompany
 
 = Introduzione <cap:introduzione>
 #text(style: "italic", [
@@ -10,21 +11,23 @@
 
 == L'azienda
 
-Spazio Dev SRL è una software house situata a Tombolo (PD) specializzata nello sviluppo di soluzioni innovative che integrano AI, stampa 3D e design.
+#text(myCompany) è una software house situata a Tombolo (PD) specializzata nello sviluppo di soluzioni innovative che integrano AI, stampa 3D e design.
 
 L'obiettivo principale dell'azienda è di innovare le imprese riducendo tempi, costi e complessità operativa attraverso automazione e tecnologie avanzate.
 
 #img(
     "logo_azienda.svg",
-    caption: [Logo Spazio Dev.],
+    caption: [Logo #text(myCompany)],
     alt: ""
 )<fig:logo>
 
 == Il progetto
 
-Il lavoro si concentra sulla sostituzione del sistema attualmente operativo utilizzato per l'estrazione di dati dai Documenti di Trasporto (#gl("ddt", display: "ddt")), dipendente da Mistral per la comprensione documentale. La soluzione esistente, pur funzionante, comporta costi operativi ricorrenti e dipendenza da #gl("llm", display: "llm").
+Il lavoro si concentra sulla sostituzione del sistema attualmente operativo utilizzato per l'estrazione di dati dai Documenti di Trasporto (#gl("ddt", display: "DDT")), dipendente da Mistral per la comprensione documentale.\
+La soluzione esistente, pur funzionante, comporta costi operativi ricorrenti e dipendenza da #gl("llm", display: "LLM").
 
-Lo scopo è quello di definire e sviluppare una #gl("pipeline", display: "pipeline") #gl("ocr", display: "ocr") locale per acquisire i dati, classificare i layout ed estrarre dati strutturati dai DDT senza dipendere da #gl("api", display: "api") esterne a pagamento. La pipeline prevede più fasi sequenziali: acquisizione e #gl("preprocessing", display: "preprocessing") delle immagini, riconoscimento ottico del testo, normalizzazione dei valori estratti e visualizzazione degli stessi.
+Lo scopo è quello di definire e sviluppare una #gl("pipeline", display: "pipeline") #gl("ocr", display: "OCR") locale per acquisire i dati, classificare i layout ed estrarre dati strutturati dai DDT senza dipendere da #gl("api", display: "API") esterne a pagamento.\
+La pipeline prevede più fasi sequenziali: acquisizione e #gl("preprocessing", display: "preprocessing") delle immagini, riconoscimento ottico del testo, normalizzazione dei valori estratti e visualizzazione degli stessi.
 
 Nello specifico, i dati da estrarre, ove presenti, sono:
 - Ragione sociale del fornitore e del destinatario;

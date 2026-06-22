@@ -12,7 +12,7 @@ Innanzitutto, desidero ringraziare me stesso, non essendomi mai abbattuto in tut
 
 Successivamente, desidero ringraziare dal profondo del cuore i genitori, i quali mi hanno sempre accompagnato in questo mio bellissimo percorso, supportandomi sempre quando era necessario.
 
-Ringrazio anche la sorella Giulia per essere stata presente.
+Ringrazio anche Giulia per essere stata presente.
 
 Desidero inoltre ringraziare tutte le persone che hanno fatto parte, sia nel bene che nel male, in quanto ho imparato da chiunque.
 

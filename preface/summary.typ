@@ -13,7 +13,7 @@ Il presente documento descrive il lavoro svolto durante il periodo di stage curr
 \ \
 Questa tesi tratta la progettazione e lo sviluppo di un nuovo sistema di lettura dei DDT, con lo scopo di sostituire progressivamente il sistema già presente.
 \ \
-Il DDT, il cui acronimo significa 'Documento di Trasporto', è un documento fondamentale per l'economia e il trasporto. Il suo scopo è quello di indicare i dettagli del fornitore, i dettagli del destinatario, e i dettagli degli articoli che verranno spediti, oltre alle modalità di trasporto.
+Il DDT, il cui acronimo significa 'Documento di Trasporto', è un documento fondamentale per l'economia e il trasporto. Il suo scopo è quello di indicare i dettagli del fornitore, i dettagli del destinatario e i dettagli degli articoli che verranno spediti, oltre alle modalità di trasporto.
 \ \
 Lo scopo del progetto è quello di ricavare le informazioni descritte precedentemente in maniera corretta, senza sfruttare gli LLM (Large Language Models), ma sfruttando metodi diversi.
 \ \
@@ -29,7 +29,7 @@ Il progetto è molto utile poiché riduce i costi operativi di un'azienda, evita
 / #link(<cap:analisi-requisiti>)[Il terzo capitolo]: descrive l'analisi dei requisiti del progetto, indicando un'analisi degli utenti, i casi d'uso e il tracciamento dei requisiti;
 / #link(<cap:introduzione-teorica>)[Il quarto capitolo]: descrive le tecnologie esistenti per risolvere i problemi indicando gli aspetti teorici alla base, gli strumenti che sono stati scelti e con quali criteri;
 / #link(<cap:approcci>)[Il quinto capitolo]: descrive i primi approcci allo svolgimento del progetto;
-/ #link(<cap:interfaccia>)[Il sesto capitolo]: descrive la costruzione di un'interfaccia grafica e delle modalità attuali per lo svolgimento del progetto, descrivendo brevemente la modalità dei test effettuati per velocizzare il processo;
+/ #link(<cap:interfaccia>)[Il sesto capitolo]: descrive la costruzione dell'interfaccia grafica e delle modalità attuali per lo svolgimento del progetto, descrivendo brevemente la modalità dei test effettuati per velocizzare il processo;
 / #link(<cap:conclusioni>)[Il settimo capitolo]: raggruppa le conclusioni tratte dallo svolgimento del progetto.
 #linebreak()
 #text(24pt, weight: "semibold", "Convenzioni tipografiche")
@@ -43,7 +43,7 @@ Durante la stesura del testo ho scelto di adottare le seguenti convenzioni tipog
 - Le citazioni ad un libro o ad una risorsa presente nella #link(<bibliography>)[bibliografia] (#link(<bibliography>)[p. #context counter(page).at(<bibliography>).at(0)]) per la prima occorrenza saranno affiancate dal rispettivo numero identificativo, es. $[1]$;
 - I blocchi di codice sono rappresentati nel seguente modo
 #linebreak()
-#figure(caption: "Codice d'esempio.")[
+#figure(caption: "Codice d'esempio")[
 	#show raw: set text(size: 0.85em)
 ```c
 float Q_rsqrt( float number ){

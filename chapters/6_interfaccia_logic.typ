@@ -18,19 +18,19 @@ Alla @fig:estrazione-ddt e alla @fig:costruzione-template sono disponibili le im
 
 #img(
   "example/estrazione-ddt.png",
-  caption: [Interfaccia per l'estrazione di un DDT.],
+  caption: [Interfaccia per l'estrazione di un DDT],
   alt: "L'immagine rappresenta l'interfaccia per l'estrazione di un DDT. Dà la possibilità di caricare un PDF, selezionare il template e premere il pulsante per l'estrazione. È visibile la parte in cui verrà mostrato il risultato.",
 )<fig:estrazione-ddt>
 
 #img(
   "example/costruzione-template.png",
-  caption: [Interfaccia iniziale per la costruzione di un template.],
+  caption: [Interfaccia iniziale per la costruzione di un template],
   alt: "L'immagine rappresenta l'inizio dell'interfaccia per costruire un template. In essa sono compresi tutti i casi d'uso principali descritti nell'Analisi dei Requisiti relativi alla costruzione del template.",
 )<fig:costruzione-template>
 
 Per l'utilizzo e la condivisione del progetto, è stato costruito un Dockerfile, la cui versione finale è disponibile nel @cod:Dockerfile.
 
-#figure(caption: "Dockerfile per la containerizzazione del progetto.")[
+#figure(caption: "Dockerfile per la containerizzazione del progetto")[
   #show raw: set text(size: 0.85em)
   ```Dockerfile
   FROM python:3.12-slim
@@ -66,11 +66,11 @@ Una volta definita la containerizzazione del progetto, l'attenzione si è sposta
 === Interfaccia grafica per la creazione del template
 Mentre l'interfaccia per l'estrazione richiede solamente di scegliere il PDF, il fornitore associato e di premere il pulsante di estrazione per ottenere i risultati, l'interfaccia per la costruzione del template è molto più complessa.\
 Alla @fig:esempio-template è disponibile un esempio di un template per il corpo del documento, non rendo disponibile la completa visualizzazione per ragioni di riservatezza aziendale.\
-L'interfaccia richiede che venga disegnato per ogni campo un rettangolo, infatti nell'esempio sono disegnati i rettangoli "Intestazione colonne", "Primo codice", "Prima descrizione", "Prima unità" e "Prima quantità".
+L'interfaccia richiede che venga disegnato per ogni campo un rettangolo, nell'esempio sono disegnati i rettangoli "Intestazione colonne", "Primo codice", "Prima descrizione", "Prima unità" e "Prima quantità".
 
 #img(
   "example/esempio-template.png",
-  caption: [Esempio corpo template.],
+  caption: [Esempio corpo template],
   alt: "",
 )<fig:esempio-template>
 
@@ -96,7 +96,7 @@ Infatti, nel caso in cui il template sia rimasto identico, ma il PDF caricato pr
 Questo metodo invece trova la parola scelta come ancora, e corregge, rispetto alla precedente posizione indicata dal rettangolo dell'ancora, tutti i rettangoli in modo da allineare al nuovo DDT caricato.\
 Nel @cod:anchor-offset e @cod:anchor-rects sono mostrate le funzioni che calcolano l'offset rispetto all'ancora e lo applicano in ogni rettangolo.
 
-#figure(caption: "Calcolo dell'offset rispetto all'ancora.")[
+#figure(caption: "Calcolo dell'offset rispetto all'ancora")[
   #show raw: set text(size: 0.85em)
   ```py
   def apply_anchor_offset(
@@ -122,7 +122,7 @@ Nel @cod:anchor-offset e @cod:anchor-rects sono mostrate le funzioni che calcola
   ```
 ]<cod:anchor-offset>
 
-#figure(caption: "Applicazione dell'offset ai rettangoli.")[
+#figure(caption: "Applicazione dell'offset ai rettangoli")[
   #show raw: set text(size: 0.85em)
   ```py
   def translate_obj(obj: Any, dx: float, dy: float) -> None:
@@ -159,7 +159,7 @@ Per questo la scelta dell'ancora è fondamentale.\
 È importante usare, se disponibili, parole mai utilizzate, in modo che l'algoritmo riconosca che il template con un'ancora non trovata è impossibile che sia il template corretto.\
 Il codice è disponibile nel @cod:best-template.
 
-#figure(caption: "Selezione del miglior template tra le varianti.")[
+#figure(caption: "Selezione del miglior template tra le varianti")[
   #show raw: set text(size: 0.85em)
   ```py
   def select_best_template(
@@ -245,7 +245,7 @@ Per ogni PDF viene indicato in un file JSON il numero di articoli attesi: lo scr
 Questo ha permesso di velocizzare notevolmente il ciclo di controllo, tuttavia rimane necessaria una verifica manuale a campione per ogni fornitore per controllare la correttezza dei dati estratti.\
 Nel @cod:run-test è disponibile il codice che usavo per i test.
 
-#figure(caption: "Esecuzione dei test di regressione in parallelo.")[
+#figure(caption: "Esecuzione dei test di regressione in parallelo")[
   #show raw: set text(size: 0.85em)
   ```py
   def _run_all_tests(
@@ -275,7 +275,7 @@ Siccome molti PDF presentavano testo nativo solo parzialmente, o ne erano del tu
 Tuttavia, nelle situazioni in cui questo veniva estratto, il testo nativo è molto più affidabile dei risultati di un OCR e avevo bisogno di un metodo per preferirlo rispetto all'OCR.\
 Per questo ho ideato il codice, disponibile nel @cod:merge-rects, che permette di unificare i risultati trovati dall'OCR e dal testo nativo, prediligendo quest'ultimo ove presente.
 
-#figure(caption: "Unificazione dei risultati del testo nativo e dell'OCR.")[
+#figure(caption: "Unificazione dei risultati del testo nativo e dell'OCR")[
   #show raw: set text(size: 0.85em)
   ```py
   def merge_rects(
@@ -336,7 +336,7 @@ Per fare questo ho ideato due passaggi:
 
 Questo approccio permette di verificare nell'immediato l'attribuzione della colpa per un'estrazione errata verificata dall'esecuzione dei test.
 
-#figure(caption: "Scrittura delle coordinate delle parole in formato testuale.")[
+#figure(caption: "Scrittura delle coordinate delle parole in formato testuale")[
   #show raw: set text(size: 0.85em)
   ```py
   def _write_txt(txt_dir: Path, base_name: str, all_words: list[Word]) -> None:
@@ -371,7 +371,7 @@ Questo approccio permette di verificare nell'immediato l'attribuzione della colp
   ```
 ]<cod:write-txt>
 
-#figure(caption: "Generazione della visualizzazione HTML dei rettangoli.")[
+#figure(caption: "Generazione della visualizzazione HTML dei rettangoli")[
   #show raw: set text(size: 0.85em)
   ```py
   def make_html(
@@ -466,7 +466,7 @@ Ogni template è composto da tre parti principali, le quali sono suddivise in ul
 Il primo approccio che il mio algoritmo realizza, descritto nel @cod:words-in-rect, è trovare le parole che si trovano nel rettangolo disegnato e corretto dall'ancora.\
 Per alcuni campi, come il numero del DDT, non esiste una regex precisa poiché il formato varia da fornitore a fornitore: in questi casi il valore viene estratto direttamente dalle parole trovate all'interno del rettangolo corrispondente.
 
-#figure(caption: "Riconoscimento delle parole all'interno del rettangolo.")[
+#figure(caption: "Riconoscimento delle parole all'interno del rettangolo")[
   #show raw: set text(size: 0.85em)
   ```py
   def words_in_rect(
@@ -512,7 +512,7 @@ Ad esempio, se si è a conoscenza del fatto che ad ogni articolo è associato un
 Inoltre, è possibile specificare il tipo di quel preciso campo (tutta la riga, primo numero, prima sequenza alfanumerica).\
 Il codice di estrazione tramite parola chiave è disponibile nel @cod:catch-after-keyword.
 
-#figure(caption: "Estrazione del valore dopo una parola chiave.")[
+#figure(caption: "Estrazione del valore dopo una parola chiave")[
   #show raw: set text(size: 0.85em)
 ```py
 def catch_after_keyword(
@@ -547,7 +547,7 @@ Ad esempio, se una parola si trova alla coordinata 125 di altezza della seconda 
 Mentre l'estrazione dei campi dell'intestazione e dell'appendice è stata descritta nelle sezioni precedenti, la parte più complessa riguarda l'estrazione corretta degli articoli, poiché in alcuni casi la struttura è semplice e lineare, in altri la logica di estrazione risulta considerevolmente più articolata.\
 In quelli a linea singola, ogni articolo è disposto come nella @table:example-corretto, dove ad ogni riga corrisponde un pezzo per ogni campo, in quelli multilinea ogni articolo è disposto come ad esempio nella @table:example-multiriga.
 
-#figure(caption: "Esempio di disposizione a linea singola.")[
+#figure(caption: "Esempio di disposizione a linea singola")[
 #table(
     columns: (auto, auto, auto, auto),
     table.header([Codice], [Descrizione], [Unità], [Quantità]),
@@ -556,7 +556,7 @@ In quelli a linea singola, ogni articolo è disposto come nella @table:example-c
 )
 ]<table:example-corretto>
 
-#figure(caption: "Esempio di disposizione multiriga.")[
+#figure(caption: "Esempio di disposizione multiriga")[
 #table(
     columns: (auto, auto, auto, auto),
     table.header([Codice], [Descrizione], [Unità], [Quantità]),
@@ -570,7 +570,7 @@ Inizialmente, l'approccio adottato per l'estrazione degli articoli si limitava a
 Questo approccio si è però rivelato inadeguato nei casi in cui un campo legato ad una colonna occupi spazio in un'altra colonna non pertinente, ed è stato pertanto sostituito, nel corso del progetto, da una logica di raggruppamento basata sulla distanza tra i pezzi di uno stesso articolo, calcolata a partire dalla posizione della quantità.\
 Per ovviare a questo problema, innanzitutto l'utente deve segnalare se la quantità si trova in alto oppure in basso rispetto all'articolo, poi, in base a quello, come descritto nel @cod:quantity, si estrae in maniera differente.
 
-#figure(caption: "Selezione della strategia di raggruppamento in base alla posizione della quantità.")[
+#figure(caption: "Selezione della strategia di raggruppamento in base alla posizione della quantità")[
 #show raw: set text(size: 0.85em)
 ```py
 def _group_lines_by_quantity(
@@ -599,7 +599,7 @@ La verifica avviene tramite la funzione `has_quantity`, la quale controlla che n
 Le righe successive senza quantità vengono aggregate al gruppo corrente, fino alla riga successiva con quantità che segna l'inizio del nuovo articolo.\
 Il processo si interrompe anticipatamente se viene incontrata una parola di riepilogo configurata dall'utente, la quale segnala la fine della sezione degli articoli.
 
-#figure(caption: "Raggruppamento articoli con quantità in alto.")[
+#figure(caption: "Raggruppamento articoli con quantità in alto")[
 #show raw: set text(size: 0.85em)
 ```py
 def _group_qty_on_top(
@@ -649,7 +649,7 @@ Le righe vengono accumulate in un buffer e il gruppo viene chiuso e salvato solo
 Un nuovo buffer viene aperto quando viene rilevata una riga contenente un valore nella colonna del codice, segnalando l'inizio di un nuovo articolo.\
 Anche in questo caso, l'incontro con una parola di riepilogo interrompe anticipatamente il processo.
 
-#figure(caption: "Raggruppamento articoli con quantità in basso.")[
+#figure(caption: "Raggruppamento articoli con quantità in basso")[
 #show raw: set text(size: 0.85em)
 ```py
 def _group_qty_on_bottom(
