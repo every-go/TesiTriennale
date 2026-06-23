@@ -10,7 +10,7 @@
 #v(1em)
 
 == Consuntivo finale
-Una volta terminato il progetto ho redatto il consuntivo orario finale nella @fig:tabella-calcolo-ore che suddivide in maniera approssimata le ore dedicate alle varie attività.
+Il consuntivo orario finale, riportato nella @fig:tabella-calcolo-ore, suddivide in maniera approssimata le ore dedicate alle varie attività.
 #v(1em)
 #set table(
   align: (center+horizon, center+horizon), 
@@ -41,8 +41,7 @@ Una volta terminato il progetto ho redatto il consuntivo orario finale nella @fi
 #v(1em)
 
 == Requisiti soddisfatti
-Arrivato alla fine del progetto ho implementato tutti i requisiti descritti nella @cap:requirements-list.\
-Il riepilogo dei requisiti soddisfatti è disponibile nella @tab:requisiti-soddisfatti.
+Tutti i requisiti descritti nella @cap:requirements-list sono stati implementati, come riportato nel riepilogo della @tab:requisiti-soddisfatti.
 #v(1em)
 
 #let fr_tot = getFR(getLen: true)
@@ -86,14 +85,15 @@ I rischi emersi durante lo stage sono riportati in @fig:rischi-occorsi.\
 #v(1em)
 
 == Obiettivi raggiunti e valutazione personale
-Gli obiettivi principali definiti con il tutor all'inizio del progetto sono stati tutti soddisfatti, testando tutti i fornitori di cui disponevo almeno un PDF d'esempio.\
+Gli obiettivi principali definiti con il tutor all'inizio del progetto sono stati interamente soddisfatti, testando tutti i fornitori di cui disponevo almeno un PDF d'esempio.\
 Secondo il report che ho creato durante lo svolgimento del tirocinio, basato sui risultati ottenuti dai test di regressione descritti nella @cap:test, l'accuratezza esatta ottenuta dall'algoritmo è stata del 99,04%.\
-Per quanto buona sia questa percentuale, mi era impossibile, come descritto nella sezione appena menzionata, calcolare con precisione la bontà degli articoli estratti, per questo motivo credo che la reale affidabilità si aggiri tra l'80% e il 90%.\
+Per quanto buona sia questa percentuale, mi era impossibile calcolare con precisione la bontà degli articoli estratti, per questo motivo credo che la reale affidabilità si aggiri tra l'80% e il 90%.\
 Ad ogni modo, il risultato è più che soddisfacente dal mio punto di vista; il problema è che non mi è stato possibile testarlo in produzione per mancanza di tempo.\
-Inoltre, la creazione del template è molto lunga e laboriosa, e credo che questa possa essere un passaggio molto propenso all'errore umano, per il quale è necessaria una certa esperienza pratica per comprendere i modi con cui si creano i migliori template.\
+Inoltre, la creazione del template è molto lunga e laboriosa, credo che questa possa essere un passaggio molto propenso all'errore umano, per il quale è necessaria una certa esperienza pratica per creare i migliori template.\
 Per questo motivo, sarebbe utile integrare nella creazione dei template un supporto basato sull'intelligenza artificiale, capace di tracciare automaticamente i rettangoli, lasciando poi al personale o a uno sviluppatore il compito di correggerli.\
 Come sottolineato dal tutor, 'Ogni cosa che si può fare a mano si può anche automatizzare', un'osservazione che condivido pienamente: credo infatti che l'automazione della creazione dei template rappresenterebbe un significativo miglioramento per il progetto.\
 Dal punto di vista personale, questo tipo di progetto, in cui sono richiesti continuamente test sulle stesse parti e una continua iterazione con una sorta di 'try fail retry', senza allargare ad altre funzionalità, risulta molto soddisfacente solo quando vengono finalmente raggiunti gli obiettivi, ma piuttosto frustrante durante lo svolgimento.\
-Inoltre, lavorare con librerie e strumenti esterni, come gli OCR, porta con sé una frustrazione particolare: quando l'algoritmo fallisce, la causa non è sempre riconducibile al proprio lavoro, ma talvolta ai limiti degli strumenti su cui si è costretti a fare affidamento, pur rendendomi conto che sia impossibile per un OCR raggiungere un'affidabilità del 100%.\
+Inoltre, lavorare con librerie e strumenti esterni, come gli OCR, comporta un disagio particolare: quando l'algoritmo fallisce, la causa non è sempre riconducibile al proprio lavoro, ma talvolta ai limiti degli strumenti su cui ci si deve affidare.\
+Resto comunque consapevole che un'affidabilità del 100% sia irrealistica per un OCR, e che parte di queste difficoltà vada quindi accettata come inevitabile.\
 In definitiva, la mia soddisfazione per il progetto è molto alta: non pensavo di riuscire a portare ogni singolo punto alla conclusione e soprattutto di ottenere un'accuratezza così elevata.\
 Al di là del risultato tecnico, questo percorso mi ha permesso di affinare capacità di analisi e di astrazione che ritengo preziose per il mio futuro professionale.
