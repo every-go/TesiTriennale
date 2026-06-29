@@ -51,10 +51,10 @@ Tutti i requisiti descritti nella @cap:requirements-list sono stati implementati
 #figure(
   table(
     columns: (auto, 1fr, 1fr, auto, auto),
-    table.header([*Tipo*], [*Mandatory*], [*Desirable*],[*Optional*], [*Somma*]),
-    [Functional], [#fr_tot.at(0)/#fr_tot.at(0)], [#fr_tot.at(1)/#fr_tot.at(1)], [#fr_tot.at(2)/#fr_tot.at(2)], [#fr_tot.sum()/#fr_tot.sum()],
-    [Qualitative], [#qr_tot.at(0)/#qr_tot.at(0)], [#qr_tot.at(1)/#qr_tot.at(1)], [#qr_tot.at(2)/#qr_tot.at(2)], [#qr_tot.sum()/#qr_tot.sum()],
-    [Constraint], [#cr_tot.at(0)/#cr_tot.at(0)], [#cr_tot.at(1)/#cr_tot.at(1)], [#cr_tot.at(2)/#cr_tot.at(2)], [#cr_tot.sum()/#cr_tot.sum()],
+    table.header([*Tipo*], [*Obbligatori*], [*Desiderabili*],[*Opzionali*], [*Somma*]),
+    [Funzionali], [#fr_tot.at(0)/#fr_tot.at(0)], [#fr_tot.at(1)/#fr_tot.at(1)], [#fr_tot.at(2)/#fr_tot.at(2)], [#fr_tot.sum()/#fr_tot.sum()],
+    [Qualità], [#qr_tot.at(0)/#qr_tot.at(0)], [#qr_tot.at(1)/#qr_tot.at(1)], [#qr_tot.at(2)/#qr_tot.at(2)], [#qr_tot.sum()/#qr_tot.sum()],
+    [Vincolo], [#cr_tot.at(0)/#cr_tot.at(0)], [#cr_tot.at(1)/#cr_tot.at(1)], [#cr_tot.at(2)/#cr_tot.at(2)], [#cr_tot.sum()/#cr_tot.sum()],
     [*Totale*],
       [*#{fr_tot.at(0)+qr_tot.at(0)+cr_tot.at(0)}/#{fr_tot.at(0)+qr_tot.at(0)+cr_tot.at(0)}*],
       [*#{fr_tot.at(1)+qr_tot.at(1)+cr_tot.at(1)}/#{fr_tot.at(1)+qr_tot.at(1)+cr_tot.at(1)}*],
